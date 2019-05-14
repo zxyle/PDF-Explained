@@ -25,28 +25,30 @@ endobj
 这是关联的内容流，由流字典和流数据组成。
 ```
 2 0 obj
-<< /Length 18 >> Stream dictionary stream
-200 150 m 600 450 l S Stream data endstream
+<< /Length 18 >> Stream dictionary 
+stream
+200 150 m 600 450 l S 流数据
+endstream
 endobj
 ```
-我们将在一瞬间发现m，l和S运营商的所作所为。 
+我们将在一瞬间发现m，l和S操作符的所作所为。 
 数字是以磅为单位的测量值 - 点（或pt）是1/72英寸。 
 将此文档加载到PDF查看器（按照第2章使用pdftk处理后）的结果如图5-1所示。
 
 完整的手动创建的文件（在使用pdftk处理之前）如例5-1所示。 
-我们将在本章的其余部分使用此文件的变体。 在大多数情况下，
+我们将在本章的其余部分使用此文件的变体。在大多数情况下，
 我们只会更改每个示例的内容流，但稍后我们需要向PDF添加一个或多个额外资源。 
 所有这些文件都可以在本书的在线资源中找到。
 
 Example 5-1. Skeleton PDF listing for examples in this chapter
 ```
-%PDF-1.0 PDF header 
-1 0 obj Page tree
+%PDF-1.0 PDF文件头
+1 0 obj 页面树
 << /Kids [2 0 R]
   /Type /Pages
   /Count 1 >>
 endobj
-2 0 obj Page object 
+2 0 obj 页面对象
 << /Rotate 0
    /Parent 1 0 R
    /MediaBox [0 0 792 612] 
@@ -55,19 +57,19 @@ endobj
    /Contents [4 0 R]
 >>
 endobj
-3 0 obj Resources
+3 0 obj 资源
 << >>
-4 0 obj Page content stream 
+4 0 obj 页面内容流
 << /Length 19 >>
 stream
 200 150 m 600 450 l S 
 endstream
 endobj
-5 0 obj Document catalog 
+5 0 obj 文件目录
 << /Pages 1 0 R
    /Type /Catalog 
 >>
-endobj xref Skeleton cross-reference table 
+endobj xref 骨架交叉引用表
 0 6
 trailer 文件尾字典
 << /Root 5 0 R
@@ -75,25 +77,25 @@ trailer 文件尾字典
 >>
 startxref
 0
-%%EOF End-of-file marker
+%%EOF 文件结束标记
 ```
-内容流几乎总是被压缩，因此要检查现有文档的内容流，我们可以使用pdftk解压缩操作。例如，命令：
+内容流几乎总是被压缩，因此要检查现有文档的内容流，我们可以使用*pdftk*解压缩操作。例如，命令：
 ```
 pdftk input.pdf decompress output output.pdf
 ```
 将input.pdf写入output.pdf，并将流解压缩。
 
-## Operators and Graphics State
+## 运算符和Graphics State
 |Group|用于|运算符|
 |---|---|---|
-|图形状态运算符|更改图形状态（当前颜色，笔触宽度等）。|w J j M d ri i gs q Q cm CS cs SC SCN sc scn G g RG rg Kk|
-|路径建设运算符|构建线条，曲线和矩形。|m l c v y h re|
-|路径绘画运算符|笔划和填充路径，或使用它们来定义剪裁区域。|S s f F f* B B* b b* n W W*|
-|其他绘画运算符|着色图案和内嵌图像。|sh BI ID EI Do|
-|文本运算符|选择并以各种字体和方式显示文本。|Tc Tw Tz TL Tf Tr Ts Td TD Tm T* Tj TJ ' '' d0 d1|
-|标记内容和兼容性运算符|用于划分流的部分。|MP DP BMC BDC EMC BX EX|
+|图形状态运算符|更改图形状态（当前颜色，笔触宽度等）|w J j M d ri i gs q Q cm CS cs SC SCN sc scn G g RG rg Kk|
+|路径建设运算符|构建线条，曲线和矩形|m l c v y h re|
+|路径绘画运算符|笔划和填充路径，或使用它们来定义剪裁区域|S s f F f* B B* b b* n W W*|
+|其他绘画运算符|着色图案和内嵌图像|sh BI ID EI Do|
+|文本运算符|选择并以各种字体和方式显示文本|Tc Tw Tz TL Tf Tr Ts Td TD Tm T* Tj TJ ' '' d0 d1|
+|标记内容和兼容性运算符|用于划分流的部分|MP DP BMC BDC EMC BX EX|
 
-通过依次考虑每个运算符及其操作数来呈现页面。 图形状态始终保持不变，
+通过依次考虑每个运算符及其操作数来呈现页面 图形状态始终保持不变，
 由一些运算符改变，由其他人咨询。操作数通常是数字，但可以是名称，字典或数组。
 
 表5-2总结了表示我们的示例所需的图形状态部分，如可能出现在典型的PDF实现中。
@@ -132,10 +134,10 @@ S Stroke the new line
 请注意，此时没有绘制任何内容 - 只有当我们使用S运算符来
 描边时才会影响页面。S运算符也清除当前路径。
 
-w运算符将图形状态中的线宽设置为8个点。 J运算符将行结束设置为圆顶。
+w运算符将图形状态中的线宽设置为8个点。J运算符将行结束设置为圆顶。
 使用d运算符设置虚线模式，该运算符采用两个操作数：
 一个数组（一个短划线长度，间隙长度，短划线长度等重复序列，在划线时循环）
-和一个初始偏移量（ 移动模式的开始。 在我们的例子中，只有一个条目，
+和一个初始偏移量（移动模式的开始。在我们的例子中，只有一个条目，
 因此破折号和间隙都是20pt，相位是0。
 
 表5-3，表5-4和表5-5分别总结了线连接，虚线图案和线帽。
@@ -173,11 +175,11 @@ w运算符将图形状态中的线宽设置为8个点。 J运算符将行结束�
 
 曲线由四个点（起点和终点）以及两个控制点定义，
 这两个控制点定义曲线在开始和结束之间的形状。
- 曲线不一定通过控制点，但总是完全位于由其四个点定义的凸四边形内。
+曲线不一定通过控制点，但总是完全位于由其四个点定义的凸四边形内。
  
 示例曲线，显示起点和终点以及两个控制点（显示
 使用来自端点的虚线，因为它们可能在图形编辑器中表示）
-如图5-3所示。 这是通过使用c运算符生成的：
+如图5-3所示。这是通过使用c运算符生成的：
 ```
 300 200 m 400 300 500 400 600 200 c S
 ```
