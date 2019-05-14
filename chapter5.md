@@ -113,6 +113,56 @@ pdftk input.pdf decompress output output.pdf
 |Alpha source|布尔|false|
 
 ## Building and Painting Paths
+我们正在使用风景美国信函页面（宽11英寸或792点;高8.5英寸或612点）。 
+默认情况下，PDF坐标系的原点位于页面的左下角，x和y分别向右和向上增加。
+
+让我们使用一些路径构造，描边和线属性操作符来构建一个简单的图形流：
+```
+100 100 m 300 200 l 700 100 l Move to (100, 100), line to (300, 200), line to (700, 100) 
+S Stroke the line
+8 w 将线宽从默认值（1.0）更改为8.0
+1 J 将行结束上限从默认方块（代码0）更改为舍入（代码1）
+100 200 m 300 300 l 700 200 l 定义新路径，相同的形状，但在页面上方100个点
+S Stroke the new line
+[20] 0 d 改为20pt破折号
+100 300 m 300 400 l 700 300 l Define new path, same shape but another 100pts higher up the page S Stroke the new line
+```
+
+我们使用m运算符移动到新路径的开头，并使用l运算符形成两条线。 
+请注意，此时没有绘制任何内容 - 只有当我们使用S运算符来
+描边时才会影响页面。S运算符也清除当前路径。
+
+w运算符将图形状态中的线宽设置为8个点。 J运算符将行结束设置为圆顶。
+使用d运算符设置虚线模式，该运算符采用两个操作数：
+一个数组（一个短划线长度，间隙长度，短划线长度等重复序列，在划线时循环）
+和一个初始偏移量（ 移动模式的开始。 在我们的例子中，只有一个条目，
+因此破折号和间隙都是20pt，相位是0。
+
+表5-3，表5-4和表5-5分别总结了线连接，虚线图案和线帽。
+
+路径可以由多个子路径构成，每个子路径以m运算符开始。 
+这可以用于定义由几个不连续的形状构成的单个路径。
+
+|连接数|含义|
+|---|---|
+|0|Mitered join|
+|1|圆形连接|
+|2|斜面连接|
+
+
+|短划线模式规范|含义|
+|---|---|
+|[] 0|实线|
+|[2] 0|2 on, 2 off, 2 on...|
+|[2] 1|1 on, 2 off, 2 on... (phase is set to 1)|
+|[2 3] 0|2 on, 3 off, 2 on...|
+
+|Cap数|含义|
+|---|---|
+|0|Butt caps. Squared off at the end of the line.|
+|1|Round caps. Semicircles attached at the end of each line.|
+|2|Projecting square caps. Projects at end of line for half the width of the line, and is then squared off.|
+
 ### Bezier Curves
 除了直线，我们还可以绘制曲线。
 有许多不同的可能方案来定义曲线，
