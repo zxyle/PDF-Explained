@@ -4,6 +4,114 @@
 PDF文档。所有示例都包含在在线资源中。
 
 ## Looking at Content Streams
+PDF页面由一个或多个内容流组成，由页面对象中的/Contents条目定义，
+以及由/Resources条目定义的共享资源集。在我们的所有示例中，
+只有一个内容流。多个内容流等同于包含其连接内容的单个流。
+
+这是一个示例页面，没有资源和单个内容流：
+```
+3 0 obj 
+<<
+  /Type /Page
+  /Parent 1 0 R
+  /Resources << >> 
+  /MediaBox [ 0 0 792 612 ] 
+  /Rotate 0
+  /Contents [ 2 0 R ] 
+>>
+endobj
+```
+
+这是关联的内容流，由流字典和流数据组成。
+```
+2 0 obj
+<< /Length 18 >> Stream dictionary stream
+200 150 m 600 450 l S Stream data endstream
+endobj
+```
+我们将在一瞬间发现m，l和S运营商的所作所为。 
+数字是以磅为单位的测量值 - 点（或pt）是1/72英寸。 
+将此文档加载到PDF查看器（按照第2章使用pdftk处理后）的结果如图5-1所示。
+
+完整的手动创建的文件（在使用pdftk处理之前）如例5-1所示。 
+我们将在本章的其余部分使用此文件的变体。 在大多数情况下，
+我们只会更改每个示例的内容流，但稍后我们需要向PDF添加一个或多个额外资源。 
+所有这些文件都可以在本书的在线资源中找到。
+
+Example 5-1. Skeleton PDF listing for examples in this chapter
+```
+%PDF-1.0 PDF header 
+1 0 obj Page tree
+<< /Kids [2 0 R]
+  /Type /Pages
+  /Count 1 >>
+endobj
+2 0 obj Page object 
+<< /Rotate 0
+   /Parent 1 0 R
+   /MediaBox [0 0 792 612] 
+   /Resources 3 0 R
+   /Type /Page
+   /Contents [4 0 R]
+>>
+endobj
+3 0 obj Resources
+<< >>
+4 0 obj Page content stream 
+<< /Length 19 >>
+stream
+200 150 m 600 450 l S 
+endstream
+endobj
+5 0 obj Document catalog 
+<< /Pages 1 0 R
+   /Type /Catalog 
+>>
+endobj xref Skeleton cross-reference table 
+0 6
+trailer 文件尾字典
+<< /Root 5 0 R
+   /Size 6 
+>>
+startxref
+0
+%%EOF End-of-file marker
+```
+内容流几乎总是被压缩，因此要检查现有文档的内容流，我们可以使用pdftk解压缩操作。例如，命令：
+```
+pdftk input.pdf decompress output output.pdf
+```
+将input.pdf写入output.pdf，并将流解压缩。
+
+## Operators and Graphics State
+|Group|用于|运算符|
+|---|---|---|
+|图形状态运算符|更改图形状态（当前颜色，笔触宽度等）。|w J j M d ri i gs q Q cm CS cs SC SCN sc scn G g RG rg Kk|
+|路径建设运算符|构建线条，曲线和矩形。|m l c v y h re|
+|路径绘画运算符|笔划和填充路径，或使用它们来定义剪裁区域。|S s f F f* B B* b b* n W W*|
+|其他绘画运算符|着色图案和内嵌图像。|sh BI ID EI Do|
+|文本运算符|选择并以各种字体和方式显示文本。|Tc Tw Tz TL Tf Tr Ts Td TD Tm T* Tj TJ ' '' d0 d1|
+|标记内容和兼容性运算符|用于划分流的部分。|MP DP BMC BDC EMC BX EX|
+
+通过依次考虑每个运算符及其操作数来呈现页面。 图形状态始终保持不变，
+由一些运算符改变，由其他人咨询。操作数通常是数字，但可以是名称，字典或数组。
+
+表5-2总结了表示我们的示例所需的图形状态部分，如可能出现在典型的PDF实现中。
+|条目|类型|初始值|
+|---|---|---|
+|当前的转换矩阵|矩阵|将默认用户坐标转换为设备坐标的矩阵|
+|填色|颜色|黑|
+|线条颜色|颜色|黑|
+|线宽|real|1.0|
+|路径连接样式|整数|Mitered joins (0)|
+|Cap style|整数|Square butt caps (0)|
+|Line dash pattern|整数数组|实线|
+|当前剪切路径|路径|空路径|
+|混合模式|名称或数组|正常|
+|Soft mask|名字或字典|None|
+|透明度常数|real|1.0（完全不透明）|
+|Alpha source|布尔|false|
+
 ## Building and Painting Paths
 ### Bezier Curves
 除了直线，我们还可以绘制曲线。
@@ -33,3 +141,12 @@ c运算符再采用三个坐标：第一个控制点，第二个控制点和终�
 但我们可以使用几条Bézier曲线来近似地逼近一条曲线。 
 我们将使用四条对称曲线（最小数量以获得良好结果），每个象限一条。 
 对于以（1,0）为中心的单位圆的样本象限，坐标如图5-4所示。 数字k约为0.553。
+
+### Filled Shapes and Winding Rules
+## Colors and Color Spaces
+## Transformations
+## Clipping
+## Transparency
+## Shadings and Patterns
+## Form XObjects
+## Image XObjects
