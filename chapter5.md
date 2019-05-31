@@ -206,6 +206,18 @@ c运算符再采用三个坐标：第一个控制点，第二个控制点和终�
 h B Close and fill
 ```
 ## Colors and Color Spaces
+要更改PDF图形流中的填充或描边颜色，我们需要使用
+一个运算符更改当前颜色空间，然后使用另一个运
+算符更改颜色。填充和描边颜色空间是分开的 - 例如，
+当前填充颜色空间可以是DeviceRGB和描边颜色空间DeviceGray。
+
+在本节中，我们将介绍基本的DeviceGray，DeviceRGB和
+DeviceCMYK颜色空间（PDF标准中涵盖了更复杂的颜色空间）：
+* DeviceGray颜色空间有一个添加组件，从0.0（黑色）到1.0（白色）不等。
+* DeviceRGB色彩空间有三个用于红色，绿色和蓝色的附加组件。 它们各自的范围从0.0（例如，没有红色）到1.0（例如，全红色）。
+* DeviceCMYK颜色空间有四个减色组件，分别用于青色，品红色，黄色和键（黑色）。 它们各自的范围从0.0（无颜料）到1.0（全颜料）。
+
+
 ## Transformations
 ## Clipping
 ## Transparency
