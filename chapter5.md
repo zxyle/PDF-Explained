@@ -1,5 +1,5 @@
 在本章中，我们将介绍在PDF页面的内容流中构建图形
-的主要方法。所有示例都基于我们在第2章中手动创建
+的主要方法。所有示例都基于我们在[第2章](./chapter2.md)中手动创建
 的相同PDF，并以相同的方式使用*pdftk*处理成有效的
 PDF文档。所有示例都包含在在线资源中。
 
@@ -25,7 +25,7 @@ endobj
 这是关联的内容流，由流字典和流数据组成。
 ```
 2 0 obj
-<< /Length 18 >> Stream dictionary 
+<< /Length 18 >> 流字典
 stream
 200 150 m 600 450 l S 流数据
 endstream
@@ -33,9 +33,9 @@ endobj
 ```
 我们将在一瞬间发现m，l和S操作符的所作所为。 
 数字是以磅为单位的测量值 - 点（或pt）是1/72英寸。 
-将此文档加载到PDF查看器（按照第2章使用pdftk处理后）的结果如图5-1所示。
+将此文档加载到PDF查看器（按照第2章使用*pdftk*处理后）的结果如图5-1所示。
 
-完整的手动创建的文件（在使用pdftk处理之前）如例5-1所示。 
+完整的手动创建的文件（在使用*pdftk*处理之前）如例5-1所示。 
 我们将在本章的其余部分使用此文件的变体。在大多数情况下，
 我们只会更改每个示例的内容流，但稍后我们需要向PDF添加一个或多个额外资源。 
 所有这些文件都可以在本书的在线资源中找到。
@@ -85,7 +85,7 @@ pdftk input.pdf decompress output output.pdf
 ```
 将input.pdf写入output.pdf，并将流解压缩。
 
-## 运算符和Graphics State
+## 运算符和图形状态
 |Group|用于|运算符|
 |---|---|---|
 |图形状态运算符|更改图形状态（当前颜色，笔触宽度等）|w J j M d ri i gs q Q cm CS cs SC SCN sc scn G g RG rg Kk|
@@ -114,7 +114,7 @@ pdftk input.pdf decompress output output.pdf
 |透明度常数|real|1.0（完全不透明）|
 |Alpha source|布尔|false|
 
-## Building and Painting Paths
+## 构建和绘制路径
 我们正在使用风景美国信函页面（宽11英寸或792点;高8.5英寸或612点）。 
 默认情况下，PDF坐标系的原点位于页面的左下角，x和y分别向右和向上增加。
 
@@ -124,11 +124,13 @@ pdftk input.pdf decompress output output.pdf
 S Stroke the line
 8 w 将线宽从默认值（1.0）更改为8.0
 1 J 将行结束上限从默认方块（代码0）更改为舍入（代码1）
-100 200 m 300 300 l 700 200 l 定义新路径，相同的形状，但在页面上方100个点
+100 200 m 300 300 l 700 200 l 定义新路径，相同的形状，但在页面上方100个pts
 S Stroke the new line
 [20] 0 d 改为20pt破折号
-100 300 m 300 400 l 700 300 l Define new path, same shape but another 100pts higher up the page S Stroke the new line
+100 300 m 300 400 l 700 300 l 定义新路径, same shape but another 100pts higher up the page S Stroke the new line
 ```
+
+结果如图5-2所示。
 
 我们使用m运算符移动到新路径的开头，并使用l运算符形成两条线。 
 请注意，此时没有绘制任何内容 - 只有当我们使用S运算符来
@@ -147,7 +149,7 @@ w运算符将图形状态中的线宽设置为8个点。J运算符将行结束�
 
 |连接数|含义|
 |---|---|
-|0|Mitered join|
+|0|斜接|
 |1|圆形连接|
 |2|斜面连接|
 
@@ -165,11 +167,11 @@ w运算符将图形状态中的线宽设置为8个点。J运算符将行结束�
 |1|Round caps. Semicircles attached at the end of each line.|
 |2|Projecting square caps. Projects at end of line for half the width of the line, and is then squared off.|
 
-### Bezier Curves
+### 贝塞尔曲线
 除了直线，我们还可以绘制曲线。
 有许多不同的可能方案来定义曲线，
 但业界已经确定了Bézier曲线，
-以汽车工程师PierreBézier的名字命名。 
+以汽车工程师Pierre Bézier的名字命名。 
 它们易于操作并且可以用鼠标在屏幕上进行操作，
 相对容易以任何分辨率或精度绘制，并且易于数学定义。
 
@@ -188,13 +190,21 @@ c运算符再采用三个坐标：第一个控制点，第二个控制点和终�
 
 有关Bézier曲线的更多信息，请参阅图形文本 - 请参阅第119页的“PDF和图形文档”。
 
-#### Drawing circles with Bezier curves
+#### 用贝塞尔曲线绘制圆圈
 有趣的是，不可能在PDF中绘制精确的圆圈。 
 但我们可以使用几条Bézier曲线来近似地逼近一条曲线。 
 我们将使用四条对称曲线（最小数量以获得良好结果），每个象限一条。 
 对于以（1,0）为中心的单位圆的样本象限，坐标如图5-4所示。 数字k约为0.553。
 
 ### Filled Shapes and Winding Rules
+通过将另一个操作符从表5-6中替换为我们之前使用的S操作（这里，我们使用B来填充和描边路径），
+可以填充和描边路径。 图5-5显示了使用以下代码填充和描边的形状：
+```
+2.0 w
+0.75 g Change fill color to light Gray 250 250 m Move to start of path
+350 350 450 450 550 250 c First curve 450 250 350 200 y Second curve
+h B Close and fill
+```
 ## Colors and Color Spaces
 ## Transformations
 ## Clipping
