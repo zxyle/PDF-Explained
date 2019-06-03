@@ -21,3 +21,12 @@
 ## File Attachments
 ## Encryption and Decryption
 ## Compression
+为了查看或编辑页面级内容（如图形运算符流），首先必须删除用于数据流的压缩。 这可以通过pdftk uncompress修饰符来实现：
+```
+pdftk compressed.pdf output uncompressed.pdf uncompress
+```
+
+可以通过使用compress来反转该过程（例如，在手动编辑之后）：
+```
+pdftk uncompressed.pdf output compressed.pdf compress
+```
