@@ -39,17 +39,21 @@ pdftk hello.pdf output encrypted.pdf encrypt_40bit owner_pw fred
 然后选择Security选项卡，可以查看安全属性 - 请参见图8-1。
 通过单击Show Details ...按钮获得更具技术头脑的显示，
 以显示如图8-2所示的窗口。
+
 ![](./images/figure%208-1.png)
+
 ![](./images/figure%208-2.png)
 
 如果使用可以编辑PDF文件的程序（例如Adobe Acrobat），
 则在尝试权限不允许的任何编辑操作时，将提示用户输入所
 有者密码，如图8-3所示。
+
 ![](./images/figure%208-3.png)
 
 如果文档具有非空用户密码，则在打开文件时会显示类似的对
 话框，如图8-4所示。如果密码未知，则无法打开文件，即使
 是查看也是如此。
+
 ![](./images/figure%208-4.png)
 
 例8-1显示了我们新文件的内容。看看您是否能够发现示例2-2中标准hello.pdf文件的差异。
