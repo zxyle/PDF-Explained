@@ -323,8 +323,36 @@ endobj 对象的结束
 所有流必须是间接对象。 流几乎总是使用各种机制进行压缩，如表3-3所示。
 
 ## Incremental Update 增量更新
+增量更新允许通过将修改附加到文件末尾来更新文件，
+因此不需要再次写入整个文件（对于大文件，可能需要很长时间）。 
+更新构成新的或更改的对象，以及对交叉引用表的更新。 
+这意味着保存更改所花费的时间更少，但文件可能会变得臃肿（因为不再需要的对象无法删除）。
+
+此更新过程可能会发生多次。 副作用是以这种方式更新的
+文件可能会使这些更改撤消一个或多个级别，以检索文档的早期版本。
+
+更改经过数字签名的文档时，必须以增量方式进行所有更新 - 否则，
+数字签名将无效。 收件人可以撤消增量更新以检索原始的，经过认证的文档。
+
+当一个文件以递增方式更新时，会添加一个新的trailer，其中包含前一个trailer
+中的所有条目，以及一个/Prev条目，它给出了之前交叉引用表的字节偏移量。 
+因此，已逐步更新的文件将具有多个trailer词典和文件结束标记。 
+通过这种方式，PDF应用程序可以以相反的顺序读取交叉引用部分，
+以构建文件中每个对象的最新版本的列表。 已替换的对象保持相同的对象编号。
 
 ## Object and Cross-Reference String 对象和交叉引用流
+从PDF 1.5开始，引入了一种新机制，通过允许将多个对象放入单个
+对象流中来进一步压缩PDF文件，整个流被压缩。 
+同时，引入了一种用于引用这些流中的对象的新机制 - 交叉引用流。
+
+文件通常使用几组对象流，将特定时间所需的对象组合在一起，
+例如第一页上的所有对象，第二页上的所有对象，等等。 
+这保留了文档的随机访问属性，如果将文件中的所有对象放入
+单个对象流中，该属性将丢失。 对象流不能包含其他流。
+
+使用这些机制压缩的文件很难手动读取，因此我们可以像往常
+一样使用*pdftk*中的解压缩操作，将它们重写为解压缩以供检查。 
+这具有在没有对象和交叉引用流的情况下编写它们的副作用。详细信息请参见[第9章](./chapter9.md)。
 
 ## Linearized PDF
 在网络环境中查看大型PDF文件时，尤其是当数据速率较低或网络延迟较高时，
@@ -375,6 +403,27 @@ pdfopt input.pdf output.pdf
 5.我们现在可以使用数据，提取页面，解析图形内容，提取元数据等。
 这不是详尽的描述，因为存在许多可能的复杂性（加密，线性化，对象和交叉引用流）。
 psuedocode中给出的以下递归数据结构可以包含PDF对象。
+
+```
+pdfobject ::= Null
+            | Boolean of bool
+            | Integer of int
+            | Real of real
+            | String of string
+            | Name of string
+            | Array of pdfobject array
+            | Dictionary of (string, pdfobject) array Array of (string, pdfobject) pairs | Stream of (pdfobject, bytes) Stream dictionary and stream data
+            | Indirect of int
+```
+
+例如，对象<< /Kids [2 0 R] /Count 1 /Type /Pages >>可能表示为：
+```
+Dictionary
+  ((Name (/Kids), Array (Indirect 2)),
+   (Name (/Count), Integer (1)), 
+   (Name (/Type), Name (/Pages)))
+```
+本章前面的图3-1显示了例3-1中文件的对象图。
 
 ## How a PDF File is Written
 将PDF文档写入文件中的一系列字节要比阅读它简单得多，
