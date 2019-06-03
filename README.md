@@ -17,11 +17,11 @@
 参考[examples](./examples)目录
 
 ## 参考资源
-* [英文原版](./resources/PDF\ Explained.pdf)
+* [英文原版](./resources/PDF\Explained.pdf)
 * [pdf1.7参考](./resources/pdf_reference_1.7.pdf)
 
 ## 当前翻译状态
-持续翻译中... 欢迎PR或者ISSUE。
+持续翻译中... 欢迎[PR](https://github.com/zxyle/PDF_Explained/pulls)或者[ISSUE](https://github.com/zxyle/PDF_Explained/issues)。
 
 ## 备注
 欢迎加入QQ群: 277216960
