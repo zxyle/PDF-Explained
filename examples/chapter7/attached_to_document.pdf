@@ -1,0 +1,60 @@
+%PDF-1.4
+%ÄÅÇÉ
+1 0 obj
+<< /Type /Pages /Kids [ 3 0 R 5 0 R 7 0 R ] /Count 3 >>
+endobj
+2 0 obj
+<< /Length 72 >>
+stream
+1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Hello, World!) Tj ET 
+endstream
+endobj
+3 0 obj
+<< /Type /Page /Parent 1 0 R /Resources << /Font << /F0 << /Type /Font /Subtype /Type1 /BaseFont /Times-Italic >> >> >> /MediaBox [ 0 0 595.275590551 841.88976378 ] /Rotate 0 /Contents [ 2 0 R ] >>
+endobj
+4 0 obj
+<< /Length 81 >>
+stream
+1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Hello, World! Page Two) Tj ET 
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 1 0 R /Resources << /Font << /F0 << /Type /Font /Subtype /Type1 /BaseFont /Times-Italic >> >> >> /MediaBox [ 0 0 595.275590551 841.88976378 ] /Rotate 0 /Contents [ 4 0 R ] >>
+endobj
+6 0 obj
+<< /Length 83 >>
+stream
+1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Hello, World! Page Three) Tj ET 
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 1 0 R /Resources << /Font << /F0 << /Type /Font /Subtype /Type1 /BaseFont /Times-Italic >> >> >> /MediaBox [ 0 0 595.275590551 841.88976378 ] /Rotate 0 /Contents [ 6 0 R ] >>
+endobj
+8 0 obj
+<< /Type /EmbeddedFile /Length 35 >>
+stream
+This is a text file attachment...
+
+
+endstream
+endobj
+9 0 obj
+<< /Names << /EmbeddedFiles << /Names [ (attachment.txt) << /EF << /F 8 0 R >> /F (attachment.txt) /Type /F >> ] >> >> /Pages 1 0 R /Type /Catalog >>
+endobj
+xref
+0 10 
+0000000000 65535 f 
+0000000015 00000 n 
+0000000086 00000 n 
+0000000208 00000 n 
+0000000421 00000 n 
+0000000552 00000 n 
+0000000765 00000 n 
+0000000898 00000 n 
+0000001111 00000 n 
+0000001216 00000 n 
+trailer
+<< /Size 10 /ID [ (R›ß0•\)À‡Í4y.;N) (R›ß0•\)À‡Í4y.;N) ] /Root 9 0 R >>
+startxref
+1381
+%%EOF

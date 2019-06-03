@@ -1,0 +1,70 @@
+%PDF-1.1
+%‚„œ”
+1 0 obj 
+<<
+/Kids [2 0 R]
+/Type /Pages
+/Count 1
+>>
+endobj 
+2 0 obj 
+<<
+/Rotate 0
+/Parent 1 0 R
+/MediaBox [0 0 792 612]
+/Resources 3 0 R
+/Type /Page
+/Contents [4 0 R]
+>>
+endobj 
+3 0 obj 
+<<
+/Font 
+<<
+/F0 
+<<
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Type /Font
+>>
+>>
+>>
+endobj 
+4 0 obj 
+<<
+/Length 187
+>>
+stream
+
+100 350 200 200 re
+120 370 160 160 re f
+400 350 200 200 re
+420 370 160 160 re f*
+
+150 50 m 150 250 l 250 50 l 50 150 l 350 150 l h f
+550 50 m 550 250 l 650 50 l 450 150 l 750 150 l h f*
+
+endstream 
+endobj 
+5 0 obj 
+<<
+/Pages 1 0 R
+/Type /Catalog
+>>
+endobj xref
+0 6
+0000000000 65535 f 
+0000000015 00000 n 
+0000000074 00000 n 
+0000000192 00000 n 
+0000000291 00000 n 
+0000000532 00000 n 
+trailer
+
+<<
+/Root 5 0 R
+/Size 6
+>>
+startxref
+582
+%%EOF

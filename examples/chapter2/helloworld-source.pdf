@@ -1,0 +1,47 @@
+%PDF-1.1
+1 0 obj 
+<< /Type /Pages
+   /Count 1
+   /Kids [2 0 R] 
+>>
+endobj 
+2 0 obj 
+<< /Type /Page
+   /MediaBox [0 0 612 792]
+   /Resources 3 0 R
+   /Parent 1 0 R
+   /Contents [4 0 R]
+>>
+endobj 
+3 0 obj 
+<< /Font 
+     << /F0 
+          << /Type /Font
+             /BaseFont /Times-Italic
+             /Subtype /Type1 >>
+     >>
+>>
+endobj 
+4 0 obj 
+<< >>
+stream
+1. 0. 0. 1. 50. 700. cm
+BT
+  /F0 36. Tf
+  (Hello, World!) Tj
+ET 
+endstream 
+endobj 
+5 0 obj 
+<< /Type /Catalog
+   /Pages 1 0 R
+>>
+endobj xref
+0 6
+trailer
+<< /Size 6
+   /Root 5 0 R
+>>
+startxref
+0
+%%EOF

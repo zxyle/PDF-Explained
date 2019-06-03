@@ -1,0 +1,87 @@
+%PDF-1.1
+1 0 obj %The page tree root node
+<< /Kids [2 0 R 3 0 R] %Two children
+   /Type /Pages
+   /Count 3 %Three pages total
+>>
+endobj 
+4 0 obj %Page 1 content stream
+<< >>
+stream
+1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page One) Tj ET 
+endstream 
+endobj 
+2 0 obj %Page 1
+<< /Rotate 0
+   /Parent 1 0 R %Reference to parent node in page tree
+   /Resources 
+     << /Font << /F0 << /BaseFont /Times-Italic /Subtype /Type1 /Type /Font >> >> >>
+   /MediaBox [0.000000 0.000000 595.275590551 841.88976378]
+   /Type /Page
+   /Contents [4 0 R]
+>>
+endobj 
+5 0 obj %Document catalog
+<< /PageLayout /TwoColumnLeft %Page layout option
+   /Pages 1 0 R %Reference to page tree
+   /Type /Catalog
+>>
+endobj 
+6 0 obj 
+<< /Rotate 0
+   /Parent 3 0 R
+   /Resources 
+     << /Font << /F0 << /BaseFont /Times-Italic /Subtype /Type1 /Type /Font >> >> >>
+   /MediaBox [0.000000 0.000000 595.275590551 841.88976378]
+   /Type /Page
+   /Contents [7 0 R]
+>>
+endobj 
+3 0 obj %Intermediate page tree node
+<< /Parent 1 0 R %Reference to page tree root
+   /Kids [8 0 R 6 0 R] %Reference to pages 2 and 3
+   /Count 2 %Two pages below this node
+   /Type /Pages
+>>
+endobj 
+8 0 obj %Page 2
+<< /Rotate 270 %Rotate the page
+   /Parent 3 0 R
+   /Resources 
+     << /Font << /F0 << /BaseFont /Times-Italic /Subtype /Type1 /Type /Font >> >> >>
+   /MediaBox [0.000000 0.000000 595.275590551 841.88976378]
+   /Type /Page
+   /Contents [9 0 R]
+>>
+endobj 
+9 0 obj %Page 2 content stream
+<< >>
+stream
+q 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page Two) Tj ET Q
+1. 0.000000 0.000000 1. 50. 750 cm BT /F0 16 Tf ((Rotated by 270 degrees)) Tj ET
+endstream 
+endobj 
+7 0 obj %Page 3 content stream
+<< >>
+stream
+1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page Three) Tj ET 
+endstream 
+endobj 
+10 0 obj %Document Information Dictionary
+<< /Title (PDF Explained Example)
+   /Author (John Whitington)
+   /Producer (Manually Created)
+   /ModDate (D:20110313002346Z)
+   /CreationDate (D:2011)
+>>
+endobj xref
+0 11
+trailer
+<< /Info 10 0 R %Trailer Dictionary
+   /Root 5 0 R %Reference to Document Catalog
+   /Size 11
+   /ID [<75ff22189ceac848dfa2afec93deee03> <057928614d9711db835e000d937095a2>] %Document IDs
+>>
+startxref
+0
+%%EOF

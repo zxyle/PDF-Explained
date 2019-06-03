@@ -1,0 +1,136 @@
+%PDF-1.1
+%‚„œ”
+1 0 obj 
+<<
+/Kids [2 0 R]
+/Count 1
+/Type /Pages
+>>
+endobj 
+2 0 obj 
+<<
+/Rotate 0
+/Parent 1 0 R
+/Resources 3 0 R
+/MediaBox [0 0 792 612]
+/Contents [4 0 R]
+/Type /Page
+>>
+endobj 
+3 0 obj 
+<<
+/ExtGState 
+<<
+/gs1 
+<<
+/ca 0.5
+>>
+>>
+/XObject 
+<<
+/X2 5 0 R
+/X1 6 0 R
+>>
+/Font 
+<<
+/F0 
+<<
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Type /Font
+>>
+>>
+/Pattern 
+<<
+/GradientShading 
+<<
+/Shading 
+<<
+/ColorSpace /DeviceGray
+/Function 
+<<
+/FunctionType 2
+/N 1
+/Domain [0 1]
+>>
+/Coords [0 0 300 300]
+/ShadingType 2
+/Extend [true true]
+>>
+/PatternType 2
+/Type /Pattern
+>>
+>>
+>>
+endobj 
+4 0 obj 
+<<
+/Length 98
+>>
+stream
+q
+1 0 0 1 200 200 cm
+200 0 0 200 0 0 cm
+/X2 Do
+Q
+q
+1 0 0 1 500 200 cm
+100 0 0 100 0 0 cm
+/X2 Do
+Q
+
+endstream 
+endobj 
+7 0 obj 
+<<
+/Pages 1 0 R
+/Type /Catalog
+>>
+endobj 
+6 0 obj 
+<<
+/Subtype /Form
+/Length 26
+/Type /XObject
+/BBox [0 0 792 612]
+>>
+stream
+100 0 0 100 0 0 cm
+/X2 Do
+
+endstream 
+endobj 
+5 0 obj 
+<<
+/Interpolate false
+/ColorSpace /DeviceGray
+/Subtype /Image
+/Length 9
+/Width 8
+/Type /XObject
+/Height 8
+/BitsPerComponent 1
+>>
+stream
+@`pxxp`@
+
+endstream 
+endobj xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000074 00000 n 
+0000000192 00000 n 
+0000000584 00000 n 
+0000000915 00000 n 
+0000000786 00000 n 
+0000000735 00000 n 
+trailer
+
+<<
+/Root 7 0 R
+/Size 8
+>>
+startxref
+1088
+%%EOF

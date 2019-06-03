@@ -1,0 +1,113 @@
+%PDF-1.1
+%‚„œ”
+1 0 obj 
+<<
+/Kids [2 0 R]
+/Type /Pages
+/Count 1
+>>
+endobj 
+2 0 obj 
+<<
+/Rotate 0
+/Parent 1 0 R
+/MediaBox [0 0 792 612]
+/Resources 3 0 R
+/Type /Page
+/Contents [4 0 R]
+>>
+endobj 
+3 0 obj 
+<<
+/ExtGState 
+<<
+/gs1 
+<<
+/ca 0.5
+>>
+>>
+/Font 
+<<
+/F0 
+<<
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Type /Font
+>>
+>>
+/XObject 
+<<
+/X1 5 0 R
+>>
+/Pattern 
+<<
+/GradientShading 
+<<
+/Shading 
+<<
+/ColorSpace /DeviceGray
+/Function 
+<<
+/FunctionType 2
+/N 1
+/Domain [0 1]
+>>
+/ShadingType 2
+/Coords [0 0 300 300]
+/Extend [true true]
+>>
+/PatternType 2
+/Type /Pattern
+>>
+>>
+>>
+endobj 
+4 0 obj 
+<<
+/Length 33
+>>
+stream
+/X1 Do
+0.5 0 0 0.5 0 0 cm
+/X1 Do
+
+endstream 
+endobj 
+5 0 obj 
+<<
+/Subtype /Form
+/Length 70
+/Type /XObject
+/BBox [0 0 792 612]
+>>
+stream
+2.0 w
+0.5 g
+250 300 m 350 400 450 500 550 300 c
+450 300 350 250 y h B
+
+endstream 
+endobj 
+6 0 obj 
+<<
+/Pages 1 0 R
+/Type /Catalog
+>>
+endobj xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000074 00000 n 
+0000000192 00000 n 
+0000000574 00000 n 
+0000000660 00000 n 
+0000000833 00000 n 
+trailer
+
+<<
+/Root 6 0 R
+/Size 7
+>>
+startxref
+883
+%%EOF

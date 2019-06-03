@@ -1,0 +1,134 @@
+%PDF-1.1
+%‚„œ”
+1 0 obj 
+<<
+/Kids [2 0 R 3 0 R 4 0 R]
+/Count 3
+/Type /Pages
+>>
+endobj 
+2 0 obj 
+<<
+/Rotate 0
+/Parent 1 0 R
+/Annots [5 0 R]
+/MediaBox [0.000000 0.000000 595.275590551 841.88976378]
+/Resources 
+<<
+/Font 
+<<
+/F0 
+<<
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Type /Font
+>>
+>>
+>>
+/Contents [6 0 R]
+/Type /Page
+>>
+endobj 
+3 0 obj 
+<<
+/Rotate 0
+/Parent 1 0 R
+/MediaBox [0.000000 0.000000 595.275590551 841.88976378]
+/Resources 
+<<
+/Font 
+<<
+/F0 
+<<
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Type /Font
+>>
+>>
+>>
+/Contents [7 0 R]
+/Type /Page
+>>
+endobj 
+4 0 obj 
+<<
+/Rotate 0
+/Parent 1 0 R
+/MediaBox [0.000000 0.000000 595.275590551 841.88976378]
+/Resources 
+<<
+/Font 
+<<
+/F0 
+<<
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Type /Font
+>>
+>>
+>>
+/Contents [8 0 R]
+/Type /Page
+>>
+endobj 
+6 0 obj 
+<<
+/Length 72
+>>
+stream
+1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Hello, World!) Tj ET 
+endstream 
+endobj 
+5 0 obj 
+<<
+/Subtype /Text
+/C [1 1 1]
+/Open true
+/Type /Annot
+/Contents (An example text annotation)
+/Rect [400 100 500 200]
+>>
+endobj 
+7 0 obj 
+<<
+/Length 81
+>>
+stream
+1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Hello, World! Page Two) Tj ET 
+endstream 
+endobj 
+8 0 obj 
+<<
+/Length 83
+>>
+stream
+1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Hello, World! Page Three) Tj ET 
+endstream 
+endobj 
+9 0 obj 
+<<
+/Pages 1 0 R
+/Type /Catalog
+>>
+endobj xref
+0 10
+0000000000 65535 f 
+0000000015 00000 n 
+0000000086 00000 n 
+0000000330 00000 n 
+0000000558 00000 n 
+0000000911 00000 n 
+0000000786 00000 n 
+0000001047 00000 n 
+0000001181 00000 n 
+0000001317 00000 n 
+trailer
+
+<<
+/Root 9 0 R
+/Size 10
+/ID [({#t|{c08EÂ«lÌ$) ({#t|{c08EÂ«lÌ$)]
+>>
+startxref
+1367
+%%EOF
