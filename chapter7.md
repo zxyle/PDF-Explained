@@ -100,10 +100,10 @@ Adobe Reader显示文档及其大纲，如图7-1所示。
 XML使用由可扩展元数据平台（XMP）定义的标记，该标准在Adobe的XMP：可扩展元数
 据平台中进行了描述。该格式包括以与平台无关的方式以其他格式（例如，PDF）嵌入
 元数据的方法，使得不能理解封闭格式的程序仍然可以提取XMP数据。有关XMP格
-式的详细信息，请访问Adobe网站。
+式的详细信息，请访问[Adobe网站](http://www.adobe.com/products/xmp/)。
 
 例7-2中显示了示例XMP元数据。您可以从文档信息词典中看到一些熟悉的条目。
-还要注意序列/类型/元数据/子类型/ XML，它将此流标识为XMP元数据。通过使用文档目录中的/ Metadata条目将元数据流添加到文档中。
+还要注意序列/Type /Metadata /Subtype /XML，它将此流标识为XMP元数据。通过使用文档目录中的/Metadata条目将元数据流添加到文档中。
 
 ```
 Example 7-2. XML Metadata for the ISO PDF Format reference manual PDF. The ↵ symbol is used to indicate a line which continues without a carriage return. The ␣ symbol is used to represent a space character.

@@ -77,15 +77,15 @@ Pdftk允许我们选择从每个文档中获取哪些页面，以及每个输出
 
 
 ## Stamps and Watermarks
-邮票是放置在另一个邮票上的PDF页面，以便组合页面内容。水印（pdftk称为背景）是相同的，但是标记位于现有页面内容下。如果输入PDF的页面具有彩色背景，则这不起作用，因为水印通常不会显示。
+邮票是放置在另一个邮票上的PDF页面，以便组合页面内容。水印（*pdftk*称为背景）是相同的，但是标记位于现有页面内容下。如果输入PDF的页面具有彩色背景，则这不起作用，因为水印通常不会显示。
 
-使用pdftk，可以使用图章和水印操作来实现，这些图章将图章放在给定范围内的所有页面上（或下面）。如果页面大小不同，则会缩放图章以适合和居中。
+使用*pdftk*，可以使用图章和水印操作来实现，这些图章将图章放在给定范围内的所有页面上（或下面）。如果页面大小不同，则会缩放图章以适合和居中。
 
 例如:
 `pdftk file.pdf stamp stamp.pdf output output.pdf`
 
 ### How a Stamp is Added
-当像pdftk这样的程序为输入PDF添加图章时，必须执行以下步骤：
+当像*pdftk*这样的程序为输入PDF添加图章时，必须执行以下步骤：
 
 1.将两个文件加载并解析为PDF对象图。
 2.纠正两个PDF中的对象编号，使它们互斥。邮票PDF中的对象现在可以添加到输入PDF中。
@@ -95,7 +95,7 @@ Pdftk允许我们选择从每个文档中获取哪些页面，以及每个输出
 
 
 ## Extracting and Setting Metadata
-Pdftk可以将文档的元数据（作者，标题等）提取为文本文件，可以是ASCII格式（非ASCII字符编码为XML样式的数字实体），也可以是Unicode UTF8。
+*Pdftk*可以将文档的元数据（作者，标题等）提取为文本文件，可以是ASCII格式（非ASCII字符编码为XML样式的数字实体），也可以是Unicode UTF8。
 这是通过dump_data或dump_data_utf8关键字实现的。例如：
 `pdftk input.pdf dump_data output data.txt`
 
@@ -150,7 +150,7 @@ update_info操作可用于执行反向操作：设置上面列出的信息。还
 
 
 ## File Attachments
-PDF文件可以在文档或页面级别添加附件。PDF附件的技术基础将在第7章中讨论。要在文件级别添加附件：
+PDF文件可以在文档或页面级别添加附件。PDF附件的技术基础将在[第7章](./chapter7.md)中讨论。要在文件级别添加附件：
 `pdftk input.pdf attach_files file1.xls file2.xls output output.pdf`
 
 附件将添加到文件级附件列表的末尾。要在页面级别添加附件，请使用to_page关键字：
@@ -175,13 +175,13 @@ input_pw关键字可用于指定输入文件的所有者密码。密码通过使
 
 
 ### Encrypting the Output
-Pdftk可以使用encrypt_40bit和encrypt_128bit关键字使用40位或128位RC4加密方法加密输出。
+*Pdftk*可以使用encrypt_40bit和encrypt_128bit关键字使用40位或128位RC4加密方法加密输出。
 我们可以使用owner_pw和user_pw关键字指定所有者和用户密码。例如，要使用所有者密码加密具有128位加密的文件，但使用空白用户密码：
 `pdftk input.pdf output output.pdf encrypt_128bit owner_pw fred`
 
 请注意，我们省略了user_pw关键字以指示空白用户密码。
 
-我们尚未指定输入用户密码时允许的操作。 这可以通过将allow关键字与一个或多个权限一起使用来完成（对应于第8章中列举的权限）：
+我们尚未指定输入用户密码时允许的操作。 这可以通过将allow关键字与一个或多个权限一起使用来完成（对应于[第8章](./chapter8.md)中列举的权限）：
 
 ```
 Printing

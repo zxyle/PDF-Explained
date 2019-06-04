@@ -21,9 +21,9 @@ PDF查看器的工作是：
 Adobe Reader是Adobe自己的免费PDF查看器，
 也是唯一一个支持Adobe为PDF制作的各种专有扩展（例如，更现代的表单和注释）。
 它带有适用于常见Web浏览器的PDF插件，适用于Microsoft Windows，Mac OS X，
-Linux，Solaris和Anroid。它允许填写表格并以电子方式提交。
+Linux，Solaris和Android。它允许填写表格并以电子方式提交。
 
-Adobe Reader可以在Adobe的网站上找到。
+Adobe Reader可以在[Adobe网站](http://get.adobe.com/reader/)上找到。
 
 ### Preview
 许多Mac OS X用户更喜欢随操作系统提供的快速，简单的PDF查看器预览。
@@ -38,13 +38,13 @@ Xpdf是一个小型，快速，开源的PDF查看器，几乎可在任何类似U
 其中X Window系统可用。对高级PDF设施的支持是有限的，但它是一个高度可靠的程序，
 用于其功能范围内的文件。
 
-Xpdf可以在Foo Labs的网站上找到。
+Xpdf可以在[Foo Labs网站](http://foolabs.com/xpdf)上找到。
 
 ### GSview 
 GSview是适用于Microsoft Windows和Unix的开源PDF和PostScript查看器。
 它基于古老而高度可靠的GhostScript PDF和PostScript解释器。
 
-GSview和GhostScript（GSview需要）可以从GhostScript网站下载。
+GSview和GhostScript（GSview需要）可以从[GhostScript网站](http://pages.cs.wisc.edu/~ghost/)下载。
 
 
 ## Software Libraries
@@ -59,19 +59,19 @@ Adobe提供了自己的昂贵的，商业许可的PDF操作库，基于与Acroba
 iText是一个成熟的开源库，用于读取和编写PDF文档，以及使用段落，列表，表格和图像等高级构建块进行文本报告。
 它还支持构建书签，超链接，注释和JavaScript操作。可以构建可填写表单，并支持加密文件。
 
-iText可以从iText Software网站下载。
+iText可以从[iText Software网站](http://itextpdf.com/)下载。
 
 ### TCPDF for PHP
 TCPDF是用于生成PDF报告的纯PHP库，包括文本布局，表格，HTML转换，注释，超链接和图像。
 Web服务可以使用TCPDF动态构建文档，并将其提供给在Web浏览器中运行的PDF查看器，或通过电子邮件发送。
 
-可以下载TCPDF以及其网站上的各种示例。
+可以下载TCPDF以及[其网站](http://www.tcpdf.org/)上的各种示例。
 
 ### Processing PDF with Perl
 在Perl中有大量用于读取，编写和编辑PDF文件的PDF库，其中一些非常成熟，另一些则不那么成熟。
 文档通常很少，与可用的广泛功能相悖。
 
-与所有免费的Perl模块一样，Comprehensive Perl Archive Network包含源代码和文档。
+与所有免费的Perl模块一样，[Comprehensive Perl Archive Network](http://www.cpan.org/)包含源代码和文档。
 
 
 ### PDF on Mac OS X
@@ -81,7 +81,7 @@ Apple的PDFKit提供了许多用于Apple支持的编程语言（如Objective C�
 * PDFDocument和PDFPage用于文档和页面级操作。
 * 交互式设施的PDFAnnotation，PDFAction，PDFOutline和PDFSelection。
 
-Apple的内置PDF查看器Preview基于这些库构建。PDF套件库记录在Apple的Mac OS X Developer Library中。
+Apple的内置PDF查看器Preview基于这些库构建。PDF套件库记录在Apple的[Mac OS X Developer Library](http://developer.apple.com/)中。
 
 
 ## Converting Formats
@@ -93,11 +93,11 @@ Apple的内置PDF查看器Preview基于这些库构建。PDF套件库记录在Ap
 
 
 ### PDF to PostScript and Back Again
-随GhostScript一起提供的pdf2ps和ps2pdf命令行程序可以在PDF和PostScript之间进行转换。
+随GhostScript一起提供的*pdf2ps*和*ps2pdf*命令行程序可以在PDF和PostScript之间进行转换。
 有时这涉及相当复杂和缓慢的处理，这可能导致更大的文件大小或一些构造的丢失（例如，文本被转换为轮廓）。
 毕竟，PDF和PostScript是完全不同的 - 尽管有共同的遗产。
 
-ps2pdf和pdf2ps可从GhostScript主页获得。
+*ps2pdf*和*pdf2ps*可从[GhostScript主页](http://pages.cs.wisc.edu/~ghost/)获得。
 
 
 ### Rasterizing PDF to an Image
@@ -105,7 +105,7 @@ GhostScript附带的gs程序可用于以给定的分辨率将PDF页面渲染为�
 这是GSView用于显示PDF页面的工具。
 这是通过指定对应于图像文件格式的几个特殊输出设备之一来实现的，例如PNG和TIFF。
 
-gs是GhostScript系统的一部分，可从GhostScript主页获得。
+gs是GhostScript系统的一部分，可从[GhostScript主页](http://pages.cs.wisc.edu/~ghost/)获得。
 
 
 ### Printing Files to PDF
@@ -115,9 +115,9 @@ gs是GhostScript系统的一部分，可从GhostScript主页获得。
 
 Mac OS X通过打印对话框中的“另存为PDF”选项本机提供此工具。
 
-在Unix平台上，此工具由CUPS打印系统的开源CUPS-PDF后端提供。
+在Unix平台上，此工具由CUPS打印系统的开源[CUPS-PDF后端](http://cups-pdf.de/)提供。
 
-在Microsoft Windows上，开源PDFCreator打印机驱动程序可以完成相同的工作。它在内部使用GhostScript。
+在Microsoft Windows上，开源[PDFCreator打印机驱动程序](http://sourceforge.net/projects/pdfcreator/)可以完成相同的工作。它在内部使用GhostScript。
 
 
 ## PDF Editors
@@ -125,7 +125,7 @@ PDF最初并不打算进行大量编辑，而是作为一种可扩展的，结�
 因此，大多数编辑软件具有受限和特定的编辑功能，例如合并文件，添加注释，
 填写表格或对页面内容进行小的编辑。
 
-在第9章中，我们研究了pdftk，这是一个用于PDF文件命令行操作的开源程序。
+在[第9章](chapter9.md)中，我们研究了*pdftk*，这是一个用于PDF文件命令行操作的开源程序。
 在本节中，我们列出了编辑现有PDF文件的其他方法。
 
 
@@ -165,11 +165,11 @@ ISO收取近500美元的PDF副本（通过下载或CD-ROM）。幸运的是，Ad
 
 最近对PDF 1.7的Adobe扩展记录在ExtensionLevel文档中，这些文档不构成ISO标准的一部分，但预计会成为更新版本的一部分。
 
-Adobe的ISO 32000-1：2008副本和ExtensionLevel文档都可以从Adobe Developer Connection网站下载。
+Adobe的ISO 32000-1：2008副本和ExtensionLevel文档都可以从[Adobe Developer Connection网站](http://www.adobe.com/devnet/pdf/pdf_reference.html)下载。
 
 
 ### PDF Hacks
-O'Reilly的另一个PDF标题，Sid Steward的PDF Hacks，强调了解决各种PDF问题的实用解决方案。它包括100个单独的黑客：
+O'Reilly的另一个PDF标题，Sid Steward的[PDF Hacks](http://oreilly.com/catalog/9780596006556)，强调了解决各种PDF问题的实用解决方案。它包括100个单独的黑客：
 
 * 自定义PDF查看器，使阅读PDF更加舒适。
 * 将“巨大的PDF文件”“重写”为更小的文件。
@@ -195,12 +195,12 @@ PDF标准和本书参考了计算机图形学的一般领域（有时还假设�
 ### Forums and Discussion
 有许多地方可以讨论技术PDF主题：
 
-* Planet PDF论坛是各种技术和非技术PDF讨论的热门场所。
-* Adobe的Adobe Reader论坛，用于Adobe Reader的技术支持和讨论。
-* comp.text.pdf usenet新闻组是一个低流量的地方，可以进行更多的技术讨论。
+* [Planet PDF论坛](http://forum.planetpdf.com/)是各种技术和非技术PDF讨论的热门场所。
+* Adobe的[Adobe Reader论坛](http://forums.adobe.com/community/adobe_reader_forums/adobe_reader)，用于Adobe Reader的技术支持和讨论。
+* **comp.text.pdf** usenet新闻组是一个低流量的地方，可以进行更多的技术讨论。
 
-### Adobe’s Website Resources
+### Adobe’s 网站资源
 对于那些对PDF技术方面感兴趣的人，Adobe网站有两个相关部分：
 
-* PDF技术中心包含PDF参考文档。
-* Acrobat开发人员中心拥有用于编写Acrobat插件，FDF表单格式和开发人员知识库的资源和文档。
+* [PDF技术中心](http://www.adobe.com/devnet/pdf.html)包含PDF参考文档。
+* [Acrobat开发者中心](http://www.adobe.com/devnet/acrobat.html)拥有用于编写Acrobat插件，FDF表单格式和开发人员知识库的资源和文档。

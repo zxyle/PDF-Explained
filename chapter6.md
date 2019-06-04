@@ -100,9 +100,13 @@ Tj运算符在当前位置显示文本。这与我们已经看到的文本定位
 与往常一样，这些示例可以在在线资源中找到。
 
 #### Character and word spacing
+
 #### Text transforms
+
 #### Text rise
+
 #### Kerning and glyph adjustment
+
 #### Text rendering modes
 
 ## Defining and Embedding Fonts
@@ -110,8 +114,41 @@ Tj运算符在当前位置显示文本。这与我们已经看到的文本定位
 
 
 ### Font Types in PDF
+
 ### Type 1 Fonts
+
 ### Font Encodings
+
 ### Embedding a Font
+
 ## Extracting Text from a Document
+习惯上在文件的字体词典中包含足够的信息，以允许检索实际的字符标识（而不仅仅是字形）。
+这对于允许用户从PDF查看应用程序（如Adobe Reader）中搜索和复制文本非常重要。In还可以以更有限的容量使用，以允许对文档的文本内容进行编辑。
+
+有两种机制：字体中的/Encoding条目（将字符代码映射到Adobe Glyph List条目，如/bullet），以及更现代的机制，/ToUnicode条目提供由定义的语言的程序 Adobe将字符代码直接映射到Unicode实体。以下是/ToUnicode程序的示例：
+```
+23 0 obj
+<< /Length 317 >>
+stream
+/CIDInit /ProcSet findresource begin 12 dict begin begincmap /CIDSystemInfo << /Registry (Symbol+0) /Ordering (T1UV) /Supplement 0 >> def
+/CMapName /Symbol+0 def
+1 begincodespacerange <01> <01> endcodespacerange
+1 beginbfrange
+<01> <01> <2022> Maps character code 1 to Unicode U+2022, the bullet point
+endbfrange
+endcmap CMapName currentdict /CMap defineresource pop end end
+endstream
+endobj
+```
+
+提取文本的另一个困难是重构内容流中的文本运算符。操作符可以将文本拆分为字距调整或对齐，并且行末的连字符可以中断字符流。实际上，文本操作符甚至可能出现故障。
+但是，通常情况下，可以从大多数现代文件中产生良好的文本重构。
+
+
 ## Resources
+除PDF标准外，还有许多其他文档提供了有关本章讨论主题的更多详细信息：
+
+* Unicode由Unicode Consortium出版的Unicode标准5.0版完整描述。一个更容易理解的介绍是O'Reilly自己的由Jukka K. Korpela解释的Unicode。
+* Yannis Haralambous（O'Reilly）的字体和编码解释了PDF使用的各种字体格式。
+* Adobe字体和类型技术中心是各种字体格式和编码系统的历史和当前文档的集合，包括用于编码外语的预编码方法。
+
