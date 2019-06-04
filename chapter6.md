@@ -85,7 +85,30 @@ ET End text block
 
 
 ### Showing Text
+Tj运算符在当前位置显示文本。这与我们已经看到的文本定位算子相结合就足够了。
+但是，为方便起见，还提供了三个附加操作符（'，''和TJ）。这些是文本显示和文本定位的常见组合的快捷方式。
+表6-3总结了显示操作员的文本。
+
+|Operands|Operator |Function|
+|---|---|---|
+|string |Tj |Show string at the current position.|
+|string|' |Go to the next line, taking into account the leading and text matrices, and show string at the new position. The same as using T* followed by Tj.|
+|wordspace, charspace, string|'' |Set the word spacing to wordspace and the character spacing to charspace. Go to the next line, taking into account the leading and text matrices, and show string at the new position. The same the sequence wordspace Tw charspace Tc string '.|
+|array|TJ |This operator allows a text string to be shown with adjustments for individual glyph positions (for example, kerning). The array contains strings and numbers, in any combination. String entries are shown as normal; number entries adjust the text matrix horizontally by subtracting that amount (expressed in thousandths of a unit of text space).|
+
+为简单起见，我们现在将使用标准字体和基于Latin-1的PDFDocEncoding来显示一些显示文本的示例。
+与往常一样，这些示例可以在在线资源中找到。
+
+#### Character and word spacing
+#### Text transforms
+#### Text rise
+#### Kerning and glyph adjustment
+#### Text rendering modes
+
 ## Defining and Embedding Fonts
+字体是特定字符集的字形（字符形状）的集合。在PDF中，字体由字体字典组成，字体字典定义度量，字符集和编码（将文本字符串中的字符代码映射到字体中的字符），以及字体程序（实际的字体文件）， 以各种格式（Type 1，TrueType等）。
+
+
 ### Font Types in PDF
 ### Type 1 Fonts
 ### Font Encodings

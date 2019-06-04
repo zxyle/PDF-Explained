@@ -222,8 +222,148 @@ DeviceCMYK颜色空间（PDF标准中涵盖了更复杂的颜色空间）：
 
 
 ## Transformations
+到目前为止，我们已经看到运算符改变了跟随它们的所有运算符的图形状态。
+为了允许我们将图形对象与其属性（例如颜色）组合在一起，我们可以将一组运算符与q和Q运算符组合在一起。
+q运算符将当前图形状态置于一边。然后可以像往常一样改变状态，涂抹物体等。调用Q运算符时，将恢复先前保存的状态。
+q/Q对可以嵌套，一对在另一对内：
+
+流中的q/Q运算符必须形成平衡对（除了在图形流的末尾，可以省略任何剩余的Q运算符）。结果如图5-8所示。
+
+![](./images/figure%205-8.png)
+
+q/Q对的最常见用途之一是隔离坐标变换的影响。我们可以使用cm运算符来更改从用户空间坐标到设备空间坐标的转换。
+这被称为电流转换矩阵（CTM）。重要的是，对图形状态的这种改变是由q/Q对隔离的，因为撤消是很复杂的。
+
+cm运算符有六个参数，表示要与CTM组成的矩阵。以下是基本的变换：
+
+* Translation by (dx, dy) is specified by 1, 0, 0, 1, dx, dy
+* Scaling by (sx, sy) about (0, 0) is specified by sx, 0, 0, sy, 0, 0
+* Rotating counterclockwise by x radians about (0, 0) is specified by cos x, sin x, -sin x, cos x, 0, 0
+
+cm运算符将给定的变换附加到CTM，而不是替换它。要围绕任意点（而不是原点）旋转或缩放，请平移到原点，旋转或缩放，然后平移。
+
+任何图形文本都将对这种变换的数学进行全面讨论。 请参见第119页的“PDF和图形文档”。
+
+请考虑以下内容，如图5-9所示：
+
+```
+2.0 w
+0.75 g
+100 100 m 200 200 300 300 400 100 c (a) Untransformed shape
+300 100 200 50 y h B
+q
+0.96 0.25 -0.25 0.96 0 0 cm (b) Rotate counterclockwise by 1/4 radian
+100 100 m 200 200 300 300 400 100 c
+300 100 200 50 y h B
+Q
+q
+0.5 0 0 0.5 0 0 cm (c) Scale original shape by 0.5 about the origin
+100 100 m 200 200 300 300 400 100 c
+300 100 200 50 y h B
+1 0 0 1 300 0 cm (d) Translate (c) by 300 units in the new space, i.e., 150 units in the original space 100 100 m 200 200 300 300 400 100 c
+300 100 200 50 y h B
+Q
+```
+
+注意使用q和Q来隔离变换的效果。
+
+![](./images/figure%205-9.png)
+
+
 ## Clipping
+我们可以使用以通常方式构建的路径来设置剪切路径。 从那时起，将仅显示路径区域内的内容。 这是通过使用W运算符（对于非零路径）或W *运算符（对于偶数奇数路径）来完成的。
+
+运算符与现有剪切路径给定的路径相交，因此它只能用于使剪切区域更小，而不是更大。 剪切路径保持当前路径，因此可以使用例如S运算符来剪切剪切区域的轮廓。 W运算符是绘制操作的修饰符，因此如果我们不想描绘新剪切路径的轮廓，我们必须替换no-op路径绘制操作符n。 这是我们定义剪切路径的示例：
+
+`200 100 m 200 500 l 500 100 l h W S`
+
+这里我们定义了一个封闭的三角形路径，使用W设置剪切区域，然后使用S进行描边。
+设置此剪切路径然后绘制与图5-2相同的场景的结果如图5-10所示。
+![](./images/figure%205-10.png)
+
+
 ## Transparency
+
+PDF具有复杂但复杂的透明机制，可在多个色彩空间中工作，允许不同类型的混合，并支持分组透明度。
+我们这里只考虑简单的透明度。
+
+没有特定的透明度运算符，因此我们使用gs运算符从页面资源的/ExtGState条目中的/ca条目加载填充透明度级别。
+/ExtGState条目是外部图形状态集合的字典，我们可以使用gs运算符加载它。
+
+对于我们的示例，资源仅包含/ExtGState条目，具有单个状态集合，称为/gs1。它只包含填充透明度的/ca条目：
+
+```
+<< /ExtGState << /gs1
+<< /ca 0.5 >> Half transparent >>
+>>
+```
+
+这是相应的内容流：
+
+```
+2.0 w Select 2pt line width
+/gs1 gs Select /gs1 from external graphics state 0.75 g Select light Gray
+200 250 m 300 350 400 450 500 250 c
+400 250 300 200 y h B
+1 0 0 1 100 100 cm
+200 250 m 300 350 400 450 500 250 c
+400 250 300 200 y h B
+```
+
+结果如图5-11所示。定义透明度使得0表示完全透明，1表示完全不透明。 可以用/CA代替（或除了）/ca来改变笔划透明度。
+
 ## Shadings and Patterns
+除了纯色外，PDF还允许使用各种图案来填充和描边对象：
+
 ## Form XObjects
+在第62页的“转换”中，我们使用q和Q运算符使用各种转换显示单个对象。 但是，我们不得不背诵每次绘制对象的操作。 Form XObject允许我们存储一组图形指令，并以不同的比例和位置重复使用它们（甚至在不同的页面上）。
+
+```
+3 0 obj Resources of current page <<
+/XObject << /X1 5 0 R >> Our XObject is called /X1 >>
+endobj
+5 0 obj The XObject itself << The XObject dictionary
+/Type /XObject /Subtype /Form /Length 69
+/BBox [0 0 792 612]
+>>
+stream The XObject content
+2.0 w
+0.5 g
+250 300 m 350 400 450 500 500 300 c 450 300 350 250 y h B
+endstream
+endobj
+```
+
+上面列表中的对象3是页面的/ Resources条目。 它的/XObject条目是列出该页面中使用的XObject的字典。 我们已经命名了XObject / X1。 对象5是XObject本身。 它是一个流，其字典中包含以下条目：
+
+* The /Type of this object is /XObject.
+* The /Subtype of this XObject is /Form, distinguishing it as a form XObject.
+* The /Length is the length in bytes of the stream, as usual.
+* The /BBox entry gives a bounding box for the XObject, in this case the same as the page itself.
+
+流包含用于设置线条和宽度的代码以及形状本身。 现在，我们可以使用Do运算符从主内容流中使用XObject，并将XObject的名称作为操作数：
+
+```
+/X1 Do Invoke XObject /X1
+0.5 0 0 0.5 0 0 cm Scale by 0.5 about the origin 
+/X1 Do Invoke the XObject again, at the new scale
+```
+
+结果如图5-14所示。
+
+遇到Do运算符时，保存当前图形状态，XObject中的/Matrix条目（如果有）与CTM连接，绘制内容（由XObject的/BBox剪切），当前图形状态为恢复。
+
+
+
+
 ## Image XObjects
+
+
+
+```
+0.75 g Change to light Gray fill 250 250 100 100 re f
+q Save the graphics state
+0.25 g Change to dark Gray fill 350 250 100 100 re f
+Q Retrieve the previous graphics state
+450 250 100 100 re f Light Gray again
+```
