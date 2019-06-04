@@ -16,10 +16,10 @@
 
 |Key |Value type|Value|
 |---|---|---|
-|/Size* |Integer|Total number of entries in the file’s cross-reference table (usually equal to the number of objects in the file plus one).|
-|/Root* |Indirect reference to dictionary |The document catalog.|
-|/Info |Indirect reference to dictionary |The document’s document information dictionary.|
-|/ID |Array of two Strings|Uniquely identifies the file within a work flow. The first string is decided when the file is first created, the second modified by workflow systems when they modify the file.|
+|/Size* |Integer|文件交叉引用表中的条目总数（通常等于文件中的对象数加1）|
+|/Root* |Indirect reference to dictionary |文件目录|
+|/Info |Indirect reference to dictionary |文档的文档信息字典|
+|/ID |Array of two Strings|唯一标识工作流程中的文件。 第一个字符串在首次创建文件时确定，第二个字符串在工作流系统修改文件时进行修改|
 
 
 这是一个示例trailer词典：
@@ -35,12 +35,10 @@
 
 一旦处理了trailer字典，我们就可以继续阅读文档信息字典和文档目录。
 
-
-
-## Document Information字典
+## 文件信息字典
 文档信息字典包含文件的创建日期和发明日期，以及一些简单的元数据（不要与“XML元数据”（第93页）中讨论的更全面的XMP元数据混淆）。
 
-文档信息字典条目在表4-2中描述。 典型的文档信息字典在例4-1中给出。
+文档信息字典条目在表4-2中描述。典型的文档信息字典在例4-1中给出。
 
 |Key |Value type|Value|
 |---|---|---|
@@ -52,7 +50,6 @@
 |/ModDate|date string|The date the document was last modified.|
 |/Creator|text string|The name of the program which originally created this document, if it started as another format (for example, “Microsoft Word”).|
 |/Producer|text string|The name of the program which converted this file to PDF, if it started as another format (for example, the format of a word processor).|
-
 
 ```
 Example 4-1. Typical document information dictionary
@@ -69,12 +66,10 @@ Example 4-1. Typical document information dictionary
 日期字符串格式（对于/CreationDate和/ModDate）将在第45页的“日期”一节中讨论。
 文本字符串格式（描述如何在字符串类型中使用不同的编码）在“文本字符串”中描述 第45页。
 
-
-## Document Catalog
+## 文件目录
 文档目录是主对象图的根对象，可以通过间接引用从中到达所有其他对象。 
 在表4-3中，我们列出了所需的文档目录字典条目，以及许多可选的文档目录字典条目，
 以便介绍我们未在这些页面的其他地方介绍的简要PDF主题。
-
 
 |Key |Value type|Value|
 |---|---|---|
@@ -88,10 +83,8 @@ Example 4-1. Typical document information dictionary
 |/PageMode|name|Specifies the page mode to be used by PDF viewers. Values are /UseNone, /UseOutlines, /UseThumbs, /FullScreen, /UseOC, /UseAttachments. (Default: /UseNone). Details are in Table 28 of ISO 32000-1:2008.|
 |/Outlines|indirect reference to dictionary|The outline dictionary is the root of the document outline, commonly known as the bookmarks.|
 |/Metadata|indirect reference to stream|The document’s XMP metadata—see “XML Meta- data” on page 93.|
- 
 
-
-## Pages and Page Trees
+## 页面和页面树
 PDF文档中的页面字典汇集了使用这些指令使用的资源（字体，图像和其他外部数据）绘制图形和文本内容（我们在第5章和第6章中考虑）的说明。
 它还包括页面大小，以及定义裁剪等的许多其他框。
 
@@ -131,7 +124,7 @@ endobj
 
 在此树中，任何页面最多可以找到两个远离根节点的间接引用。
 
-## Text Strings
+## 文本字符串
 页面的实际文本内容之外的字符串（例如，书签名称，文档信息等）被称为文本字符串。
 它们使用PDFDocEn编码或（在最近的文档中）Unicode编码。 PDFDocEncoding基于ISO Latin-1编码。
 它完全记录在ISO标准32000-1：2008的附录D中。
@@ -139,8 +132,7 @@ endobj
 编码为Unicode的文本字符串通过查看前两个字节来区分：这些字符将是254后跟255.这是Unicode字节顺序标记U + FEFF，表示UTF16BE编码。
 这意味着PDFDocEncoding字符串不能以þ（254）后跟ÿ（255）开头，但这在任何合理的情况下都不太可能发生。
 
-
-## Dates
+## 日期
 文档信息字典中的创建和修改日期/CreationDate和/ModDate是PDF日期格式的示例，
 对字符串中的日期进行编码，包括有关时区的信息。
 
@@ -171,7 +163,7 @@ endobj
 
 代表2006年9月26日下午9:39:13，比世界时间早两个小时的时区。
 
-## Putting it together
+## 把它放在一起
 这是一个手动创建的文本，由*pdftk*使用第2章介绍的方法处理成有效的PDF文件。
 它是一个三页文档，包含文档信息字典和页面树。
 图4-3显示了Acrobat Reader中显示的此文档。图4-4是相应的对象图。
