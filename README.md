@@ -1,5 +1,12 @@
 # PDF_Explained （译作《PDF 解释》）
 
+## 项目简介
+
+*PDF Explained*的非官方中文翻译版, 大体已经完成, 还需要完善细节部分(表格 markdown语法 专有名词等)
+
+![](./images/logo.png)
+
+
 ## 目录
 * [前言](./preface.md)
 * [第1章](./chapter1.md) - 介绍
@@ -17,6 +24,7 @@
 参考[examples](./examples)目录
 
 ## 参考资源
+* [Amazon购买](https://www.amazon.com/PDF-Explained-Standard-Document-Exchange/dp/1449310028)
 * [英文原版](./resources/PDF\Explained.pdf)
 * [pdf1.7参考](./resources/pdf_reference_1.7.pdf)
 
@@ -24,4 +32,4 @@
 持续翻译中... 欢迎[PR](https://github.com/zxyle/PDF_Explained/pulls)或者[ISSUE](https://github.com/zxyle/PDF_Explained/issues)。
 
 ## 备注
-欢迎加入QQ群: 277216960
+欢迎加入QQ群: 277216960 与我们一起讨论PDF
