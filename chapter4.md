@@ -90,7 +90,33 @@ PDF文档中的页面字典汇集了使用这些指令使用的资源（字体�
 
 表4-4总结了页面字典中的条目。
 
-待补充表格4-4
+|Key|Value type|Value|
+|---|---|---|
+|/Type* |name|Must be /Page.|
+|/Parent* |indirect reference to dictionary|The parent node of this node in the page tree.|
+|/Resources|dictionary|The page’s resources (fonts, images, and so on). If this entry is omitted entirely, the resources are inherited from the parent node in the page tree. If there are really no resources, include this entry but use an empty dictionary.|
+|/Contents|indirect reference to stream or array of such references|The graphical content of the page in one or more sections. If this entry is missing, the page is empty.|
+|/Rotate |integer|The viewing rotation of the page in degrees, clockwise from north. Value must be a multiple of 90. Default value: 0. This applies to both viewing and printing. If this entry is missing, its value is in- herited from its parent node in the page tree.|
+|/MediaBox* |rectangle |The page’s media box (the size of its media, i.e., paper). For most purposes, the page size. If this entry is missing, it is inherited from its parent node in the page tree.|
+|/CropBox |rectangle|The page’s crop box. This defines the region of the page visible by default when a page is displayed or printed. If absent, its value is defined to be the same as the media box.|
+
+媒体盒和其他框的矩形数据结构是四个数字的数组。这些定义了矩形的对角相对的角 - 数组的前两个元素是一个角的x和y坐标，后两个元素是另一个角的x和y坐标。
+通常，给出左下角和右上角。所以，例如：
+```
+/MediaBox [0 0 500 800] 
+/CropBox [100 100 400 700]
+```
+
+定义一个500 x 800点的页面，裁剪框在页面的每一侧删除100个点。
+
+页面使用页面树而不是简单的数组链接在一起。这种树结构使得在具有数百或数千页的文档中查找给定页面变得更快。
+好的PDF应用程序构建了一个平衡树（一个节点数量最小的树）。这可确保快速定位特定页面。 没有子节点的节点就是页面本身。
+图4-2显示了七页的示例页面树结构。
+
+![](./images/figure%204-2.png)
+
+这将用PDF对象编写，如例4-2所示。表4-5中总结了中间或根页面树节点中的条目（即，不是页面本身）。
+
 
 ```
 1 0 obj Root node
@@ -115,6 +141,7 @@ endobj
 10 0 obj Page 6
 << /Type /Page /Parent 3 0 R /MediaBox [0 0 500 500] /Resources << >> >> endobj
 ```
+
 |Key|Value type|Value|
 |---|---|---|
 |/Type*|name|Must be /Pages.|
@@ -126,7 +153,7 @@ endobj
 
 ## 文本字符串
 页面的实际文本内容之外的字符串（例如，书签名称，文档信息等）被称为文本字符串。
-它们使用PDFDocEn编码或（在最近的文档中）Unicode编码。 PDFDocEncoding基于ISO Latin-1编码。
+它们使用PDFDocEn编码或（在最近的文档中）Unicode编码。PDFDocEncoding基于ISO Latin-1编码。
 它完全记录在ISO标准32000-1：2008的附录D中。
 
 编码为Unicode的文本字符串通过查看前两个字节来区分：这些字符将是254后跟255.这是Unicode字节顺序标记U + FEFF，表示UTF16BE编码。
@@ -142,7 +169,7 @@ endobj
 
 其中括号表示通常的字符串。该日期的其他部分在表4-6中进行了总结。
 
-|Portion |Meaning|
+|Portion |含义|
 |---|---|
 |YYYY |The year, in four digits, e.g., 2008.|
 |MM |The month, in two digits from 01 to 12.|
