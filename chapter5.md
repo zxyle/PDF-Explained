@@ -216,9 +216,11 @@ c运算符再采用三个坐标：第一个控制点，第二个控制点和终�
 可以填充和描边路径。图5-5显示了使用以下代码填充和描边的形状：
 ```
 2.0 w
-0.75 g Change fill color to light Gray 250 250 m Move to start of path
-350 350 450 450 550 250 c First curve 450 250 350 200 y Second curve
-h B Close and fill
+0.75 g 将填充颜色更改为浅灰色
+250 250 m 移动到路径的开头
+350 350 450 450 550 250 c 第一条曲线
+450 250 350 200 y 第二条曲线
+h B 关闭并填充
 ```
 
 我们使用g运算符来设置填充颜色。这在第60页的“颜色和颜色空间”中进行了解释。
@@ -233,7 +235,8 @@ h B Close and fill
 图5-6的代码是：
 ```
 100 350 200 200 re
-120 370 160 160 re f Non-zero 400 350 200 200 re
+120 370 160 160 re f Non-zero 
+400 350 200 200 re
 420 370 160 160 re f* Even-odd
 150 50 m 150 250 l 250 50 l 50 150 l 350 150 l h f 
 550 50 m 550 250 l 650 50 l 450 150 l 750 150 l h f*
@@ -243,7 +246,7 @@ h B Close and fill
 
 在这里，我们还使用了re运算符。这将创建一个矩形的闭合路径，给出四个参数：最小x，最小y，宽度和高度。
 
-|Operator|Function|
+|操作符|功能|
 |---|---|
 |n|Ends the path with no visual effect. This is used to change the current clipping path (see “Clipping” on page 65). |
 |b|Close, fill and stroke the path (non-zero winding rule)|
@@ -271,15 +274,17 @@ DeviceCMYK颜色空间（PDF标准中涵盖了更复杂的颜色空间）：
 * DeviceRGB色彩空间有三个用于红色，绿色和蓝色的附加组件。它们各自的范围从0.0（例如，没有红色）到1.0（例如，全红色）。
 * DeviceCMYK颜色空间有四个减色组件，分别用于青色，品红色，黄色和键（黑色）。它们各自的范围从0.0（无颜料）到1.0（全颜料）。
 
-要更改笔触颜色空间，我们使用CS运算符。要更改填充颜色空间，请改用cs。然后可以使用SC运算符（具有与当前颜色空间中的分量数量相等的多个操作数）来设置笔划颜色，或者使用sc来设置填充颜色。例如：
+要更改笔触颜色空间，我们使用CS运算符。要更改填充颜色空间，请改用cs。
+然后可以使用SC运算符（具有与当前颜色空间中的分量数量相等的多个操作数）来设置笔划颜色，或者使用sc来设置填充颜色。例如：
 ```
 /DeviceRGB CS Set stroke color space
 0.0 0.5 0.9 SC Set color to RGB (0.0, 0.5, 0.9)
 ```
 
-设备颜色空间有快捷键操作符，可在一次操作中设置当前描边或填充颜色空间以及当前描边或填充颜色。这些在表5-7中进行了总结。
+设备颜色空间有快捷键操作符，可在一次操作中设置当前描边或填充颜色空间以及当前描边或填充颜色。
+这些在表5-7中进行了总结。
 
-|Operator |Operands|Function|
+|操作符 |操作数|功能|
 |---|---|---|
 |G |1|Change stroke color space to /DeviceGray and set color|
 |g |1|Change fill color space to /DeviceGray and set color|
@@ -300,20 +305,20 @@ DeviceCMYK颜色空间（PDF标准中涵盖了更复杂的颜色空间）：
 
 ![](./images/figure%205-7.png)
 
-
-
-## Transformations
+## Transformations 转换
 到目前为止，我们已经看到运算符改变了跟随它们的所有运算符的图形状态。
 为了允许我们将图形对象与其属性（例如颜色）组合在一起，我们可以将一组运算符与q和Q运算符组合在一起。
 q运算符将当前图形状态置于一边。然后可以像往常一样改变状态，涂抹物体等。调用Q运算符时，将恢复先前保存的状态。
 q/Q对可以嵌套，一对在另一对内：
 
 ```
-0.75 g Change to light Gray fill 250 250 100 100 re f
-q Save the graphics state
-0.25 g Change to dark Gray fill 350 250 100 100 re f
-Q Retrieve the previous graphics state
-450 250 100 100 re f Light Gray again
+0.75 g 改为浅灰色填充
+250 250 100 100 re f
+q 保存图形状态
+0.25 g 更改为深灰色填充
+350 250 100 100 re f
+Q 检索先前的图形状态
+450 250 100 100 re f 再次浅灰色
 ```
 
 流中的q/Q运算符必须形成平衡对（除了在图形流的末尾，可以省略任何剩余的Q运算符）。结果如图5-8所示。
@@ -349,7 +354,8 @@ q
 0.5 0 0 0.5 0 0 cm (c) Scale original shape by 0.5 about the origin
 100 100 m 200 200 300 300 400 100 c
 300 100 200 50 y h B
-1 0 0 1 300 0 cm (d) Translate (c) by 300 units in the new space, i.e., 150 units in the original space 100 100 m 200 200 300 300 400 100 c
+1 0 0 1 300 0 cm (d) Translate (c) by 300 units in the new space, i.e., 150 units in the original space 
+100 100 m 200 200 300 300 400 100 c
 300 100 200 50 y h B
 Q
 ```
@@ -386,8 +392,10 @@ PDF具有复杂但复杂的透明机制，可在多个色彩空间中工作，�
 对于我们的示例，资源仅包含/ExtGState条目，具有单个状态集合，称为/gs1。它只包含填充透明度的/ca条目：
 
 ```
-<< /ExtGState << /gs1
-<< /ca 0.5 >> Half transparent >>
+<< /ExtGState 
+  << /gs1
+    << /ca 0.5 >> Half transparent 
+  >>
 >>
 ```
 
@@ -395,7 +403,8 @@ PDF具有复杂但复杂的透明机制，可在多个色彩空间中工作，�
 
 ```
 2.0 w Select 2pt line width
-/gs1 gs Select /gs1 from external graphics state 0.75 g Select light Gray
+/gs1 gs 从外部图形状态中选择/ gs1
+0.75 g 选择浅灰色
 200 250 m 300 350 400 450 500 250 c
 400 250 300 200 y h B
 1 0 0 1 100 100 cm
@@ -445,7 +454,7 @@ Tensor-product patch mesh
 
 这定义了轴向阴影图案。我们命名了我们的模式/GradientShading。阴影的图案类型为2.我们的阴影定义为：
 
-* 颜色空间/ DeviceGray
+* 颜色空间/DeviceGray
 * 阴影类型2（轴向）
 * 阴影开始和结束的坐标：（150,200）和（450,500）
 
@@ -456,6 +465,7 @@ Tensor-product patch mesh
 250 300 m 350 400 450 500 550 300 c
 450 300 350 250 y h f
 ```
+
 结果如图5-12所示。
 
 ![](./images/figure%205-12.png)
@@ -477,16 +487,20 @@ Tensor-product patch mesh
 
 ```
 3 0 obj Resources of current page <<
-/XObject << /X1 5 0 R >> Our XObject is called /X1 >>
+  /XObject << /X1 5 0 R >> Our XObject is called /X1 
+>>
 endobj
 5 0 obj The XObject itself << The XObject dictionary
-/Type /XObject /Subtype /Form /Length 69
-/BBox [0 0 792 612]
+  /Type /XObject 
+  /Subtype /Form 
+  /Length 69
+  /BBox [0 0 792 612]
 >>
 stream The XObject content
 2.0 w
 0.5 g
-250 300 m 350 400 450 500 500 300 c 450 300 350 250 y h B
+250 300 m 350 400 450 500 500 300 c 
+450 300 350 250 y h B
 endstream
 endobj
 ```
@@ -554,7 +568,8 @@ q
 /X2 Do Invoke image XObject
 Q
 q
-1 0 0 1 400 100 cm And again with a different position and scale 100 0 0 100 0 0 cm
+1 0 0 1 400 100 cm And again with a different position and scale 
+100 0 0 100 0 0 cm
 /X2 Do
 Q
 ```
