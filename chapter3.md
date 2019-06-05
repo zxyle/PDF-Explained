@@ -14,8 +14,9 @@
 
 作为参考，我们从第2章再现"Hello，World"PDF作为例3-1。
 四个部分中的每一部分的第一行都有注释。
-Example 3-1. A small PDF file
+
 ```
+Example 3-1. A small PDF file
 %PDF-1.0 Header从这里开始
 %âãÏÓ
 1 0 obj Body从这里开始
@@ -84,6 +85,7 @@ startxref
 459
 %%EOF
 ```
+
 PDF文件中的对象集合形成图形。这个词图的意思
 与饼图或直方图无关，而是指通过链接连接在一起的节点集合。
 
@@ -146,13 +148,13 @@ PDF文件中的每个对象都有一个对象编号和一个世代编号。
 出于我们的目的，我们可以认为交叉引用表由一个表示条目数的标题行组成，
 然后是一个特殊条目，然后是文件体中每个对象的一行。在我们的文件中：
 ```
-0 6 Six entries in table, starting at 0
-0000000000 65535 f Special entry
-0000000015 00000 n Object 1 is at byte offset 15
-0000000074 00000 n Object 2 is at byte offset 74
-0000000192 00000 n etc...
+0 6 表中的六个条目，从0开始
+0000000000 65535 f 特别条目
+0000000015 00000 n 对象1的字节偏移量为15
+0000000074 00000 n 对象2的字节偏移量为74
+0000000192 00000 n 等等...
 0000000291 00000 n
-0000000409 00000 n Object 5 is at byte offset 409
+0000000409 00000 n 对象5的字节偏移量为409
 ```
 请注意，字节偏移量以前导零存储，以确保每个条目都相同
 长度。因此，我们也可以通过随机访问来读取交叉引用表。
@@ -168,8 +170,8 @@ Trailer的第一行只是Trailer关键字。之后是Trailer
 
 这是示例3-1中的Trailer：
 ```
-trailer Trailer关键字
-<< The trailer dictinonary
+trailer 文件尾关键字
+<< 文件尾字典
 /Root 5 0 R
 /Size 6
 >>
@@ -189,6 +191,15 @@ PDF文件是8位字节的序列。使用我们在本章中描述的规则，
 有三种字符：常规字符，空白字符和分隔符。表3-1中列出了空白字符。
 分隔符是() <> [] {} / ％，用于定义数组，字典等。
 所有其他字符都是常规字符，没有特殊含义。
+
+|字符代码|含义|
+|---|---|
+|0|Null|
+|9|Tab|
+|10|Line feed|
+|12|Form feed|
+|13|Carriage return|
+|32|Space|
 
 PDF文件可以使用<CR>，<LF>或<CR><LF>序列来结束一行。
 但请注意，一起更改行结尾（例如，在文本编辑器中）可能会破坏文件，
@@ -229,7 +240,7 @@ PDF文件由对象图组成，间接引用形成它们之间的链接。例3-1�
 此外，整数和实数的范围和准确性由PDF实现定义，而不是标准。
 在某些实现中，如果整数超出可用范围，则将其转换为实数。
 
-### Strings
+### 字符串
 字符串由一系列字节组成，写在括号之间：
 (Hello, World!)
 反斜杠\字符和括号字符()必须通过在它们前面加上反斜杠进行转义。例如，写作：
@@ -237,7 +248,21 @@ PDF文件由对象图组成，间接引用形成它们之间的链接。例3-1�
 表示字符串"Some \ escaped（characters"。平衡的括号对
 在字符串内不需要转义。例如(Red(Rouge))表示字符串“Red（Rouge）”。
 
-#### Hexadecimal strings
+反斜杠也可用于引入其他字符代码以实现可读性（参见表3-2）。
+
+|Character sequence|Meaning|
+|---|---|
+|\n |Line feed|
+|\r |Carriage return|
+|\t |Horizontal tab|
+|\b |Backspace|
+|\f|Form feed|
+|\ddd|Character code in three octal digits|
+
+从文件中读取字符串后，转义的转义字符将产生形成字符串的字节序列，然后可以按照第45页的“文本字符串”中的描述进行解释。
+
+
+#### 十六进制字符串
 字符串也可以写为<和>之间的十六进制数字序列，每对代表一个字节：
 ```
 <4F6Eff00> Bytes 0x4F, 0x6E, 0xFF, and 0x00
@@ -245,9 +270,9 @@ PDF文件由对象图组成，间接引用形成它们之间的链接。例3-1�
 当存在奇数个数字时，假设最后一个为十六进制字符串通常用于使二进制数据用户可读。
 它在功能上与以通常方式描述字符串相同。
 
-### Names
+### 名称
 名称在整个PDF中使用，作为字典的键和定义各种多值对象，
-其中使用整数枚举它们将是不直观的。一个名字
+其中使用整数枚举它们将是不直观的。一个名称
 引入正斜杠。例如：
 ```
 /French
@@ -275,7 +300,7 @@ PDF允许布尔值为true和false。它们经常在字典条目中用作标志�
 ```
 包含三个项目：名称/Green，名称/Blue和两个名称的数组[/Red /Yellow].
 
-### Dictionaries
+### 字典
 字典表示键值对的无序集合。字典将键映射到值 - 提供键，
 值是在字典中查找的结果。键是名称，值可以是任何PDF对象。
 字典写在<<和>>之间。例如：
@@ -286,7 +311,7 @@ PDF允许布尔值为true和false。它们经常在字典条目中用作标志�
 将名称/Three映射到整数3.字典当然可以包含其他字典。
 嵌套字典构成了大多数PDF文件中的大部分非图形结构化数据。
 
-### Indirect References 间接引用
+### 间接引用
 为了将PDF内容拆分为单独的对象（因此只有在需要时才能读取数据），
 我们将它们与间接引用连接在一起。对对象6的间接引用写为：
 ```
@@ -302,7 +327,7 @@ PDF允许布尔值为true和false。它们经常在字典条目中用作标志�
 在此示例中，对象10和4在字典的值中被引用。
 
 
-## Streams and Filters
+## 流和Filters
 流用于存储二进制数据。它们由字典和一大块二进制数据组成。
 字典根据流所放置的特定用途列出数据的长度，以及可选的其他参数。
 
@@ -317,8 +342,8 @@ PDF允许布尔值为true和false。它们经常在字典条目中用作标志�
 stream 流关键字
 1. 0. 0. 1. 50. 700. cm 65字节的数据，这里是图形流
 BT
- /F0 36. Tf
- (Hello, World!) Tj
+  /F0 36. Tf
+  (Hello, World!) Tj
 ET
 endstream 结束流关键字
 endobj 对象的结束
@@ -326,6 +351,34 @@ endobj 对象的结束
 这里，字典只包含/Length条目，它以字节为单位给出流的长度。
 
 所有流必须是间接对象。流几乎总是使用各种机制进行压缩，如表3-3所示。
+
+|Method name|Description|
+|---|---|
+|/ASCIIHexDecode|Produces one byte of uncompressed data for each pair of hexadecimal digits in the compressed data. > indicates end of data. Whitespace is ignored. This filter and /ASCII85Decode are intended to reduce data to 7 bits—/ASCII85Decode is more complicated, but more compact.|
+|/ASCII85Decode|This 7-bit encoding uses the printable characters ! through u and z. The sequence ~> indicates end of data.|
+|/LZWDecode|Implements Lempel-Ziv-Welch compression, as used by the TIFF image format.|
+|/FlateDecode|Flate compression, as used by the open source zlib library. Defined in RFC 1950. Both /LZWDecode and /FlateDecode can have predictors in the stream dictionary, which define postprocessing on the data to reverse pre- processing which was done when it was compressed.|
+|/RunLengthDecode|A simple byte-based run-length compressor.|
+|/CCITTFaxDecode|Implements Group 3 and Group 4 encoding, as used by fax machines. Works well on monochrome (1bpp) images, not for general data.|
+|/JBIG2Decode|A more modern, better compression mechanism for the kinds of data suitable for use with /CCITTFaxDecode, but also suitable for grayscale and color images and general data. Implements the JBIG2 compression method.|
+|/DCTDecode|JPEG lossy compression. Whole JPEG files can be put in here, complete with all the headers.|
+|/JPXDecode|JPEG2000 lossy and lossless compression. Limited to the JPX baseline set of features, with a few exceptions.|
+
+以下是压缩流的示例：
+```
+796 0 obj
+<</Length 275 /Filter /FlateDecode>> stream
+HTKO0÷ü And 268 more bytes...
+endstream
+endobj
+```
+
+通过为流的字典中的/Filter条目指定数组而不是名称，可以使用多个过滤器。
+例如，使用JPEG方法压缩然后使用ASCII85编码的图像可能具有以下过滤条目：
+`/Filter [/ASCII85Decode /DCTDecode]`
+
+需要外部参数的过滤器（例如，在数据流本身之外定义压缩参数）也会将这些参数存储在流字典中。
+
 
 ## Incremental Update 增量更新
 增量更新允许通过将修改附加到文件末尾来更新文件，
@@ -391,9 +444,8 @@ endobj
 ```
 
 GhostScript附带的*pdfopt*命令行程序可以线性化文件。例如：
-```
-pdfopt input.pdf output.pdf
-```
+`pdfopt input.pdf output.pdf`
+
 这会使input.pdf线性化并将结果写入output.pdf。
 
 ## 如何读取PDF文件
