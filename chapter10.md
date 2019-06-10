@@ -6,18 +6,18 @@
 
 我们还列出了进一步文档和信息的来源。
 
-## PDF Viewers
+## PDF查看器
 PDF查看器的工作是：
 
 * 显示文档的图形和文本内容。
 * 允许用户使用书签和超链接与文档交互。
 * 启用文本内容搜索，并通过剪切和粘贴提取文本。
 
-并非每个观众都拥有所有这些功能。由于PDF格式的巨大复杂性及其封装的格式（例如，字体和图像），
+并非每个查看器都拥有所有这些功能。由于PDF格式的巨大复杂性及其封装的格式（例如，字体和图像），
 性能可能会有很大差异 - 尤其是使用更现代PDF功能的文件。
 
 
-### Adobe Reader
+### Adobe阅读器
 Adobe Reader是Adobe自己的免费PDF查看器，
 也是唯一一个支持Adobe为PDF制作的各种专有扩展（例如，更现代的表单和注释）。
 它带有适用于常见Web浏览器的PDF插件，适用于Microsoft Windows，Mac OS X，
@@ -25,7 +25,7 @@ Linux，Solaris和Android。它允许填写表格并以电子方式提交。
 
 Adobe Reader可以在[Adobe网站](http://get.adobe.com/reader/)上找到。
 
-### Preview
+### 预览
 许多Mac OS X用户更喜欢随操作系统提供的快速，简单的PDF查看器预览。
 它的启动速度更快，使用起来比Adobe Reader更流畅，对搜索和提取文本有很好的支持。
 当PDF查看器作为插件加载到Web浏览器窗口中时，快速启动尤为重要。通常，还会在预览
@@ -47,7 +47,7 @@ GSview是适用于Microsoft Windows和Unix的开源PDF和PostScript查看器。
 GSview和GhostScript（GSview需要）可以从[GhostScript网站](http://pages.cs.wisc.edu/~ghost/)下载。
 
 
-## Software Libraries
+## 软件库
 Adobe提供了自己的昂贵的，商业许可的PDF操作库，基于与Acrobat本身相同的代码。
 在本节中，我们考虑流行的开源替代方案。
 
@@ -84,7 +84,7 @@ Apple的PDFKit提供了许多用于Apple支持的编程语言（如Objective C�
 Apple的内置PDF查看器Preview基于这些库构建。PDF套件库记录在Apple的[Mac OS X Developer Library](http://developer.apple.com/)中。
 
 
-## Converting Formats
+## 格式转换
 格式转换分为三类：
 
 * 转换为类似的可缩放矢量格式（例如，PostScript或SVG）。在这种情况下，结构信息通常保存得很好。
@@ -100,7 +100,7 @@ Apple的内置PDF查看器Preview基于这些库构建。PDF套件库记录在Ap
 *ps2pdf*和*pdf2ps*可从[GhostScript主页](http://pages.cs.wisc.edu/~ghost/)获得。
 
 
-### Rasterizing PDF to an Image
+### 将PDF格式化为图像
 GhostScript附带的gs程序可用于以给定的分辨率将PDF页面渲染为光栅图像，适合打印或屏幕使用。
 这是GSView用于显示PDF页面的工具。
 这是通过指定对应于图像文件格式的几个特殊输出设备之一来实现的，例如PNG和TIFF。
@@ -120,7 +120,7 @@ Mac OS X通过打印对话框中的“另存为PDF”选项本机提供此工具
 在Microsoft Windows上，开源[PDFCreator打印机驱动程序](http://sourceforge.net/projects/pdfcreator/)可以完成相同的工作。它在内部使用GhostScript。
 
 
-## PDF Editors
+## PDF编辑器
 PDF最初并不打算进行大量编辑，而是作为一种可扩展的，结构化的发布终端格式。
 因此，大多数编辑软件具有受限和特定的编辑功能，例如合并文件，添加注释，
 填写表格或对页面内容进行小的编辑。
@@ -138,12 +138,12 @@ Adobe自己的PDF编辑器Acrobat（花费数百美元）具有广泛的功能�
 * 重新排序，旋转和编辑页面和内容。
 * 印前检查和印刷出版工具。
 * 构建PDF表单。
-* 创建和验证PDF / A和PDF / X.
+* 创建和验证PDF/A和PDF/X.
 * 添加加密和数字签名。
 
 Adobe Acrobat有许多商业第三方插件，提供额外的功能。
 
-### Editing with Preview on Mac OS X
+### 在Mac OS X使用预览编辑PDF
 预览，Mac OS X上的标准PDF查看程序，也有编辑设备，由于它们在界面中不突出，
 因此往往未得到充分利用。
 
@@ -153,15 +153,15 @@ Adobe Acrobat有许多商业第三方插件，提供额外的功能。
 预览处理各种文档，并设法在编辑文件的其他方面时保留它不理解的功能。
 
 
-## PDF and Graphics Documentation
+## PDF和图形文档
 编写本书是为了填补PDF文献中的一个显着差距。在这里，我们列出了其他信息和文档来源。
 
-### ISO 32000 and the PDF File Format
+### ISO 32000 and the PDF文件格式
 PDF参考手册作为一本书出版，直到PDF版本1.6。现在，唉（但也许是恰当的，考虑到它的主题），它只能作为PDF文档提供。
 
-PDF版本1.7于2008年被批准为ISO标准（标准号ISO 32000-1：2008）。
+PDF版本1.7于2008年被批准为ISO标准（标准号ISO 32000-1:2008）。
 ISO收取近500美元的PDF副本（通过下载或CD-ROM）。幸运的是，Adobe继续以电子方
-式提供PDF版本1.7参考。这是ISO 32000-1：2008的核准副本。特别是，章节，章节和小节编号是相同的。
+式提供PDF版本1.7参考。这是ISO 32000-1:2008的核准副本。特别是，章节，章节和小节编号是相同的。
 
 最近对PDF 1.7的Adobe扩展记录在ExtensionLevel文档中，这些文档不构成ISO标准的一部分，但预计会成为更新版本的一部分。
 
@@ -184,7 +184,7 @@ O'Reilly的另一个PDF标题，Sid Steward的[PDF Hacks](http://oreilly.com/cat
 * 将传入的传真转换为PDF。
 * 编写控制Adobe Acrobat的脚本。
 
-### Related Topics
+### 相关话题
 PDF标准和本书参考了计算机图形学的一般领域（有时还假设了解）。
 这些主题的标准参考是计算机图形学原理和实践（Foley等，Addison-Wesley 1990）。
 本书包含了Bézier曲线，透明度，仿射变换以及理解如何编写PDF图形流所需的其他主题的所有背景知识。
@@ -192,14 +192,14 @@ PDF标准和本书参考了计算机图形学的一般领域（有时还假设�
 理解PDF中的词典，树和其他数据结构及其选择原因的一个很好的参考是算法（Cormen等，MIT Press，1990）。
 关于算法的任何类似的书都应该足够了。
 
-### Forums and Discussion
+### 论坛和讨论
 有许多地方可以讨论技术PDF主题：
 
 * [Planet PDF论坛](http://forum.planetpdf.com/)是各种技术和非技术PDF讨论的热门场所。
 * Adobe的[Adobe Reader论坛](http://forums.adobe.com/community/adobe_reader_forums/adobe_reader)，用于Adobe Reader的技术支持和讨论。
 * **comp.text.pdf** usenet新闻组是一个低流量的地方，可以进行更多的技术讨论。
 
-### Adobe’s 网站资源
+### Adobe的网站资源
 对于那些对PDF技术方面感兴趣的人，Adobe网站有两个相关部分：
 
 * [PDF技术中心](http://www.adobe.com/devnet/pdf.html)包含PDF参考文档。
