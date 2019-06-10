@@ -6,7 +6,7 @@
 
 在本章中，我们将查看操作符和状态，以便从字体中选择
 字符并在页面上打印它们。然后，我们将看到如何定义
-字体及其指标并将其嵌入PDF文档中。 
+字体及其指标并将其嵌入PDF文档中。
 最后，我们讨论了从文档中提取通用文本的复杂任务。
 
 ## Text and Fonts in PDF
@@ -36,7 +36,7 @@ PDF采用中间立场 - 保留了字体和小尺寸文本布局的思想，
 |Tmode| Rendering Mode|render|Tr sets the text rendering mode to render, an integer.|0|
 |Trise|Rise|rise|Ts sets the text rise to rise, expressed in un- scaled text space units.|0|
 
-我们在第75页的“文本空间和文本定位”中讨论了“未缩放的文本空间单位”这一短语。文本状态与图形状态一起存储，并使用上面的运算符进行操作。 当前文本状态受堆栈运算符q和Q的影响，就像图形状态一样。
+我们在第75页的“文本空间和文本定位”中讨论了“未缩放的文本空间单位”这一短语。文本状态与图形状态一起存储，并使用上面的运算符进行操作。当前文本状态受堆栈运算符q和Q的影响，就像图形状态一样。
 
 ## Printing Text
 在页面上打印文本需要：
@@ -186,7 +186,7 @@ BT
 
 #### Text rendering modes
 文本有七种渲染模式，使用Tr运算符设置。其中四个用于将文本设置为剪切路径，一个用于编写不可见文本。
-我们在这里不考虑这些。 其他三个（模式0,1和2）分别用于填充，抚摸和填充跟随行程。颜色的设置方式与形状绘制相同：
+我们在这里不考虑这些。其他三个（模式0,1和2）分别用于填充，抚摸和填充跟随行程。颜色的设置方式与形状绘制相同：
 ```
 0.5 g
 BT
@@ -216,7 +216,7 @@ PDF允许使用主要的流行字体格式以及类型3字体，通过使用PDF�
 允许编码任何其他字体类型（例如，传统位图字体）。
 
 Type 1 fonts
-在字体字典中引入字体类型/Type1。类型1是最初用于PostScript的Adobe字体格式。标准的14种字体被定义为Type 1字体。 多个Master Type 1字体（/MMType1）是Type 1的扩展，允许从一组轮廓自动生成许多字体样式。
+在字体字典中引入字体类型/Type1。类型1是最初用于PostScript的Adobe字体格式。标准的14种字体被定义为Type 1字体。多个Master Type 1字体（/MMType1）是Type 1的扩展，允许从一组轮廓自动生成许多字体样式。
 
 TrueType字体
 在字体字典中引入字体类型/ TrueType。基于Apple的True-Type字体格式（也常用于Microsoft Windows）。
@@ -276,7 +276,7 @@ ZapfDingbats
 >>
 ```
 
-省略号...是我们省略的内容，不是PDF语言的一部分。我们稍后讨论/FontDescriptor和/Encoding条目。 
+省略号...是我们省略的内容，不是PDF语言的一部分。我们稍后讨论/FontDescriptor和/Encoding条目。
 /Widths数组为此字体中的每个256个字符提供文本空间单位的千分之一宽度。
 
 ### Font Encodings
@@ -294,7 +294,7 @@ ZapfDingbats
 |/Differences array of integers and |names|Defines the differences from the base encoding. Contains zero or more sections each beginning with a number n followed by glyph names for character n, n+1, n+2 etc. For example[6 /endash /emdash 34 /space]maps6to/endash,7 to /emdash, and 34 to /space.|
 
 在例6-1中，字体具有一种编码，该编码通过用字符/项目符号（项目符号点）替换字符1来定义与内置字体编码的差异。
-这意味着PDF查看器可以正确剪切和粘贴文本，因为它现在知道字符代码1是项目符号点（类似/bullet的名称是在Adobe字形列表中预定义的）。 它对PDF的显示没有任何影响。
+这意味着PDF查看器可以正确剪切和粘贴文本，因为它现在知道字符代码1是项目符号点（类似/bullet的名称是在Adobe字形列表中预定义的）。它对PDF的显示没有任何影响。
 
 ```
 Example 6-1. A font encoding for a font with the bullet point added

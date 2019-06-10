@@ -38,8 +38,8 @@ XML元数据
 |[page /Fit]|以水平和垂直方向适合窗口中整个页面的比例显示页面。|
 |[page /FitH top]|显示窗口顶部边缘垂直坐标顶部的页面，并设置放大倍率以水平放置文档。|
 |[page /FitV left]|显示窗口左边缘水平坐标的页面，并设置放大倍率以垂直放置文档。|
-|[page /XYZ left top zoom]|在窗口的左上角显示（左，上）页面，并通过因子缩放放大页面。 任何参数的空值表示没有变化。|
-|[page /FitR left bottom right top] |显示缩放的页面以显示由left，bottom，right和top指定的矩形。 |
+|[page /XYZ left top zoom]|在窗口的左上角显示（左，上）页面，并通过因子缩放放大页面。任何参数的空值表示没有变化。|
+|[page /FitR left bottom right top] |显示缩放的页面以显示由left，bottom，right和top指定的矩形。|
 |[page /FitB]|显示像/Fit这样的页面，但使用页面内容的边界框，而不是裁剪框。|
 |[page /FitBH top] |显示像/FitH这样的页面，但使用页面内容的边界框，而不是裁剪框。|
 |[page /FitBV left]|显示像/FitV这样的页面，但使用页面内容的边界框，而不是裁剪框。|
@@ -52,7 +52,7 @@ XML元数据
 |/Type |name|If present, must be /Outlines.|
 |/First|indirect reference to dictionary|An outline item dictionary for the first top-level item in the document outline. Required if any document outline entries present.|
 |/Last |indirect reference to dictionary |An outline item dictionary for the last top-level item in the document outline. Required if any document outline entries present.|
-|/Count| integer|大纲所有部分中的开放大纲条目总数。 如果没有打开的条目，可以省略。|
+|/Count| integer|大纲所有部分中的开放大纲条目总数。如果没有打开的条目，可以省略。|
 
 
 ### 建立一个例子
