@@ -55,26 +55,26 @@ Adobe提供了自己的昂贵的，商业许可的PDF操作库，基于与Acroba
 要编写文件，只需要理解特定应用程序所需的小的PDF子集（即，一种压缩机制，一种字体类型等），
 并且不需要复杂的解析机制。要读取文件，必须实现整个标准。
 
-### iText for Java and C#
+### 适用于Java和C＃的iText
 iText是一个成熟的开源库，用于读取和编写PDF文档，以及使用段落，列表，表格和图像等高级构建块进行文本报告。
 它还支持构建书签，超链接，注释和JavaScript操作。可以构建可填写表单，并支持加密文件。
 
 iText可以从[iText Software网站](http://itextpdf.com/)下载。
 
-### TCPDF for PHP
+### 适用于PHP的TCPDF
 TCPDF是用于生成PDF报告的纯PHP库，包括文本布局，表格，HTML转换，注释，超链接和图像。
 Web服务可以使用TCPDF动态构建文档，并将其提供给在Web浏览器中运行的PDF查看器，或通过电子邮件发送。
 
 可以下载TCPDF以及[其网站](http://www.tcpdf.org/)上的各种示例。
 
-### Processing PDF with Perl
+### 使用Perl处理PDF
 在Perl中有大量用于读取，编写和编辑PDF文件的PDF库，其中一些非常成熟，另一些则不那么成熟。
 文档通常很少，与可用的广泛功能相悖。
 
 与所有免费的Perl模块一样，[Comprehensive Perl Archive Network](http://www.cpan.org/)包含源代码和文档。
 
 
-### PDF on Mac OS X
+### Mac OS X上的PDF
 Apple的PDFKit提供了许多用于Apple支持的编程语言（如Objective C）的类。这些包括：
 
 * PDFView，PDF文档的屏幕视图。
