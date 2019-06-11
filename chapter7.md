@@ -7,8 +7,7 @@
 额外信息的元数据 通过PDF工作流程中的程序。
 
 Destinations
-* 定义文件中位置的数据结构。它们可用于指定书签或超链接指向的位置。
-书签（适当地称为文档外联）用作文档的目录。
+* 定义文件中位置的数据结构。它们可用于指定书签或超链接指向的位置。书签（适当地称为文档外联）用作文档的目录。
 
 XML元数据
 * 包含指定格式的XML文件的流，包含与文档信息字典相同的元数据，以及其他字段。
@@ -228,7 +227,7 @@ endobj
 代码如例7-7所示。
 
 ```
-Example 7-7. PDF code for an attachment to a particular page. The embedded file is object 8 (see Example 7-5).
+例7-7. 特定页面附件的PDF代码。嵌入文件是对象8 (see Example 7-5).
 9 0 obj 
 <<
   /Type /Page

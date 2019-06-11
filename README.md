@@ -1,8 +1,7 @@
 # PDF_Explained （译作《PDF 解释》）
 
 ## 项目简介
-
-*PDF Explained*的非官方中文翻译版, 大体已经完成, 还需要完善细节部分(表格 markdown语法 专有名词等)
+*PDF Explained*的非官方中文翻译版, 大体已经完成, 还需要完善细节部分(表格翻译及注释 专有名词等)
 
 ![](./images/logo.png)
 
@@ -19,17 +18,20 @@
 * [第8章](./chapter8.md) - 加密文档
 * [第9章](./chapter9.md) - 使用Pdftk
 * [第10章](./chapter10.md) - PDF软件和文档
+* [译者注]()
 
-## 代码与示例文件
-参考[examples](./examples)目录
+## 示例文件及勘误表
+* 代码[examples](./examples)目录
+* [勘误表](https://www.oreilly.com/catalog/errata.csp?isbn=9781449310028)
+
+
 
 ## 参考资源
 * [Amazon购买](https://www.amazon.com/PDF-Explained-Standard-Document-Exchange/dp/1449310028)
-* [英文原版](./resources/PDF\Explained.pdf)
 * [pdf1.7参考](./resources/pdf_reference_1.7.pdf)
 
 ## 当前翻译状态
 持续翻译中... 欢迎[PR](https://github.com/zxyle/PDF_Explained/pulls)或者[ISSUE](https://github.com/zxyle/PDF_Explained/issues)。
 
 ## 备注
-欢迎加入QQ群: 277216960 与我们一起讨论PDF
+欢迎加入QQ群: 277216960 与我们一起讨论PDF吧!
