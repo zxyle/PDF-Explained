@@ -165,7 +165,7 @@ ISO收取近500美元的PDF副本（通过下载或CD-ROM）。幸运的是，Ad
 
 最近对PDF 1.7的Adobe扩展记录在ExtensionLevel文档中，这些文档不构成ISO标准的一部分，但预计会成为更新版本的一部分。
 
-Adobe的ISO 32000-1：2008副本和ExtensionLevel文档都可以从[Adobe Developer Connection网站](http://www.adobe.com/devnet/pdf/pdf_reference.html)下载。
+Adobe的ISO 32000-1:2008副本和ExtensionLevel文档都可以从[Adobe Developer Connection网站](http://www.adobe.com/devnet/pdf/pdf_reference.html)下载。
 
 
 ### PDF Hacks
