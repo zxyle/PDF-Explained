@@ -1,8 +1,11 @@
 # PDF_Explained （译作《PDF 解释》）
 
 ## 项目简介
-*PDF Explained*的非官方中文翻译版, 大体已经完成, 还需要完善细节部分(表格翻译及注释 专有名词等)
+这是*PDF Explained*的非官方中文翻译版, 大体已经完成, 还需要完善很多细节部分。
+详解[ISSUE](https://github.com/zxyle/PDF_Explained/issues) 希望得到你们的帮助！让项目越来越完善，在此表示感谢！
 
+
+## 原书简介
 最后，这是对广泛使用的可移植文档格式的平易近人的介绍。
 PDF无处不在，无论是在线形式还是印刷形式，但很少有人利用这些有用的功能或掌握这种格式的细微差别。
 这本简明的书籍为程序员，高级用户提供了世界领先的页面描述语言的动手实践。以及搜索，电子出版和印刷行业的专业人士，有大量示例，本书是您完全理解PDF所需的文档。
@@ -25,7 +28,8 @@ PDF无处不在，无论是在线形式还是印刷形式，但很少有人利�
 * [译者注]()
 
 ## 示例文件及勘误表
-* 代码[examples](./examples)目录
+* 原书代码见[oreilly gitlab](https://resources.oreilly.com/examples/0636920021483/)
+* 代码见[examples](./examples)目录
 * [勘误表](https://www.oreilly.com/catalog/errata.csp?isbn=9781449310028)
 
 
