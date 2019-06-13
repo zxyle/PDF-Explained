@@ -114,8 +114,8 @@ pdftk input.pdf decompress output output.pdf
 |线条颜色|颜色|黑|
 |线宽|real|1.0|
 |路径连接样式|整数|Mitered joins (0)|
-|Cap style|整数|Square butt caps (0)|
-|Line dash pattern|整数数组|实线|
+|Cap样式|整数|Square butt caps (0)|
+|线划线图案|整数数组|实线|
 |当前剪切路径|路径|空路径|
 |混合模式|名称或数组|正常|
 |Soft mask|名字或字典|None|
@@ -173,9 +173,9 @@ w运算符将图形状态中的线宽设置为8个点。J运算符将行结束�
 
 |Cap数|含义|
 |---|---|
-|0|Butt caps. Squared off at the end of the line.|
-|1|Round caps. Semicircles attached at the end of each line.|
-|2|Projecting square caps. Projects at end of line for half the width of the line, and is then squared off.|
+|0|对接帽。在线的尽头摆平|
+|1|圆帽。每条线末端附有半圆形|
+|2|投射方帽。在线末端的项目为线宽的一半，然后平方|
 
 ### 贝塞尔曲线
 除了直线，我们还可以绘制曲线。
@@ -248,15 +248,15 @@ h B 关闭并填充
 
 |操作符|功能|
 |---|---|
-|n|Ends the path with no visual effect. This is used to change the current clipping path (see “Clipping” on page 65). |
-|b|Close, fill and stroke the path (non-zero winding rule)|
-|b*|Close, fill and stroke the path (even-odd winding rule)|
-|B|Fill and stroke the path (non-zero winding rule)|
-|B*|Fill and stroke the path (even-odd winding rule) |
-|f or F |Fill the path (non-zero winding rule)|
-|f*|Fill the path (even-odd winding rule)|
-|S |Stroke the path|
-|s|Close and stroke the path|
+|n|结束路径没有视觉效果。这用于更改当前剪切路径（请参阅第65页的“剪切”）|
+|b|关闭，填充和描边路径（非零缠绕规则）|
+|b*|关闭，填充和描边路径（奇数绕组规则）|
+|B|填充和描边路径（非零缠绕规则）|
+|B*|填充和描边路径（奇数绕组规则） |
+|f or F |填充路径（非零缠绕规则）|
+|f*|填充路径（偶数奇数绕组规则）|
+|S |划出路径|
+|s|关闭并抚摸路径|
 
 
 ![](./images/figure%205-6.png)
@@ -286,12 +286,12 @@ DeviceCMYK颜色空间（PDF标准中涵盖了更复杂的颜色空间）：
 
 |操作符 |操作数|功能|
 |---|---|---|
-|G |1|Change stroke color space to /DeviceGray and set color|
-|g |1|Change fill color space to /DeviceGray and set color|
-|RG |3(R,G,B)|Change stroke color space to /DeviceRGB and set color |
-|rg |3(R,G,B)|Change fill color space to /DeviceRGB and set color |
-|K |4(C,M,Y,K)|Change stroke color space to /DeviceCMYK and set color |
-|k |4(C,M,Y,K)|Change fill color space to /DeviceCMYK and set color|
+|G |1|将笔触颜色空间更改为/DeviceGray并设置颜色|
+|g |1|将填充颜色空间更改为/DeviceGray并设置颜色|
+|RG |3(R,G,B)|将笔触颜色空间更改为/DeviceRGB并设置颜色|
+|rg |3(R,G,B)|将填充颜色空间更改为/DeviceRGB并设置颜色|
+|K |4(C,M,Y,K)|将笔触颜色空间更改为/DeviceCMYK并设置颜色|
+|k |4(C,M,Y,K)|将填充颜色空间更改为/DeviceCMYK并设置颜色|
 
 当内容流开始时，默认颜色空间为/DeviceGray，默认颜色值为0（全黑），因此我们可以立即使用g运算符：
 ```

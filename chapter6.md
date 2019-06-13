@@ -26,15 +26,15 @@ PDF采用中间立场 - 保留了字体和小尺寸文本布局的思想，
 ## Text State
 文本状态参数和修改它们的运算符总结在表6-1中。
 
-|Parameter| Description| Operands| Operators| Initial value|
+|参数| 描述| 操作数| 操作符| 初始值|
 |---|---|---|---|---|
-|Tc|Character spacing|charSpace|Tc sets the character spacing to charSpace, expressed in unscaled text space units.|0|
-|Tw|Word spacing|wordSpace|Tw sets the word spacing to wordSpace, expressed in unscaled text units.|0|
-|Th |Horizontal spacing|scale|Tz sets the horizontal scaling to (scale / 100). |100 (normal spacing)|
-|Tl|Leading|leading|TL sets the text leading to leading, expressed in unscaled text space units.|0|
-|Tf, Tfs |Font, Font Size|font, size|Tf selects the font font at size size points.|None. Must be specified.|
-|Tmode| Rendering Mode|render|Tr sets the text rendering mode to render, an integer.|0|
-|Trise|Rise|rise|Ts sets the text rise to rise, expressed in un- scaled text space units.|0|
+|Tc|Character spacing|charSpace|Tc将字符间距设置为charSpace，以未缩放的文本空间单位表示|0|
+|Tw|Word spacing|wordSpace|Tw将单词间距设置为wordSpace，以未缩放的文本单位表示|0|
+|Th |Horizontal spacing|scale|Tz将水平缩放设置为（scale / 100）|100 (normal spacing)|
+|Tl|Leading|leading|TL设置前导的文本，以未缩放的文本空间单位表示|0|
+|Tf, Tfs |Font, Font Size|font, size|Tf选择尺寸大小点的字体字体|None. Must be specified.|
+|Tmode| Rendering Mode|render|Tr将文本渲染模式设置为渲染，即整数|0|
+|Trise|Rise|rise|Ts将文本上升设置为上升，以未缩放的文本空间单位表示|0|
 
 我们在第75页的“文本空间和文本定位”中讨论了“未缩放的文本空间单位”这一短语。文本状态与图形状态一起存储，并使用上面的运算符进行操作。当前文本状态受堆栈运算符q和Q的影响，就像图形状态一样。
 
@@ -78,10 +78,10 @@ ET End text block
 
 |操作数| 操作符|功能|
 |---|---|---|
-|x,y |Td |Move the text position to the next line, offset by (x,y). The parameters are expressed in unscaled text space units.|
-|x,y| TD |Move the text position to the next line, offset by (x,y). Sets the leading to -y. The parameters are expressed in unscaled text space units.|
-|- |T* |Move the text position to the next line. Equivalent to the sequence 0 leading Td (where leading is the current text leading).|
-|a,b,c,d,e,f| Tm|Sets the text matrix and text line matrix to [a b 0 c d 0 e f 1]. Unlike the graphics matrix operator cm, the matrix replaces the current matrix, rather than being concatenated with it.|
+|x,y |Td |将文本位置移动到下一行，偏移（x，y）。参数以未缩放的文本空间单位表示|
+|x,y| TD |将文本位置移动到下一行，偏移（x，y）。将前导设置为-y。参数以未缩放的文本空间单位表示|
+|- |T* |将文本位置移动到下一行。相当于前导Td的序列0（其中前导是当前文本的前导）|
+|a,b,c,d,e,f| Tm|将文本矩阵和文本行矩阵设置为[a b 0 c d 0 e f 1]。与图形矩阵运算符cm不同，矩阵替换当前矩阵，而不是与其连接|
 
 
 ### Showing Text
@@ -89,12 +89,12 @@ Tj运算符在当前位置显示文本。这与我们已经看到的文本定位
 但是，为方便起见，还提供了三个附加操作符（'，''和TJ）。这些是文本显示和文本定位的常见组合的快捷方式。
 表6-3总结了显示操作员的文本。
 
-|Operands|Operator |Function|
+|操作数| 操作符|功能|
 |---|---|---|
-|string |Tj |Show string at the current position.|
-|string|' |Go to the next line, taking into account the leading and text matrices, and show string at the new position. The same as using T* followed by Tj.|
-|wordspace, charspace, string|'' |Set the word spacing to wordspace and the character spacing to charspace. Go to the next line, taking into account the leading and text matrices, and show string at the new position. The same the sequence wordspace Tw charspace Tc string '.|
-|array|TJ |This operator allows a text string to be shown with adjustments for individual glyph positions (for example, kerning). The array contains strings and numbers, in any combination. String entries are shown as normal; number entries adjust the text matrix horizontally by subtracting that amount (expressed in thousandths of a unit of text space).|
+|string |Tj |在当前位置显示字符串|
+|string|' |转到下一行，考虑前导和文本矩阵，并在新位置显示字符串 与使用T*后跟Tj相同|
+|wordspace, charspace, string|'' |将字间距设置为字空间，将字符间距设置为字符间距。转到下一行，考虑前导和文本矩阵，并在新位置显示字符串。相同的序列字空间Tw charspace Tc string'|
+|array|TJ |此运算符允许显示文本字符串，并调整各个字形位置（例如，字距调整）。该数组包含任意组合的字符串和数字。字符串条目显示为正常; 数字条目通过减去该数量（以文本空间单位的千分之一表示）水平调整文本矩阵|
 
 为简单起见，我们现在将使用标准字体和基于Latin-1的PDFDocEncoding来显示一些显示文本的示例。
 与往常一样，这些示例可以在在线资源中找到。
@@ -117,12 +117,12 @@ ET
 
 在这个例子中，我们有：
 
-1. Used Tf to select font /F0 at 36 points.
-2. Used Tm to set the text position to (120, 350).
-3. Used TL to set the leading to 50 points.
-4. Shown a string with Tj, and used T* to move to the next line.
-5. Set the character spacing to 3 points, and drawn the string again.
-6. Set the word spacing to 10 points, and drawn the string a third time.
+1. 使用Tf在36点选择字体/F0
+2. 使用Tm将文本位置设置为（120,350）
+3. 使用TL将前导设置为50点
+4. 用Tj显示一个字符串，并使用T*移动到下一行
+5. 将字符间距设置为3个点，然后再次绘制字符串
+6. 将单词间距设置为10个点，并第三次绘制字符串
 
 ![](./images/figure%206-1.png)
 
@@ -142,10 +142,10 @@ ET
 
 在这里，我们有：
 
-1. Set up the graphics matrix to rotate anticlockwise around the origin with cm. 
-2. Selected a font and set the leading with Tf and TL.
-3. Set the text matrix to offset the start by (270, 240) with Tm.
-4. Written three lines with Tj and T*.
+1. 设置图形矩阵以围绕原点逆时针旋转cm
+2. 选择一个字体并使用Tf和TL设置前导
+3. 设置文本矩阵以使用Tm将起点偏移（270,240）
+4. 用Tj和T*写成三行
 
 
 ![](./images/figure%206-2.png)
@@ -230,17 +230,17 @@ CID字体
 ### Type 1 Fonts
 我们将使用Type 1字体作为示例。表6-4总结了Type 1字体字典中的条目。
 
-|Key|Value type|Value|
+|键|值类型|值|
 |---|---|---|
-|/Type* |name|Must be /Font.|
-|/Subtype* |name|Must be /Type1.|
-|/BaseFont* |name|The PostScript name for the font.|
-|/FirstChar** |integer|The first code in the /Widths array.|
-|/LastChar** |integer|The last code in the /Widths array.|
-|/Widths**|array of integers|Array of length (/LastChar - /FirstChar + 1), giving the glyph width for those characters in thousandths of text space units.|
-|/FontDescriptor** |indirect reference to dictionary|A font descriptor dictionary giving the font’s metrics (other than the glyph widths).|
-|/Encoding|name or dictionary|The font’s character encoding, for example /MacRomanEncoding or /WinAnsiEncoding. More complicated ones are described by dictionaries.|
-|/ToUnicode|stream|A stream containing instructions for the extraction of text content. See “Extracting Text from a Document” on page 86.|
+|/Type* |name|必须是/Font|
+|/Subtype* |name|必须是 /Type1|
+|/BaseFont* |name|字体的PostScript名称|
+|/FirstChar** |integer|/Widths数组中的第一个代码|
+|/LastChar** |integer|/Widths数组中的最后一个代码|
+|/Widths**|array of integers|长度数组（/LastChar - /FirstChar + 1），以千分之一的文本空间单位给出这些字符的字形宽度|
+|/FontDescriptor** |间接引用字典|字体描述符字典，提供字体的度量（字形宽度除外）|
+|/Encoding|name or dictionary|字体的字符编码，例如/MacRomanEncoding或/WinAnsiEncoding。字典描述了更复杂的字典|
+|/ToUnicode|stream|包含用于提取文本内容的指令的流。请参见第86页的“从文档中提取文本”|
 
 PDF中有14种标准的Type 1字体。这些是在任何PDF应用程序中必须提供度量标准和大纲（或合适的替换字体）的字体。
 然而，现在，Adobe建议所有字体都是完全嵌入的，即使是这些。标准字体是：
@@ -287,11 +287,11 @@ ZapfDingbats
 最简单的/Encoding条目只是标准编码之一的名称，这些编码在PDF标准，附录D中定义。
 通过使用字典而不是编码名称来定义更复杂的编码。表6-5总结了该词典中的条目。
 
-|Key |Value type|Value|
+|键|值类型|值|
 |---|---|---|
-|/Type |name |Must be /Encoding|
-|/BaseEncoding| name|The base encoding, from which the /Differences entry defines differences. This is one of the predefined encodings /MacRomanEncoding, /MacExpertEncoding, or /WinAnsiEncoding. If this entry is absent, the differences are from the font file’s built-in encoding.|
-|/Differences array of integers and |names|Defines the differences from the base encoding. Contains zero or more sections each beginning with a number n followed by glyph names for character n, n+1, n+2 etc. For example[6 /endash /emdash 34 /space]maps6to/endash,7 to /emdash, and 34 to /space.|
+|/Type |name |必须是/Encoding|
+|/BaseEncoding| name|基本编码，/Differences条目从中定义差异。这是预定义的编码/MacRomanEncoding，/MacExpertEncoding或/WinAnsiEncoding之一。如果此条目不存在，则差异来自字体文件的内置编码|
+|/Differences |整数和名称的数组|定义与基本编码的差异。包含零个或多个部分，每个部分以数字n开头，后跟字符n，n + 1，n + 2等的字形名称。例如[6 /endash /emdash 34 /space] maps6to /endash，7 to /emdash，以及34到/空间|
 
 在例6-1中，字体具有一种编码，该编码通过用字符/项目符号（项目符号点）替换字符1来定义与内置字体编码的差异。
 这意味着PDF查看器可以正确剪切和粘贴文本，因为它现在知道字符代码1是项目符号点（类似/bullet的名称是在Adobe字形列表中预定义的）。它对PDF的显示没有任何影响。
@@ -394,8 +394,7 @@ endobj
 
 ## Resources
 除PDF标准外，还有许多其他文档提供了有关本章讨论主题的更多详细信息：
-
-* Unicode由Unicode Consortium出版的Unicode标准5.0版完整描述。一个更容易理解的介绍是O'Reilly自己的由Jukka K. Korpela解释的Unicode。
-* Yannis Haralambous（O'Reilly）的字体和编码解释了PDF使用的各种字体格式。
-* Adobe字体和类型技术中心是各种字体格式和编码系统的历史和当前文档的集合，包括用于编码外语的预编码方法。
+* Unicode由Unicode Consortium出版的Unicode标准5.0版完整描述。一个更容易理解的介绍是O'Reilly自己的由Jukka K. Korpela[Unicode Explained](http://oreilly.com/catalog/9780596101213)。
+* Yannis Haralambous（O'Reilly）的[《字体和编码》](http://oreilly.com/catalog/9780596102425)解释了PDF使用的各种字体格式。
+* [Adobe字体和类型技术中心](http://www.adobe.com/devnet/opentype.html)是各种字体格式和编码系统的历史和当前文档的集合，包括用于编码外语的预编码方法。
 

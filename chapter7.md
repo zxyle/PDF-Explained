@@ -34,24 +34,24 @@ XML元数据
 
 |数组|描述|
 |---|---|
-|[page /Fit]|以水平和垂直方向适合窗口中整个页面的比例显示页面。|
-|[page /FitH top]|显示窗口顶部边缘垂直坐标顶部的页面，并设置放大倍率以水平放置文档。|
-|[page /FitV left]|显示窗口左边缘水平坐标的页面，并设置放大倍率以垂直放置文档。|
-|[page /XYZ left top zoom]|在窗口的左上角显示（左，上）页面，并通过因子缩放放大页面。任何参数的空值表示没有变化。|
-|[page /FitR left bottom right top] |显示缩放的页面以显示由left，bottom，right和top指定的矩形。|
-|[page /FitB]|显示像/Fit这样的页面，但使用页面内容的边界框，而不是裁剪框。|
-|[page /FitBH top] |显示像/FitH这样的页面，但使用页面内容的边界框，而不是裁剪框。|
-|[page /FitBV left]|显示像/FitV这样的页面，但使用页面内容的边界框，而不是裁剪框。|
+|[page /Fit]|以水平和垂直方向适合窗口中整个页面的比例显示页面|
+|[page /FitH top]|显示窗口顶部边缘垂直坐标顶部的页面，并设置放大倍率以水平放置文档|
+|[page /FitV left]|显示窗口左边缘水平坐标的页面，并设置放大倍率以垂直放置文档|
+|[page /XYZ left top zoom]|在窗口的左上角显示（左，上）页面，并通过因子缩放放大页面。任何参数的空值表示没有变化|
+|[page /FitR left bottom right top] |显示缩放的页面以显示由left，bottom，right和top指定的矩形|
+|[page /FitB]|显示像/Fit这样的页面，但使用页面内容的边界框，而不是裁剪框|
+|[page /FitBH top] |显示像/FitH这样的页面，但使用页面内容的边界框，而不是裁剪框|
+|[page /FitBV left]|显示像/FitV这样的页面，但使用页面内容的边界框，而不是裁剪框|
 
 ### The Document Outline(Bookmarks)
 文档大纲由大纲条目树和大量项目词典定义的大纲条目树组成。大纲字典由文档目录中的/Outlines条目指向。条目的子条目（子）可以默认显示（打开）或默认隐藏，仅通过单击（关闭）显示。大纲字典总结在表7-2和7-3中。
 
-|Key |Value type|Value|
+|键|值类型|值|
 |---|---|---|
-|/Type |name|If present, must be /Outlines.|
-|/First|indirect reference to dictionary|An outline item dictionary for the first top-level item in the document outline. Required if any document outline entries present.|
-|/Last |indirect reference to dictionary |An outline item dictionary for the last top-level item in the document outline. Required if any document outline entries present.|
-|/Count| integer|大纲所有部分中的开放大纲条目总数。如果没有打开的条目，可以省略。|
+|/Type |name|如果存在，必须是/Outlines|
+|/First|间接引用字典|文档大纲中第一个顶级项的大纲项字典。如果存在任何文档大纲条目，则必需|
+|/Last |间接引用字典 |文档大纲中最后一个顶级项的大纲项字典。如果存在任何文档大纲条目，则必需|
+|/Count| 整数|大纲所有部分中的开放大纲条目总数。如果没有打开的条目，可以省略|
 
 
 ### 建立一个例子
@@ -132,12 +132,12 @@ PDF中使用注释在页面内容本身之外添加注释或交互元素。每�
 每个注释都是字典。表7-4中描述了更重要的条目。
 每种类型的注释在此词典中都有其他类型。
 
-|Key |Value type| Value|
+|键|值类型|值|
 |---|---|---|
-|/Type |name |如果存在，必须是/Annot。|
-|/Subtype* |name  |此批注的类型。|
-|/Rect* |rectangle  |默认用户空间单位中注释的位置和大小。|
-|/Contents |text string |此注释的文本内容，或者如果没有，则是备用的人类可读描述。|
+|/Type |name |如果存在，必须是/Annot|
+|/Subtype* |name  |此批注的类型|
+|/Rect* |rectangle  |默认用户空间单位中注释的位置和大小|
+|/Contents |text string |此注释的文本内容，或者如果没有，则是备用的人类可读描述|
 
 
 我们将看两种注释：可用于添加注释的文本注释，以及用于在文档中创建超链接的链接注释。

@@ -14,12 +14,12 @@
 这个字典驻留在文件的trailer而不是文件的主体中，是程序想要读取PDF文档时要处理的第一件事。
 它包含允许读取交叉引用表的条目，从而读取文件的对象。其重要条目总结在表4-1中。
 
-|Key |Value type|Value|
+|键|值类型|值|
 |---|---|---|
-|/Size* |Integer|文件交叉引用表中的条目总数（通常等于文件中的对象数加1）|
-|/Root* |Indirect reference to dictionary |文件目录|
-|/Info |Indirect reference to dictionary |文档的文档信息字典|
-|/ID |Array of two Strings|唯一标识工作流程中的文件。第一个字符串在首次创建文件时确定，第二个字符串在工作流系统修改文件时进行修改|
+|/Size* |整数|文件交叉引用表中的条目总数（通常等于文件中的对象数加1）|
+|/Root* |间接引用字典 |文件目录|
+|/Info |间接引用字典 |文档的文档信息字典|
+|/ID |两个字符串的数组|唯一标识工作流程中的文件。第一个字符串在首次创建文件时确定，第二个字符串在工作流系统修改文件时进行修改|
 
 
 这是一个示例trailer词典：
@@ -40,16 +40,16 @@
 
 文档信息字典条目在表4-2中描述。典型的文档信息字典在例4-1中给出。
 
-|Key |Value type|Value|
+|键|值类型|值|
 |---|---|---|
-|/Title |text string |The document’s title. Note that this is nothing to do with any title displayed on the first page.|
-|/Subject |text string|The subject of the document. Again, this is just metadata with no particular rules about content.|
-|/Keywords |text string |Keywords associated with this document. No advice is given as to how to structure these. |
-|/Author |text string |The name of the author of the document.|
-|/CreationDate |date string|The date the document was created.|
-|/ModDate|date string|The date the document was last modified.|
-|/Creator|text string|The name of the program which originally created this document, if it started as another format (for example, “Microsoft Word”).|
-|/Producer|text string|The name of the program which converted this file to PDF, if it started as another format (for example, the format of a word processor).|
+|/Title |文本字符串 |该文件的标题。请注意，这与第一页上显示的任何标题无关|
+|/Subject |文本字符串|该文件的主题。同样，这只是元数据，没有关于内容的特定规则|
+|/Keywords |文本字符串 |与此文档相关的关键字。没有给出关于如何构建这些的建议|
+|/Author |文本字符串 |文件作者的姓名|
+|/CreationDate|日期字符串 |文档创建的日期|
+|/ModDate|日期字符串|上次修改文档的日期|
+|/Creator|文本字符串|最初创建此文档的程序的名称，如果它以另一种格式（例如，“Microsoft Word”）启动|
+|/Producer|文本字符串|将此文件转换为PDF的程序的名称，如果它以另一种格式（例如，字处理器的格式）启动|
 
 ```
 Example 4-1. Typical document information dictionary
@@ -71,18 +71,18 @@ Example 4-1. Typical document information dictionary
 在表4-3中，我们列出了所需的文档目录字典条目，以及许多可选的文档目录字典条目，
 以便介绍我们未在这些页面的其他地方介绍的简要PDF主题。
 
-|Key |Value type|Value|
+|键|值类型|值|
 |---|---|---|
-|/Type* |name|Must be /Catalog.|
-|/Pages* |indirect reference to dictionary |The root node of the page tree. Page trees are discussed in“Pages and Page Trees” on page 42.|
-|/PageLabels |number tree|A number tree giving the page labels for this document. This mechanism allows for pages in a document to have more com- plicated numbering than just 1,2,3.... For example, the preface of a book may be numbered i,ii,iii..., whilst the main content starts again at 1,2,3....These page labels are displayed in PDF viewers—they have nothing to do with printed output.|
-|/Names |dictionary|The name dictionary. This contains various name trees, which map names to entities, to prevent having to use object numbers to reference them directly.|
-|/Dests|dictionary|A dictionary mapping names to destinations. A destination is a description of a place within a PDF document to which a hyper- link sends the user.|
-|/ViewerPreferences|dictionary|A viewer preferences dictionary, which allows flags to specify the behavior of a PDF viewer when the document is viewed on screen, such as the page it is opened on, the initial viewing scale and so on.|
-|/PageLayout|name|Specifies the page layout to be used by PDF viewers. Values are /SinglePage, /OneColumn, /TwoColumnLeft, /TwoColumnRight, /TwoPageLeft, /TwoPageRight. (Default: /SinglePage). Details are in Table 28 of ISO 32000-1:2008.|
-|/PageMode|name|Specifies the page mode to be used by PDF viewers. Values are /UseNone, /UseOutlines, /UseThumbs, /FullScreen, /UseOC, /UseAttachments. (Default: /UseNone). Details are in Table 28 of ISO 32000-1:2008.|
-|/Outlines|indirect reference to dictionary|The outline dictionary is the root of the document outline, commonly known as the bookmarks.|
-|/Metadata|indirect reference to stream|The document’s XMP metadata—see “XML Meta- data” on page 93.|
+|/Type* |name|必须是/Catalog|
+|/Pages* |间接引用字典 |页面树的根节点。页面树在第42页的“页面和页面树”中讨论|
+|/PageLabels |number tree|一个数字树，给出了该文档的页面标签。这种机制允许文档中的页面具有比1,2,3更复杂的编号....例如，书籍的前言可以编号为i，ii，iii ......，而主要内容 再次以1,2,3开始....这些页面标签显示在PDF查看器中 - 它们与打印输出无关|
+|/Names |dictionary|名字词典。它包含各种名称树，它们将名称映射到实体，以防止必须使用对象编号直接引用它们|
+|/Dests|dictionary|将名称映射到目标的字典。目的地是超链接向用户发送的PDF文档中的位置的描述|
+|/ViewerPreferences|dictionary|一个查看器首选项字典，允许标志指定在屏幕上查看文档时的PDF查看器的行为，例如打开文档的页面，初始查看比例等|
+|/PageLayout|name|指定PDF查看器要使用的页面布局。值为/SinglePage，/OneColumn，/TwoColumnLeft，/TwoColumnRight，/TwoPageLeft，/TwoPageRight。（默认值：/SinglePage）。详情见ISO 32000-1:2008的表28|
+|/PageMode|name|指定PDF查看器要使用的页面模式。值为/UseNone，/UseOutlines，/UseThumbs，/FullScreen，/UseOC，/UseAttachments。 （默认值：/UseNone）。详情见ISO 32000-1:2008的表28|
+|/Outlines|间接引用字典|大纲字典是文档大纲的根，通常称为书签|
+|/Metadata|间接引用流|文档的XMP元数据 - 请参阅第93页的“XML元数据”|
 
 ## 页面和页面树
 PDF文档中的页面字典汇集了使用这些指令使用的资源（字体，图像和其他外部数据）绘制图形和文本内容（我们在第5章和第6章中考虑）的说明。
@@ -90,15 +90,15 @@ PDF文档中的页面字典汇集了使用这些指令使用的资源（字体�
 
 表4-4总结了页面字典中的条目。
 
-|Key|Value type|Value|
+|键|值类型|值|
 |---|---|---|
-|/Type* |name|Must be /Page.|
-|/Parent* |indirect reference to dictionary|The parent node of this node in the page tree.|
-|/Resources|dictionary|The page’s resources (fonts, images, and so on). If this entry is omitted entirely, the resources are inherited from the parent node in the page tree. If there are really no resources, include this entry but use an empty dictionary.|
-|/Contents|indirect reference to stream or array of such references|The graphical content of the page in one or more sections. If this entry is missing, the page is empty.|
-|/Rotate |integer|The viewing rotation of the page in degrees, clockwise from north. Value must be a multiple of 90. Default value: 0. This applies to both viewing and printing. If this entry is missing, its value is in- herited from its parent node in the page tree.|
-|/MediaBox* |rectangle |The page’s media box (the size of its media, i.e., paper). For most purposes, the page size. If this entry is missing, it is inherited from its parent node in the page tree.|
-|/CropBox |rectangle|The page’s crop box. This defines the region of the page visible by default when a page is displayed or printed. If absent, its value is defined to be the same as the media box.|
+|/Type* |name|必须是/Pages|
+|/Parent* |间接引用字典|页面树中此节点的父节点|
+|/Resources|dictionary|页面的资源（字体，图像等）。如果完全省略此条目，则资源将从页面树中的父节点继承。如果确实没有资源，请包含此条目但使用空字典|
+|/Contents|indirect reference to stream or array of such references|一个或多个部分中页面的图形内容。如果缺少此条目，则页面为空|
+|/Rotate |整数|页面的查看旋转，以度为单位，从北向顺时针。值必须是90的倍数。默认值：0。这适用于查看和打印。如果缺少此条目，则其值将从页面树中的父节点继承|
+|/MediaBox* |rectangle |页面的媒体框（媒体大小，即纸张）。对于大多数用途，页面大小。如果缺少此条目，则它将从页面树中的父节点继承|
+|/CropBox |rectangle|页面的裁剪框。这定义了在显示或打印页面时默认可见的页面区域。如果不存在，则将其值定义为与媒体框相同|
 
 媒体盒和其他框的矩形数据结构是四个数字的数组。这些定义了矩形的对角相对的角 - 数组的前两个元素是一个角的x和y坐标，后两个元素是另一个角的x和y坐标。
 通常，给出左下角和右上角。所以，例如：
@@ -142,12 +142,12 @@ endobj
 << /Type /Page /Parent 3 0 R /MediaBox [0 0 500 500] /Resources << >> >> endobj
 ```
 
-|Key|Value type|Value|
+|键|值类型|值|
 |---|---|---|
-|/Type*|name|Must be /Pages.|
-|/Kids*|array of indirect references|The immediate child page-tree nodes of this node.|
-|/Count*|integer|The number of page nodes (not other page tree nodes) which are eventual children of this node.|
-|/Parent|indirect reference to page tree node| 待补充|
+|/Type*|name|必须是/Pages|
+|/Kids*|间接引用数组|此节点的直接子页面树节点|
+|/Count*|整数|页节点（不是其他页面树节点）的数量，它们是此节点的最终子节点|
+|/Parent|间接引用页面树节点|引用此节点的父节点（此节点是其子节点）。如果不是页面树的根节点，则必须存在|
 
 在此树中，任何页面最多可以找到两个远离根节点的间接引用。
 
@@ -171,15 +171,15 @@ endobj
 
 |Portion |含义|
 |---|---|
-|YYYY |The year, in four digits, e.g., 2008.|
-|MM |The month, in two digits from 01 to 12.|
-|DD |The day, in two digits from 01 to 31.|
-|HH |The hour, in two digits from 00 to 23.|
-|mm |The minute, in two digits from 00 to 59.|
-|SS |The second, in two digits from 00 to 59.|
-|O |The relationship of local time to Universal Time, either +, - or Z. + signifies local time is later than UT, - earlier, and Z equal to Universal Time.|
-|HH' |The absolute value of the offset from Universal Time in hours, in two digits from 00 to 23. |
-|mm' |The absolute value of the offset from Universal Time in minutes, in two digits from 00 to 59.|
+|YYYY|年份，有四位数，例如2008年|
+|MM|月份，从01到12的两位数|
+|DD|天数，从01到31的两位数|
+|HH|小时，从00到23的两位数|
+|mm|分钟，从00到59两位数|
+|SS|秒钟，从00到59两位数|
+|O|本地时间与世界时的关系，+，- 或Z. +表示本地时间晚于UT， - 更早，Z等于世界时|
+|HH'|世界时的偏差绝对值，以小时为单位，以00到23的两位数表示 |
+|mm'|通用时间偏移的绝对值，以分钟为单位，从00到59两位数|
 
 一年之后的所有日期都是可选的。例如，（D：1999）完全有效。但是，很明显，如果省略一个部分，
 则必须省略后面的所有内容，否则结果将是模糊的。DD和MM的默认值为01，对于所有其他部分，默认值为零。

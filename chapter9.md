@@ -14,7 +14,7 @@
 
 完整的详细信息可以在*pdftk*的手册中找到 - 在本章中，我们仅提供示例所需的子集。
 
-## Merging Documents
+## 合并文档
 要合并文档，我们使用cat操作。这是默认操作，因此我们实际上不需要指定cat关键字。例如，要将三个文件的页面合并为一个，我们需要：
 `pdftk file1.pdf file1.pdf file3.pdf output output.pdf`
 
@@ -50,7 +50,7 @@ Pdftk允许我们选择从每个文档中获取哪些页面，以及每个输出
 * 合并文件书签，目的地，表格等的其他部分。一般来说，严格按页面生存的数据会自动生存，但文档范围的数据需要特定的合并支持。
 * 决定从何处获取元数据和PDF版本号（例如，使用输入中的最高PDF版本号并从第一个给定文件中获取元数据）。
 
-## Splitting Documents
+## 分割文档
 要从文档中选择页面，我们使用与合并相同的语法，因为我们的操作相当于只将一个文件与页面范围合并：
 `pdftk file1.pdf 2-20 output out.pdf`
 
@@ -76,8 +76,8 @@ Pdftk允许我们选择从每个文档中获取哪些页面，以及每个输出
 要正确执行最后一步，处理书签，目标和其他跨页对象以删除对不再出现在给定输出文件中的页面的引用非常重要，因为单个错误引用可能会导致源文件的整个对象 图表被包括在内，即使它们都不是必需的。
 
 
-## Stamps and Watermarks
-邮票是放置在另一个邮票上的PDF页面，以便组合页面内容。水印（*pdftk*称为背景）是相同的，但是标记位于现有页面内容下。如果输入PDF的页面具有彩色背景，则这不起作用，因为水印通常不会显示。
+## 图章和水印
+图章是放置在另一个邮票上的PDF页面，以便组合页面内容。水印（*pdftk*称为背景）是相同的，但是标记位于现有页面内容下。如果输入PDF的页面具有彩色背景，则这不起作用，因为水印通常不会显示。
 
 使用*pdftk*，可以使用图章和水印操作来实现，这些图章将图章放在给定范围内的所有页面上（或下面）。如果页面大小不同，则会缩放图章以适合和居中。
 
@@ -174,7 +174,7 @@ input_pw关键字可用于指定输入文件的所有者密码。密码通过使
 这里，“fred”是file1.pdf的密码，“查询”file2.pdf的密码。
 
 
-### Encrypting the Output
+### 加密输出
 *Pdftk*可以使用encrypt_40bit和encrypt_128bit关键字使用40位或128位RC4加密方法加密输出。
 我们可以使用owner_pw和user_pw关键字指定所有者和用户密码。例如，要使用所有者密码加密具有128位加密的文件，但使用空白用户密码：
 `pdftk input.pdf output output.pdf encrypt_128bit owner_pw fred`
@@ -199,7 +199,7 @@ AllFeatures (all of the above, plus top quality printing)
 `pdftk input.pdf output output.pdf encrypt_128bit allow FillIn owner_pw fred`
 
 
-## Compression
+## 压缩
 为了查看或编辑页面级内容（如图形运算符流），首先必须删除用于数据流的压缩。这可以通过pdftk uncompress修饰符来实现：
 ```
 pdftk compressed.pdf output uncompressed.pdf uncompress

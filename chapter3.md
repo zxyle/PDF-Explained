@@ -250,14 +250,14 @@ PDF文件由对象图组成，间接引用形成它们之间的链接。例3-1�
 
 反斜杠也可用于引入其他字符代码以实现可读性（参见表3-2）。
 
-|Character sequence|Meaning|
+|字符序列|含义|
 |---|---|
-|\n |Line feed|
-|\r |Carriage return|
-|\t |Horizontal tab|
-|\b |Backspace|
-|\f|Form feed|
-|\ddd|Character code in three octal digits|
+|\n |换行|
+|\r |回车|
+|\t |水平制表符|
+|\b |退格|
+|\f|换页符|
+|\ddd|三个八进制数字的字符代码|
 
 从文件中读取字符串后，转义的转义字符将产生形成字符串的字节序列，然后可以按照第45页的“文本字符串”中的描述进行解释。
 
@@ -352,17 +352,17 @@ endobj 对象的结束
 
 所有流必须是间接对象。流几乎总是使用各种机制进行压缩，如表3-3所示。
 
-|Method name|Description|
+|方法名称|描述|
 |---|---|
-|/ASCIIHexDecode|Produces one byte of uncompressed data for each pair of hexadecimal digits in the compressed data. > indicates end of data. Whitespace is ignored. This filter and /ASCII85Decode are intended to reduce data to 7 bits—/ASCII85Decode is more complicated, but more compact.|
-|/ASCII85Decode|This 7-bit encoding uses the printable characters ! through u and z. The sequence ~> indicates end of data.|
-|/LZWDecode|Implements Lempel-Ziv-Welch compression, as used by the TIFF image format.|
-|/FlateDecode|Flate compression, as used by the open source zlib library. Defined in RFC 1950. Both /LZWDecode and /FlateDecode can have predictors in the stream dictionary, which define postprocessing on the data to reverse pre- processing which was done when it was compressed.|
-|/RunLengthDecode|A simple byte-based run-length compressor.|
-|/CCITTFaxDecode|Implements Group 3 and Group 4 encoding, as used by fax machines. Works well on monochrome (1bpp) images, not for general data.|
-|/JBIG2Decode|A more modern, better compression mechanism for the kinds of data suitable for use with /CCITTFaxDecode, but also suitable for grayscale and color images and general data. Implements the JBIG2 compression method.|
-|/DCTDecode|JPEG lossy compression. Whole JPEG files can be put in here, complete with all the headers.|
-|/JPXDecode|JPEG2000 lossy and lossless compression. Limited to the JPX baseline set of features, with a few exceptions.|
+|/ASCIIHexDecode|为压缩数据中的每对十六进制数字生成一个字节的未压缩数据。>表示数据结束。空格被忽略。这个过滤器和/ASCII85Decode旨在将数据减少到7位 - /ASCII85Decode更复杂，但更紧凑|
+|/ASCII85Decode|这个7位编码使用可打印的字符！通过你和z。序列〜>表示数据结束|
+|/LZWDecode|实现Lempel-Ziv-Welch压缩，如TIFF图像格式所使用|
+|/FlateDecode|Flate压缩，由开源zlib库使用。在RFC 1950中定义。/LZWDecode和/FlateDecode都可以在流字典中具有预测变量，它们定义数据的后处理以反转在压缩时完成的预处理|
+|/RunLengthDecode|一个简单的基于字节的游程压缩器|
+|/CCITTFaxDecode|实现传真机使用的第3组和第4组编码。适用于单色（1bpp）图像，不适用于一般数据|
+|/JBIG2Decode|一种更现代，更好的压缩机制，适用于与/CCITTFaxDecode一起使用的各种数据，但也适用于灰度和彩色图像和一般数据。实现JBIG2压缩方法|
+|/DCTDecode|JPEG有损压缩。整个JPEG文件可以放在这里，包含所有标题|
+|/JPXDecode|JPEG2000有损和无损压缩。仅限于JPX基准功能集，但有一些例外|
 
 以下是压缩流的示例：
 ```
