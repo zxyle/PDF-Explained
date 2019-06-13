@@ -248,3 +248,5 @@ Adobe Reader在侧栏中显示附件如图7-4所示。
 
 ![](./images/figure%207-4.png)
 
+
+[目录](./README.md)&nbsp;|&nbsp;[下一章：加密文档](./chapter8.md)
