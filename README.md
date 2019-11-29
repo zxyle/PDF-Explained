@@ -29,7 +29,7 @@ PDF无处不在，无论是在线形式还是印刷形式，但很少有人利�
 * [译者注]()
 
 ## 示例文件及勘误表
-* 原书代码见[oreilly gitlab](https://resources.oreilly.com/examples/0636920021483/)
+* 原书代码见[O'Reilly gitlab](https://resources.oreilly.com/examples/0636920021483/)
 * 代码见[examples](./examples)目录
 * [勘误表](https://www.oreilly.com/catalog/errata.csp?isbn=9781449310028)
 
