@@ -40,14 +40,19 @@ PDF文件至少包含三种不同的语言:
 ```
 
 这个词典包含五个条目：
+
 /Type /Page
     名称/Page与字典键/Type相关联。
+
 /MediaBox [0 0 612 792]
     四个整数[0 0 612 792]的数组与字典键/MediaBox相关联。
+
 /Resources 3 0 R
     对象编号3与字典键/Resources相关联。
+
 /Parent 1 0 R
     对象编号1与字典键/Parent对象相关联。
+
 /Contents [4 0 R]
     间接引用[4 0 R]的单元素数组与字典键/Contents相关联。
 
