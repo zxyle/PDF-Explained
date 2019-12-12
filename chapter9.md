@@ -4,7 +4,7 @@
 它具有合并，拆分和标记文档以及设置和读取元数据的功能。
 
 ## 命令行语法
-*Pdftk*有一个不寻常的命令行界面，其中元素通常必须以特定顺序出现。
+*pdftk*有一个不寻常的命令行界面，其中元素通常必须以特定顺序出现。
 我们可以按照指定的顺序将它们分成四组：
 
 1. 输入文件或文件，以及可能的输入密码。
@@ -34,7 +34,7 @@ Pdftk允许我们选择从每个文档中获取哪些页面，以及每个输出
 例如:
 `pdftk A=file.pdf B=file2.pdf A1 A B output out.pdf`
 
-### What Happens when Files are Merged
+### 合并文件时会发生什么
 要以pdftk的方式执行PDF文件的简单合并，可能会执行以下步骤：
 1. 将每个文件读入内存并创建PDF对象的图形，可能是懒惰的（即，根据需要解析对象，因为如果仅包括某些页面，则不需要所有这些对象）。
 1. 重新编号对象图中的对象，使它们互斥，即1 ... p，p + 1 ... q，q + 1 ... r等。
@@ -65,7 +65,7 @@ Pdftk允许我们选择从每个文档中获取哪些页面，以及每个输出
 突发操作还将文档的元数据写入文件doc-data.txt。我们在第111页的“提取和设置元数据”中考虑了此功能。
 
 
-### What Happens when Files are Split
+### 分割文件后会发生什么
 为了将PDF分成一个或多个页面的几个部分，像*pdftk*这样的程序将采取以下步骤：
 
 1. 将输入文档加载并解析为对象图，可能是懒惰的（这样就不必处理任何输出中不会出现的页面）。
@@ -84,7 +84,7 @@ Pdftk允许我们选择从每个文档中获取哪些页面，以及每个输出
 例如:
 `pdftk file.pdf stamp stamp.pdf output output.pdf`
 
-### How a Stamp is Added
+### 如何添加图章
 当像*pdftk*这样的程序为输入PDF添加图章时，必须执行以下步骤：
 
 1. 将两个文件加载并解析为PDF对象图。
@@ -94,7 +94,7 @@ Pdftk允许我们选择从每个文档中获取哪些页面，以及每个输出
 1. 现在可以将PDF写入输出文件。
 
 
-## Extracting and Setting Metadata
+## 提取和设置元数据
 *Pdftk*可以将文档的元数据（作者，标题等）提取为文本文件，可以是ASCII格式（非ASCII字符编码为XML样式的数字实体），也可以是Unicode UTF8。
 这是通过dump_data或dump_data_utf8关键字实现的。例如：
 `pdftk input.pdf dump_data output data.txt`
@@ -149,7 +149,7 @@ update_info操作可用于执行反向操作：设置上面列出的信息。还
 `pdftk input.pdf update_info data.txt output output.pdf`
 
 
-## File Attachments
+## 文件附件
 PDF文件可以在文档或页面级别添加附件。PDF附件的技术基础将在[第7章](./chapter7.md)中讨论。要在文件级别添加附件：
 `pdftk input.pdf attach_files file1.xls file2.xls output output.pdf`
 
@@ -161,10 +161,10 @@ PDF文件可以在文档或页面级别添加附件。PDF附件的技术基础�
 
 这会将附件在其原始文件名下写入输出目录中。
 
-## Encryption and Decryption
+## 加密与解密
 Pdftk具有读取加密文件和加密输出文件的功能。
 
-### Decrypting Input Files
+### 解密输入文件
 input_pw关键字可用于指定输入文件的所有者密码。密码通过使用句柄与输入相关联，与页面范围一样。
 如果没有给出句柄，则假定密码的输入顺序与输入文件的顺序相同。如果给出了用户密码，则大多数pdftk功能将不可用，因为PDF安全模型会阻止它。
 
