@@ -165,7 +165,7 @@ endobj
 
 日期字符串的格式为：
 
-```(D:YYYYMMDDHHmmSSOHH'mm')```
+`(D:YYYYMMDDHHmmSSOHH'mm')`
 
 其中括号表示通常的字符串。该日期的其他部分在表4-6中进行了总结。
 
@@ -186,7 +186,7 @@ endobj
 
 例如：
 
-```(D:20060926213913+02'00')```
+`(D:20060926213913+02'00')`
 
 代表2006年9月26日下午9:39:13，比世界时间早两个小时的时区。
 
@@ -194,6 +194,7 @@ endobj
 这是一个手动创建的文本，由*pdftk*使用第2章介绍的方法处理成有效的PDF文件。
 它是一个三页文档，包含文档信息字典和页面树。
 图4-3显示了Acrobat Reader中显示的此文档。图4-4是相应的对象图。
+
 ```
 %PDF-1.0 文件头
 1 0 obj Top-level of page tree: has two children—page one and an intermediate page tree node 
