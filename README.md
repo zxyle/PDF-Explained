@@ -8,8 +8,18 @@
 ## 原书简介
 这是对广泛使用的可移植文档格式的平易近人的介绍。
 PDF无处不在，无论是在线形式还是印刷形式，但很少有人利用这些有用的功能或掌握这种格式的细微差别。
-这本简明的书籍为程序员，高级用户提供了世界领先的页面描述语言的动手实践。以及搜索，电子出版和印刷行业的专业人士，
+这本简明的书籍为程序员，高级用户提供了世界领先的页面描述语言(pdf)的动手实践。以及搜索，电子出版和印刷行业的专业人士，
 有大量示例，本书是你完全理解PDF所需的文档。
+
+## 原书概要
+- 在文本编辑器中从头开始构建简单的PDF文件
+- 了解PDF文件的布局和内容，以及其对象的语法
+- 检查PDF对象的逻辑结构，并了解如何将页面及其资源安排到文档中
+- 在PDF中创建矢量图形和光栅图像，并处理透明度，色彩空间和图案
+- 探索pdf运算符以构建和显示文本字符串
+- 快速了解书签，元数据，超链接，注释和文件附件
+- 了解PDF中的加密和文档权限如何工作
+- 使用pdftk程序从命令行处理PDF文件
 
 ![](./images/logo.png)
 
@@ -31,13 +41,13 @@ PDF无处不在，无论是在线形式还是印刷形式，但很少有人利�
 ## 示例文件及勘误表
 * 原书代码见[O'Reilly repo](https://resources.oreilly.com/examples/0636920021483/)
 * 代码见[examples](./examples)目录
-* [勘误表](https://www.oreilly.com/catalog/errata.csp?isbn=9781449310028)
+* [官方勘误表](https://www.oreilly.com/catalog/errata.csp?isbn=9781449310028)
 
 
 
 ## 参考资源
 * [Amazon英文版购买](https://www.amazon.com/PDF-Explained-Standard-Document-Exchange/dp/1449310028)
-* [pdf1.7参考](./resources/pdf_reference_1.7.pdf)
+* [pdf1.7标准参考](./resources/pdf_reference_1.7.pdf)
 
 ## 当前翻译状态
 持续翻译中... 欢迎[PR](https://github.com/zxyle/PDF_Explained/pulls)或者[ISSUE](https://github.com/zxyle/PDF_Explained/issues)。
