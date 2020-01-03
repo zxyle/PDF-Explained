@@ -318,7 +318,7 @@ PDF可用于光学字符识别（OCR），允许从原始文本创建
 它支持PDF的所有版本和功能，并在大多数平台上附带浏览器插件。
 它适用于Microsoft Windows，Mac OS X，Linux，Solaris和Android。
 
-* [Preview]是预安装在Mac OS X上用于PDF文档的PDF查看器和浏览器插件。它功能强大，速度非常快，
+* [Preview](https://en.wikipedia.org/wiki/Preview_(macOS))是预安装在Mac OS X上用于PDF文档的PDF查看器和浏览器插件。它功能强大，速度非常快，
 但不支持Acrobat Reader的所有功能。许多人坚持使用Preview作为PDF文件的默认应用程序，但也安装了Acrobat Reader。
 * [Xpdf](http://foolabs.com/xpdf)是Unix的开源PDF查看器。它支持合理的PDF子集。
 * [gv](http://pages.cs.wisc.edu/~ghost/gv/index.htm)是GhostScript的PostScript和PDF查看器前端（见下文）。它可以呈现几乎所有文档的文本和图形内容。
