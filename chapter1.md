@@ -333,4 +333,4 @@ PDF可用于光学字符识别（OCR），允许从原始文本创建
 有关Adobe和开源PDF软件的完整讨论，请参见[第10章](./chapter10.md)。
 
 
-[目录](./README.md)&nbsp;|&nbsp;[下一章：构建一个简单PDF文件](./chapter2.md)
+[目录](./README.md)&nbsp;|&nbsp;[上一章：前言](./preface.md)|&nbsp;[下一章：构建一个简单PDF文件](./chapter2.md)

@@ -399,4 +399,4 @@ endobj
 * [Adobe字体和类型技术中心](http://www.adobe.com/devnet/opentype.html)是各种字体格式和编码系统的历史和当前文档的集合，包括用于编码外语的预编码方法。
 
 
-[目录](./README.md)&nbsp;|&nbsp;[下一章：文档元数据和导航](./chapter7.md)
+[目录](./README.md)&nbsp;|[上一章：图形](./chapter5.md)|&nbsp;[下一章：文档元数据和导航](./chapter7.md)

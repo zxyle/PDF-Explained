@@ -56,7 +56,7 @@ pdftk hello.pdf output encrypted.pdf encrypt_40bit owner_pw fred
 
 ![](./images/figure%208-4.png)
 
-例8-1显示了我们新文件的内容。看看您是否能够发现示例2-2中标准hello.pdf文件的差异。
+例8-1显示了我们新文件的内容。看看你是否能够发现示例2-2中标准hello.pdf文件的差异。
 ```
 Example 8-1. An encrypted file
 %PDF-1.1
@@ -179,4 +179,4 @@ startxref
 原始读取的加密参数。因此可以重建加密字典（包括/O和/U条目）。
 
 
-[目录](./README.md)&nbsp;|&nbsp;[下一章：使用Pdftk](./chapter9.md)
+[目录](./README.md)&nbsp;|[上一章：文档元数据和导航](./chapter7.md)|&nbsp;[下一章：使用Pdftk](./chapter9.md)

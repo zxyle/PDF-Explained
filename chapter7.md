@@ -101,7 +101,7 @@ XML使用由可扩展元数据平台（XMP）定义的标记，该标准在Adobe
 元数据的方法，使得不能理解封闭格式的程序仍然可以提取XMP数据。有关XMP格
 式的详细信息，请访问[Adobe网站](http://www.adobe.com/products/xmp/)。
 
-例7-2中显示了示例XMP元数据。您可以从文档信息词典中看到一些熟悉的条目。
+例7-2中显示了示例XMP元数据。你可以从文档信息词典中看到一些熟悉的条目。
 还要注意序列/Type /Metadata /Subtype /XML，它将此流标识为XMP元数据。通过使用文档目录中的/Metadata条目将元数据流添加到文档中。
 
 ```
@@ -249,4 +249,4 @@ Adobe Reader在侧栏中显示附件如图7-4所示。
 ![](./images/figure%207-4.png)
 
 
-[目录](./README.md)&nbsp;|&nbsp;[下一章：加密文档](./chapter8.md)
+[目录](./README.md)&nbsp;|[上一章：文本和字体](./chapter6.md)|&nbsp;[下一章：加密文档](./chapter8.md)

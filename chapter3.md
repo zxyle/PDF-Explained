@@ -494,4 +494,4 @@ PDF文件非常快，因为它只是将对象图展平为一系列字节。
 1. 编写trailer，trailer字典和文件结束标记
 
 
-[目录](./README.md)&nbsp;|&nbsp;[下一章：文档结构](./chapter4.md)
+[目录](./README.md)&nbsp;|[上一章：构建一个简单的PDF](./chapter2.md)|&nbsp;[下一章：文档结构](./chapter4.md)

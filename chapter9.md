@@ -210,4 +210,4 @@ pdftk compressed.pdf output uncompressed.pdf uncompress
 pdftk uncompressed.pdf output compressed.pdf compress
 ```
 
-[目录](./README.md)&nbsp;|&nbsp;[下一章：PDF软件和文档](./chapter10.md)
+[目录](./README.md)&nbsp;|[上一章：加密文档](./chapter8.md)|&nbsp;[下一章：PDF软件和文档](./chapter10.md)
