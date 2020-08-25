@@ -1,4 +1,4 @@
-# *PDF Explained* （译作《PDF 解释》）
+# *PDF Explained* （译作《PDF 讲解》）
 
 ## 项目简介
 这是*PDF Explained*的非官方中文翻译版, 大体已经完成, 还需要完善很多细节部分。
