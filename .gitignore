@@ -3,3 +3,7 @@
 *.iml
 out
 gen
+
+
+node_modules/
+_book/

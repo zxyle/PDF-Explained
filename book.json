@@ -1,0 +1,13 @@
+{
+  "title": "PDF解释",
+  "language": "zh-hans",
+  "plugins": [
+    "github",
+    "back-to-top-button"
+  ],
+  "pluginsConfig": {
+    "github": {
+      "url": "https://github.com/zxyle/PDF-Explained"
+    }
+  }
+}
