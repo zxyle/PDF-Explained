@@ -21,12 +21,12 @@ PDF文件至少包含三种不同的语言:
 ### Document Content
 文档内容包括由以下元素构建的对象：
 
-* 名称，写为/Name
-* 整数，如50
-* 带括号的字符串，如(The Quick Brown Fox)
-* 引用其他对象，如2 0 R，对对象2的引用。
-* 对象的数组（有序集合），如[50 30 /Fred]，是一个包含三个项目的数组，按顺序：50,30和/Fred。
-* 字典（从名称到对象的无序映射），如<</Three 3 /Five 5>>，映射/Three到3和/Five到5。
+* 名称，写为 `/Name`
+* 整数，如 `50`
+* 带括号的字符串，如 `(The Quick Brown Fox)`
+* 引用其他对象，如 `2 0 R`，对对象2的引用。
+* 对象的数组（有序集合），如 `[50 30 /Fred]`，是一个包含三个项目的数组，按顺序：`50`, `30` 和 `/Fred`。
+* 字典（从名称到对象的无序映射），如 `<</Three 3 /Five 5>>`，映射 `/Three` 到 `3` 和 `/Five` 到 `5`。
 * stream(流)，它由字典和一些二进制数据组成。这些用于存储PDF图形运算符的流，以及其他二进制数据，如图像和字体。
 
 例如，这是一个页面对象，它是一个包含许多项目的字典，每个与名称相关联：
@@ -41,31 +41,33 @@ PDF文件至少包含三种不同的语言:
 
 这个词典包含五个条目：
 
-/Type /Page
-    名称/Page与字典键/Type相关联。
+`/Type /Page`
+    名称 `/Page` 与字典键 `/Type` 相关联。
 
-/MediaBox [0 0 612 792]
-    四个整数[0 0 612 792]的数组与字典键/MediaBox相关联。
+`/MediaBox [0 0 612 792]`
+    四个整数 `[0 0 612 792]` 的数组与字典键 `/MediaBox` 相关联。
 
-/Resources 3 0 R
-    对象编号3与字典键/Resources相关联。
+`/Resources 3 0 R`
+    对象编号3与字典键 `/Resources` 相关联。
 
-/Parent 1 0 R
-    对象编号1与字典键/Parent对象相关联。
+`/Parent 1 0 R`
+    对象编号1与字典键 `/Parent` 对象相关联。
 
-/Contents [4 0 R]
-    间接引用[4 0 R]的单元素数组与字典键/Contents相关联。
+`/Contents [4 0 R]`
+    间接引用 `[4 0 R]` 的单元素数组与字典键 `/Contents` 相关联。
 
 
 ### Page Content
 页面内容是运算符列表，每个运算符前面都有零个或多个
 操作数。这是一系列操作符，用于在36号字体选择/F0字体并放置
 当前位置的文字:
+
 ```
-  /F0 36.0 Tf
-  (Hello, World!) Tj
+/F0 36.0 Tf
+(Hello, World!) Tj
 ```
-这里，Tf和Tj是运算符，而/F0,36.0和(Hello, World!)是操作数。
+
+这里，`Tf` 和 `Tj` 是运算符，而 `/F0`, `36.0` 和 `(Hello, World!)` 是操作数。
 你可以看到一些语法元素（例如，名称和字符串）是共享的跨页面内
 容和文档内容使用的语言。
 
@@ -111,31 +113,32 @@ PDF文件至少包含三种不同的语言:
 文件头通常由两行组成。第一行将文件标识为PDF和
 给出它的版本号：
 ```
-%PDF-1.0 PDF版本号为1.0的文件头
+%PDF-1.0    % PDF 版本号为 1.0 的文件头
 ```
 第二行很难输入文本编辑器，因为它包含不可打印的字符。
 我们将有*pdftk*为我们这样做。
 
 ### 主要对象
 到文件的主体-对象。第一个是Page列表，它是链接到文档中页面对象的字典。
+
 ```
-1 0 obj 对象1
-<< /Type /Pages 这是一个页面列表
-   /Count 1 只有一页
-   /Kids [2 0 R] 页面对象编号列表。这里只是对象2。
+1 0 obj % 对象1
+<< /Type /Pages     % 这是一个页面列表
+   /Count 1         % 只有一页
+   /Kids [2 0 R]    % 页面对象编号列表。这里只是对象2
 >>
-endobj 对象1结束
+endobj  % 对象1结束
 ```
 
 接下来是页面。再次，它是一个字典。它包含纸张大小，间接
 引用返回页面列表，以及图形内容和资源。
 ```
 2 0 obj
-<< /Type /Page 这是一个页面
-   /MediaBox [0 0 612 792] 纸张尺寸为美国信肖像（612点x792点）
-   /Resources 3 0 R 对象3的资源引用
-   /Parent 1 0 R 引用备份到父页面列表
-   /Contents [4 0 R] 图形内容在对象4中
+<< /Type /Page              % 这是一个页面
+   /MediaBox [0 0 612 792]  % 纸张尺寸为美国信肖像（612点x792点）
+   /Resources 3 0 R         % 对象3的资源引用
+   /Parent 1 0 R            % 引用备份到父页面列表
+   /Contents [4 0 R]        % 图形内容在对象4中
 >>
 endobj
 ```
@@ -144,9 +147,9 @@ endobj
 示例包含单个字体，我们将使用该字体在页面上写入一些文本。
 ```
 3 0 obj
-<< /Font 字体字典
-     << /F0 只有一种字体，称为/F0
-          << /Type /Font 这三行引用了内置字体Times Italic
+<< /Font  % 字体字典
+     << /F0  % 只有一种字体，称为/F0
+          << /Type /Font  % 这三行引用了内置字体Times Italic
             /BaseFont /Times-Italic
             /Subtype /Type1 >>
      >>
@@ -156,25 +159,27 @@ endobj
 
 ### 图形内容
 页面内容流包含用于放置文本和图形的一系列运算符
-在页面上。它通过页面字典中的/Contents条目链接。
+在页面上。它通过页面字典中的 `/Contents` 条目链接。
 
 流对象由字典后跟原始数据流组成，包含一个
 一系列PDF操作数和运算符。通常，这将被压缩以减少
 文件大小，但我们手动输入，所以我们不压缩它。
 我们还必须以字节为单位指定流的长度-*pdftk*将为我们添加所需的
-/Length条目到流字典。
+ `/Length` 条目到流字典。
+
 ```
-4 0 obj 页面内容流
+4 0 obj     % 页面内容流
 << >>
-stream 流的开始
-1. 0. 0. 1. 50. 700. cm 位置在（50,700）
-BT 开始文本块
- /F0 36. Tf 在36pt选择/F0字体
- (Hello, World!) Tj 放置文本字符串
-ET 结束文本块
-endstream 流结束
+stream      % 流的开始
+1. 0. 0. 1. 50. 700. cm % 位置在（50,700）
+BT  % 开始文本块
+ /F0 36. Tf         % 在36pt选择/F0字体
+ (Hello, World!) Tj % 放置文本字符串
+ET  % 结束文本块
+endstream   % 流结束
 endobj
 ```
+
 页面上的图形运算符流的结果如图2-2所示。
 ![](./images/figure%202-2.png)
 
@@ -183,23 +188,25 @@ endobj
 对象图。接下来是交叉引用表，它给出了字节偏移量
 文件中的每个对象。我们将*pdftk*为我们填写此内容。最后两行：一行
 给出交叉引用表开始的字节偏移量（我们写0和pdftk将
-替换它为我们）。最后，文件结束标记%%EOF。
+替换它为我们）。最后，文件结束标记 `%%EOF`。
+
 ```
 5 0 obj
-<< /Type /Catalog 文件目录
-   /Pages 1 0 R 参考页面列表
+<< /Type /Catalog   % 文件目录
+   /Pages 1 0 R     % 参考页面列表
 >>
 endobj
-xref 我们跳过了交叉引用表的开始
+xref    % 我们跳过了交叉引用表的开始
 0 6
 trailer
-<< /Size 6 交叉引用表中的行数（对象数加1）
-   /Root 5 0 R 参考文档目录
+<< /Size 6      % 交叉引用表中的行数（对象数加1）
+   /Root 5 0 R  % 参考文档目录
 >>
 startxref
-0 xref表开始的字节偏移量，我们将其设置为0
-%%EOF 文件结束标记
+0       % xref表开始的字节偏移量，我们将其设置为0
+%%EOF   % 文件结束标记
 ```
+
 现在我们准备将这些部分放在一起了
 
 
@@ -210,8 +217,8 @@ startxref
 例2-1。无效的hello-broken.pdf PDF文件适合手动创建
 
 ```
-%PDF-1.0 文件header
-1 0 obj 主要对象
+%PDF-1.0    % 文件header
+1 0 obj     % 主要对象
 << /Type /Pages
    /Count 1
    /Kids [2 0 R]
@@ -234,7 +241,7 @@ endobj
      >>
 >>
 endobj
-4 0 obj 图形内容
+4 0 obj     % 图形内容
 << >>
 stream
 1. 0. 0. 1. 50. 700. cm
@@ -244,7 +251,7 @@ BT
 ET
 endstream
 endobj
-5 0 obj 目录，交叉引用表和trailer
+5 0 obj     % 目录，交叉引用表和trailer
 << /Type /Catalog
    /Pages 1 0 R
 >>
@@ -262,6 +269,13 @@ startxref
 
 就目前而言，hello-broken.pdf不是有效的PDF文件，甚至也不是Adobe Reader（其中
 相当容忍格式错误的文件）将无法应对。
+
+> 译注：
+> Adobe Acrobat 2018 已经可以直接打开 `hello-broken.pdf` 文件。
+> 打开后关闭时，会提示是否需要保存。查看保存的 PDF 发现使用 PDF 1.6 规范并且已经线性化。
+> 
+> 开源的 SumatraPDF v3.2 也可以直接打开。
+
 我们可以使用免费的*pdftk*工具来修复*hello-broken.pdf*文件，其中包含缺少的细节，
 将输出写入*hello.pdf*：
 
@@ -270,10 +284,11 @@ startxref
 *pdftk*读取文件及其对象，并为缺失或计算正确的数据
 我们写的错误部分，并生成示例2-2中显示的有效文件。注意
 一些语法的间距和格式已经改变 - 每个PDF制做人对此有不同的选择。
+
 *例2-2。完成的PDF文件hello.pdf，由pdftk修复*
 ```
 %PDF-1.0
-%âãÏÓ  1
+%âãÏÓ       % ❶
 1 0 obj
 <<
 /Kids [2 0 R]
@@ -306,15 +321,15 @@ endobj
 endobj
 4 0 obj
 <<
-/Length 65  2
+/Length 65  % ❷
 >>
-Putting it Together | 21
 stream
 1. 0. 0. 1. 50. 700. cm
 BT
  /F0 36. Tf
  (Hello, World!) Tj
 ET
+
 endstream
 endobj
 5 0 obj
@@ -323,7 +338,7 @@ endobj
 /Type /Catalog
 >>
 endobj xref
-0 6  3
+0 6         % ❸
 0000000000 65535 f
 0000000015 00000 n
 0000000074 00000 n
@@ -331,12 +346,13 @@ endobj xref
 0000000291 00000 n
 0000000409 00000 n
 trailer
+
 <<
 /Root 5 0 R
 /Size 6
 >>
 startxref
-459  4
+459         % ❹
 %%EOF
 ```
 
