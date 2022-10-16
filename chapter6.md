@@ -30,9 +30,9 @@ PDF采用中间立场 - 保留了字体和小尺寸文本布局的思想，
 |---|---|---|---|---|
 |Tc|Character spacing|charSpace|Tc将字符间距设置为charSpace，以未缩放的文本空间单位表示|0|
 |Tw|Word spacing|wordSpace|Tw将单词间距设置为wordSpace，以未缩放的文本单位表示|0|
-|Th |Horizontal spacing|scale|Tz将水平缩放设置为（scale / 100）|100 (normal spacing)|
+|Th |Horizontal spacing|scale|Tz将水平缩放设置为（scale / 100）|100 (即正常间距)|
 |Tl|Leading|leading|TL设置前导的文本，以未缩放的文本空间单位表示|0|
-|Tf, Tfs |Font, Font Size|font, size|Tf选择尺寸大小点的字体字体|None. Must be specified.|
+|Tf, Tfs |Font, Font Size|font, size|Tf选择尺寸大小点的字体字体|没有默认值，但必须进行指定|
 |Tmode| Rendering Mode|render|Tr将文本渲染模式设置为渲染，即整数|0|
 |Trise|Rise|rise|Ts将文本上升设置为上升，以未缩放的文本空间单位表示|0|
 
