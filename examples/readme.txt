@@ -1,20 +1,17 @@
-PDF Explained Examples
-======================
+《PDF 解析》示例
+=======================
 
-These examples, arranged by chapter, are the same ones used to create the
-figures in the book. Each directory contains a readme file which explains the
-contents.
+这些示例按照章节分类在各个文件夹中，书中出现的图片就是从这些文件中得来的。
+每个目录都包含一个 readme.txt 文件，其中简述了各自目录中每个文件的具体内容。
 
-They mostly have uncompressed contents, so you can open them in a text editor
-and read PDF objects and graphics streams.
-
-On Microsoft Windows, you should use a better text editor than Notepad, so that
-line endings are displayed properly. For example, the free Notepad++:
+这些示例文件大多具有未压缩的内容，因此您可以直接使用文本编辑器打开它们并读取
+PDF 对象和图形流。
+在 Windows 上，建议使用比系统自带记事本更好的文本编辑器来打开这些 PDF 文件，
+以保证行尾能正确显示。可以使用例如，免费的 Notepad++ 来打开：
 
 http://notepad-plus-plus.org/
 
-Several of the examples use pdftk to convert manually created documents into
-fully valid PDFs. Pdftk can be downloaded from:
+另外，其中部分示例是教你使用 pdftk 将手动创建的文档转换为完整有效的 PDF 文件的。
+而 pdftk 可以通过下面的链接下载：
 
 http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/
-

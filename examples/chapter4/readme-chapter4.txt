@@ -1,14 +1,14 @@
-Chapter 4: Document Structure
-=============================
+第 4 章：文档结构
+==============================
 
-The file threepages-source.pdf is a manually created, invalid PDF describing a
-three page document with page rotations and a document information dictionary.
-It has been annotated with PDF comments. Open it in a text editor.
+threepages-source.pdf 是手动创建的无效 PDF 文件，存有三页文档信息，
+且带有页面旋转和文档信息字典。此文件代码已使用 PDF 注释进行过注释，
+您可以在文本编辑器中打开它，并查看有关注释。
 
-The file threepages.pdf is a fully valid PDF, generated from
-threepages-source.pdf with the following command:
+threepages.pdf 则是一个完全有效的 PDF 文件，由 threepages-source.pdf 
+生成，可以参考以下命令实现：
 
 pdftk threepages-source.pdf output threepages.pdf
 
-It can be opened in a PDF viewer. You can also open it in a text editor to see
-what pdftk has added.
+它可以在 PDF 查看器中打开。您同样也可以在文本编辑器中打开它，看看 pdftk 
+添加了些什么。
