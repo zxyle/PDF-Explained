@@ -5,7 +5,7 @@
 的相同PDF，并以相同的方式使用*pdftk*处理成有效的
 PDF文档。所有示例都包含在在线资源中。
 
-## Looking at Content Streams
+## Looking at Content Streams 查看内容流
 PDF页面由一个或多个内容流组成，由页面对象中的/Contents条目定义，
 以及由/Resources条目定义的共享资源集。在我们的所有示例中，
 只有一个内容流。多个内容流等同于包含其连接内容的单个流。
@@ -27,9 +27,9 @@ endobj
 这是关联的内容流，由流字典和流数据组成。
 ```
 2 0 obj
-<< /Length 18 >> 流字典
+<< /Length 18 >> % 流字典
 stream
-200 150 m 600 450 l S 流数据
+200 150 m 600 450 l S % 流数据
 endstream
 endobj
 ```
@@ -44,13 +44,13 @@ endobj
 
 Example 5-1. Skeleton PDF listing for examples in this chapter
 ```
-%PDF-1.0 PDF文件头
-1 0 obj 页面树
+%PDF-1.0 % PDF文件头
+1 0 obj % 页面树
 << /Kids [2 0 R]
   /Type /Pages
   /Count 1 >>
 endobj
-2 0 obj 页面对象
+2 0 obj % 页面对象
 << /Rotate 0
    /Parent 1 0 R
    /MediaBox [0 0 792 612] 
@@ -59,27 +59,27 @@ endobj
    /Contents [4 0 R]
 >>
 endobj
-3 0 obj 资源
+3 0 obj % 资源
 << >>
-4 0 obj 页面内容流
+4 0 obj % 页面内容流
 << /Length 19 >>
 stream
 200 150 m 600 450 l S 
 endstream
 endobj
-5 0 obj 文件目录
+5 0 obj % 文件目录
 << /Pages 1 0 R
    /Type /Catalog 
 >>
-endobj xref 骨架交叉引用表
+endobj xref % 骨架交叉引用表
 0 6
-trailer 文件尾字典
+trailer % 文件尾字典
 << /Root 5 0 R
    /Size 6 
 >>
 startxref
 0
-%%EOF 文件结束标记
+%%EOF % 文件结束标记
 ```
 内容流几乎总是被压缩，因此要检查现有文档的内容流，我们可以使用*pdftk*解压缩操作。例如，命令：
 ```
@@ -87,7 +87,7 @@ pdftk input.pdf decompress output output.pdf
 ```
 将input.pdf写入output.pdf，并将流解压缩。
 
-![](./images/figure%205-1.png)
+![图 5-1](./images/figure%205-1.png)
 
 ## 运算符和图形状态
 内容流由一系列运算符组成，每个运算符前面都有零个或多个操作数。
@@ -112,14 +112,14 @@ pdftk input.pdf decompress output output.pdf
 |当前的转换矩阵|矩阵|将默认用户坐标转换为设备坐标的矩阵|
 |填色|颜色|黑|
 |线条颜色|颜色|黑|
-|线宽|real|1.0|
+|线宽|实数（小数）|1.0|
 |路径连接样式|整数|Mitered joins (0)|
 |Cap样式|整数|Square butt caps (0)|
 |线划线图案|整数数组|实线|
 |当前剪切路径|路径|空路径|
 |混合模式|名称或数组|正常|
-|Soft mask|名字或字典|None|
-|透明度常数|real|1.0（完全不透明）|
+|软遮罩|名字或字典|None|
+|透明度常数|实数（小数）|1.0（完全不透明）|
 |Alpha source|布尔|false|
 
 ## 构建和绘制路径
@@ -129,18 +129,16 @@ pdftk input.pdf decompress output output.pdf
 让我们使用一些路径构造，描边和线属性操作符来构建一个简单的图形流：
 
 ```
-100 100 m 300 200 l 700 100 l Move to (100, 100), line to (300, 200), line to (700, 100) 
-S Stroke the line
-8 w 将线宽从默认值（1.0）更改为8.0
-1 J 将行结束上限从默认方块（代码0）更改为舍入（代码1）
-100 200 m 300 300 l 700 200 l 定义新路径，相同的形状，但在页面上方100个pts
-S Stroke the new line
-[20] 0 d 改为20pt破折号
-100 300 m 300 400 l 700 300 l 定义新路径, same shape but another 100pts higher up the page S Stroke the new line
+100 100 m 300 200 l 700 100 l % 从坐标 (100, 100) 到 (300, 200) 再到 (700, 100) 创建一条 S 划线
+8 w % 将线宽从默认值（1.0）更改为8.0
+1 J % 将行结束上限从默认方块（代码0）更改为舍入（代码1）
+100 200 m 300 300 l 700 200 l % 定义新路径，相同的形状，但在页面上比之前高100点（100pts）处创建一条新的 S 划线
+[20] 0 d % 改为20pt破折号
+100 300 m 300 400 l 700 300 l % 定义新路径，相同的形状，但在页面上再高100点（100pts）处创建一条新的 S 划线
 ```
 
 结果如图5-2所示。
-![](./images/figure%205-2.png)
+![图 5-2](./images/figure%205-2.png)
 
 我们使用m运算符移动到新路径的开头，并使用l运算符形成两条线。
 请注意，此时没有绘制任何内容 - 只有当我们使用S运算符来
@@ -180,8 +178,8 @@ w运算符将图形状态中的线宽设置为8个点。J运算符将行结束�
 ### 贝塞尔曲线
 除了直线，我们还可以绘制曲线。
 有许多不同的可能方案来定义曲线，
-但业界已经确定了Bézier曲线，
-以汽车工程师Pierre Bézier的名字命名。
+但业界已经确定了贝塞尔（Bézier）曲线，
+以汽车工程师皮埃尔·贝塞尔（Pierre Bézier）的名字命名。
 它们易于操作并且可以用鼠标在屏幕上进行操作，
 相对容易以任何分辨率或精度绘制，并且易于数学定义。
 
@@ -198,17 +196,17 @@ w运算符将图形状态中的线宽设置为8个点。J运算符将行结束�
 我们使用m运算符将当前点移动到曲线的起点。
 c运算符再采用三个坐标：第一个控制点，第二个控制点和终点。
 
-有关Bézier曲线的更多信息，请参阅图形文本 - 请参阅第119页的“PDF和图形文档”。
+有关贝塞尔（Bézier）曲线的更多信息，请参阅图形文本 - 请参阅[第10章](./chapter10.md)的“PDF和图形文档”。
 
-![](./images/figure%205-3.png)
+![图 5-3](./images/figure%205-3.png)
 
-#### 用贝塞尔曲线绘制圆圈
-有趣的是，不可能在PDF中绘制精确的圆圈。
-但我们可以使用几条Bézier曲线来近似地逼近一条曲线。
+#### 用贝塞尔曲线绘制圆形
+有趣的是，我们虽然不能在PDF中直接精确地绘制圆形。
+但我们可以使用几条贝塞尔（Bézier）曲线来近似地逼近一条曲线。
 我们将使用四条对称曲线（最小数量以获得良好结果），每个象限一条。
 对于以（1,0）为中心的单位圆的样本象限，坐标如图5-4所示。数字k约为0.55228。
 
-![](./images/figure%205-4.png)
+![图 5-4](./images/figure%205-4.png)
 
 
 ### 填充形状和绕组规则
@@ -216,13 +214,13 @@ c运算符再采用三个坐标：第一个控制点，第二个控制点和终�
 可以填充和描边路径。图5-5显示了使用以下代码填充和描边的形状：
 ```
 2.0 w
-0.75 g 将填充颜色更改为浅灰色
-250 250 m 移动到路径的开头
-350 350 450 450 550 250 c 第一条曲线
-450 250 350 200 y 第二条曲线
-h B 关闭并填充
+0.75 g % 将填充颜色更改为浅灰色
+250 250 m % 移动到路径的开头
+350 350 450 450 550 250 c % 第一条曲线
+450 250 350 200 y % 第二条曲线
+h B % 封闭路径并填充
 ```
-
+![图 5-5](./images/figure%205-5.png)
 我们使用g运算符来设置填充颜色。这在第60页的“颜色和颜色空间”中进行了解释。
 对于第二条曲线，我们使用了y运算符，它类似于c，除了第二个控制点和终点是同一个，所以只有四个需要操作数。
 
@@ -230,19 +228,20 @@ h B 关闭并填充
 
 * 路径是否在填充前自动关闭。关闭涉及从当前点到当前子路径的起始点添加直线段。可以使用h运算符手动关闭路径。
 * 卷绕规则确定在填充自交叉或由多个重叠的子路径组成的对象时所做的选择。
-图5-6显示了两个缠绕规则对自相交对象和由两个重叠矩形子路径构成的路径的影响。
+
+图5-6显示了两种缠绕规则对自相交对象和由两个重叠矩形子路径构成的路径的影响。
+
+![图 5-6](./images/figure%205-6.png)
 
 图5-6的代码是：
 ```
 100 350 200 200 re
-120 370 160 160 re f Non-zero 
+120 370 160 160 re f % 按非零缠绕规则
 400 350 200 200 re
-420 370 160 160 re f* Even-odd
+420 370 160 160 re f* % 按奇偶缠绕规则
 150 50 m 150 250 l 250 50 l 50 150 l 350 150 l h f 
 550 50 m 550 250 l 650 50 l 450 150 l 750 150 l h f*
 ```
-
-![](./images/figure%205-5.png)
 
 在这里，我们还使用了re运算符。这将创建一个矩形的闭合路径，给出四个参数：最小x，最小y，宽度和高度。
 
@@ -250,23 +249,20 @@ h B 关闭并填充
 |---|---|
 |n|结束路径没有视觉效果。这用于更改当前剪切路径（请参阅第65页的“剪切”）|
 |b|关闭，填充和描边路径（非零缠绕规则）|
-|b*|关闭，填充和描边路径（奇数绕组规则）|
+|b\*|关闭，填充和描边路径（奇数绕组规则）|
 |B|填充和描边路径（非零缠绕规则）|
-|B*|填充和描边路径（奇数绕组规则） |
+|B\*|填充和描边路径（奇数绕组规则） |
 |f or F |填充路径（非零缠绕规则）|
-|f*|填充路径（偶数奇数绕组规则）|
+|f\*|填充路径（偶数奇数绕组规则）|
 |S |划出路径|
 |s|关闭并抚摸路径|
 
 
-![](./images/figure%205-6.png)
-
-
-## Colors and Color Spaces
+## Colors and Color Spaces 颜色与颜色空间
 要更改PDF图形流中的填充或描边颜色，我们需要使用
-一个运算符更改当前颜色空间，然后使用另一个运
-算符更改颜色。填充和描边颜色空间是分开的 - 例如，
-当前填充颜色空间可以是DeviceRGB和描边颜色空间DeviceGray。
+一个运算符更改当前颜色空间，然后使用另一个运算符
+更改颜色。填充和描边颜色空间是分开的 - 例如，当前
+填充颜色空间可以是DeviceRGB和描边颜色空间DeviceGray。
 
 在本节中，我们将介绍基本的DeviceGray，DeviceRGB和
 DeviceCMYK颜色空间（PDF标准中涵盖了更复杂的颜色空间）：
@@ -277,8 +273,8 @@ DeviceCMYK颜色空间（PDF标准中涵盖了更复杂的颜色空间）：
 要更改笔触颜色空间，我们使用CS运算符。要更改填充颜色空间，请改用cs。
 然后可以使用SC运算符（具有与当前颜色空间中的分量数量相等的多个操作数）来设置笔划颜色，或者使用sc来设置填充颜色。例如：
 ```
-/DeviceRGB CS Set stroke color space
-0.0 0.5 0.9 SC Set color to RGB (0.0, 0.5, 0.9)
+/DeviceRGB CS % 设置描边的色彩空间
+0.0 0.5 0.9 % SC 运算符设置描边颜色为 RGB (0.0, 0.5, 0.9)
 ```
 
 设备颜色空间有快捷键操作符，可在一次操作中设置当前描边或填充颜色空间以及当前描边或填充颜色。
@@ -303,7 +299,7 @@ DeviceCMYK颜色空间（PDF标准中涵盖了更复杂的颜色空间）：
 
 结果如图5-7所示。
 
-![](./images/figure%205-7.png)
+![图 5-7](./images/figure%205-7.png)
 
 ## Transformations 转换
 到目前为止，我们已经看到运算符改变了跟随它们的所有运算符的图形状态。
@@ -312,49 +308,49 @@ q运算符将当前图形状态置于一边。然后可以像往常一样改变�
 q/Q对可以嵌套，一对在另一对内：
 
 ```
-0.75 g 改为浅灰色填充
+0.75 g % 改为浅灰色填充
 250 250 100 100 re f
-q 保存图形状态
-0.25 g 更改为深灰色填充
+q % 保存图形状态
+0.25 g % 更改为深灰色填充
 350 250 100 100 re f
-Q 检索先前的图形状态
-450 250 100 100 re f 再次浅灰色
+Q % 检索先前的图形状态
+450 250 100 100 re f % 再次浅灰色
 ```
 
 流中的q/Q运算符必须形成平衡对（除了在图形流的末尾，可以省略任何剩余的Q运算符）。结果如图5-8所示。
 
-![](./images/figure%205-8.png)
+![图 5-8](./images/figure%205-8.png)
 
 q/Q对的最常见用途之一是隔离坐标变换的影响。我们可以使用cm运算符来更改从用户空间坐标到设备空间坐标的转换。
-这被称为电流转换矩阵（CTM）。重要的是，对图形状态的这种改变是由q/Q对隔离的，因为撤消是很复杂的。
+这被称为当前转换矩阵（Current Transformation Matrix, CTM）。重要的是，对图形状态的这种改变是由q/Q对隔离的，因为撤消是很复杂的。
 
 cm运算符有六个参数，表示要与CTM组成的矩阵。以下是基本的变换：
 
-* Translation by (dx, dy) is specified by 1, 0, 0, 1, dx, dy
-* Scaling by (sx, sy) about (0, 0) is specified by sx, 0, 0, sy, 0, 0
-* Rotating counterclockwise by x radians about (0, 0) is specified by cos x, sin x, -sin x, cos x, 0, 0
+* 从起始点 (0, 0) 向 (0+dx, 0+dy) 平移可由 1, 0, 0, 1, dx, dy 六个参数指定
+* 长宽由 (1, 1) 缩放至 (sx, sy) 可由 sx, 0, 0, sy, 0, 0 六个参数指定
+* 围绕 (0, 0) 逆时针旋转 x 弧度可以由 cos x, sin x, -sin x, cos x, 0, 0 六个参数指定
 
 cm运算符将给定的变换附加到CTM，而不是替换它。要围绕任意点（而不是原点）旋转或缩放，请平移到原点，旋转或缩放，然后平移。
 
-任何图形文本都将对这种变换的数学进行全面讨论。请参见第119页的“PDF和图形文档”。
+任何图形文本都将对这种变换的数学进行全面讨论。请参见[第10章](./chapter10.md)的“PDF和图形文档”。
 
 请考虑以下内容，如图5-9所示：
 
 ```
 2.0 w
 0.75 g
-100 100 m 200 200 300 300 400 100 c (a) Untransformed shape
+100 100 m 200 200 300 300 400 100 c % 一、尚未变形的形状
 300 100 200 50 y h B
 q
-0.96 0.25 -0.25 0.96 0 0 cm (b) Rotate counterclockwise by 1/4 radian
+0.96 0.25 -0.25 0.96 0 0 cm % 二、逆时针旋转 1/4 个弧度
 100 100 m 200 200 300 300 400 100 c
 300 100 200 50 y h B
 Q
 q
-0.5 0 0 0.5 0 0 cm (c) Scale original shape by 0.5 about the origin
+0.5 0 0 0.5 0 0 cm % 三、关于原点将原始形状缩放至 0.5
 100 100 m 200 200 300 300 400 100 c
 300 100 200 50 y h B
-1 0 0 1 300 0 cm (d) Translate (c) by 300 units in the new space, i.e., 150 units in the original space 
+1 0 0 1 300 0 cm % 四、将第三步操作后在新空间中平移 300 个单位，即在原始空间中平移 150 个单位 
 100 100 m 200 200 300 300 400 100 c
 300 100 200 50 y h B
 Q
@@ -362,12 +358,12 @@ Q
 
 注意使用q和Q来隔离变换的效果。
 
-![](./images/figure%205-9.png)
+![图 5-9](./images/figure%205-9.png)
 
 
-## Clipping
+## Clipping 剪切
 我们可以使用以通常方式构建的路径来设置剪切路径。从那时起，将仅显示路径区域内的内容。
-这是通过使用W运算符（对于非零路径）或W *运算符（对于偶数奇数路径）来完成的。
+这是通过使用 W 运算符（对于非零缠绕路径）或 W\* 运算符（对于奇偶缠绕路径）来完成的。
 
 运算符与现有剪切路径给定的路径相交，因此它只能用于使剪切区域更小，而不是更大。
 剪切路径保持当前路径，因此可以使用例如S运算符来剪切剪切区域的轮廓。W运算符是绘制操作的修饰符，
@@ -378,10 +374,10 @@ Q
 这里我们定义了一个封闭的三角形路径，使用W设置剪切区域，然后使用S进行描边。
 设置此剪切路径然后绘制与图5-2相同的场景的结果如图5-10所示。
 
-![](./images/figure%205-10.png)
+![图 5-10](./images/figure%205-10.png)
 
 
-## Transparency
+## Transparency 透明度
 
 PDF具有复杂但复杂的透明机制，可在多个色彩空间中工作，允许不同类型的混合，并支持分组透明度。
 我们这里只考虑简单的透明度。
@@ -394,7 +390,7 @@ PDF具有复杂但复杂的透明机制，可在多个色彩空间中工作，�
 ```
 << /ExtGState 
   << /gs1
-    << /ca 0.5 >> Half transparent 
+    << /ca 0.5 >> % 半透明
   >>
 >>
 ```
@@ -402,9 +398,9 @@ PDF具有复杂但复杂的透明机制，可在多个色彩空间中工作，�
 这是相应的内容流：
 
 ```
-2.0 w Select 2pt line width
-/gs1 gs 从外部图形状态中选择/ gs1
-0.75 g 选择浅灰色
+2.0 w % 选择线宽为 2 点（2pt）
+/gs1 gs % 从外部图形块中选择 /gs1
+0.75 g % 选择 75% 的浅灰色
 200 250 m 300 350 400 450 500 250 c
 400 250 300 200 y h B
 1 0 0 1 100 100 cm
@@ -414,9 +410,9 @@ PDF具有复杂但复杂的透明机制，可在多个色彩空间中工作，�
 
 结果如图5-11所示。定义透明度使得0表示完全透明，1表示完全不透明。可以用/CA代替（或除了）/ca来改变笔划透明度。
 
-![](./images/figure%205-11.png)
+![图 5-11](./images/figure%205-11.png)
 
-## Shadings and Patterns
+## Shadings and Patterns 阴影与图案
 除了纯色外，PDF还允许使用各种图案来填充和描边对象：
 * 平铺模式，在页面上复制模式单元格。
 * 着色图案，其中颜色之间的渐变用于填充对象。有许多类型，有许多选项和设置：
@@ -428,7 +424,7 @@ Free-form Gouraud-shaded triangle mesh Lattice-form Gouraud-shaded triangle mesh
 Tensor-product patch mesh
 ```
 
-我们只考虑轴向和径向阴影。
+在此处我们只演示轴向和径向阴影。
 
 通过使用cs运算符更改为/Pattern颜色空间，然后使用scn运算符选择命名模式来调用模式。
 模式在页面资源的/Pattern字典中按名称列出。例如：
@@ -436,16 +432,16 @@ Tensor-product patch mesh
 ```
 /Pattern
   <<
-    /GradientShading Our name for the pattern 
+    /GradientShading % 此样式的名字
     <<
       /Type /Pattern
-      /PatternType 2 A shading pattern 
+      /PatternType 2 % 一种阴影样式
       /Shading
         <<
           /ColorSpace /DeviceGray
-          /ShadingType 2 A linear shading
+          /ShadingType 2 % 一种线性渐变阴影
           /Function << /FunctionType 2 /N 1 /Domain [0 1] >>
-          /Coords [150 200 450 500] Coordinates of start and end of gradient 
+          /Coords [150 200 450 500] % 渐变开始和结束的坐标 
           /Extend [true true]
         >> 
     >>
@@ -460,17 +456,17 @@ Tensor-product patch mesh
 
 我们不在这里讨论/Extend或/Function条目。现在调用该模式，并绘制一个形状：
 ```
-/Pattern cs Choose pattern color space for fills 
-/GradientShading scn Choose our pattern as a color 
+/Pattern cs % 为填充选择样式颜色空间
+/GradientShading scn % 选择我们之前设定好的样式作为填充颜色
 250 300 m 350 400 450 500 550 300 c
 450 300 350 250 y h f
 ```
 
 结果如图5-12所示。
 
-![](./images/figure%205-12.png)
+![图 5-12](./images/figure%205-12.png)
 
-如果我们通过将/ShadingType更改为3来更改为径向着色，并将/Coords条目更改为[400 400 0 400 400 200]  - 内径为0且外半径为200的径向着色均以（400,400）为中心：
+如果我们通过将/ShadingType更改为3来更改为径向着色，并将/Coords条目更改为\[400 400 0 400 400 200\]  - 内径为0且外半径为200的径向着色均以（400,400）为中心：
 ```
 /Coords [400 400 0 400 400 200] 
 /ShadingType 3
@@ -478,7 +474,7 @@ Tensor-product patch mesh
 
 结果如图5-13所示。
 
-![](./images/figure%205-13.png)
+![图 5-13](./images/figure%205-13.png)
 
 ## Form XObjects
 在第62页的“转换”中，我们使用q和Q运算符使用各种转换显示单个对象。
@@ -486,17 +482,19 @@ Tensor-product patch mesh
 并以不同的比例和位置重复使用它们（甚至在不同的页面上）。
 
 ```
-3 0 obj Resources of current page <<
-  /XObject << /X1 5 0 R >> Our XObject is called /X1 
+3 0 obj % 当前页面的资源
+<<
+  /XObject << /X1 5 0 R >> % 新增名为 /X1 的 XObject 对象
 >>
 endobj
-5 0 obj The XObject itself << The XObject dictionary
+5 0 obj % XObject 开始
+<< % XObject 字典
   /Type /XObject 
   /Subtype /Form 
   /Length 69
   /BBox [0 0 792 612]
 >>
-stream The XObject content
+stream % XObject 内容流
 2.0 w
 0.5 g
 250 300 m 350 400 450 500 500 300 c 
@@ -506,25 +504,25 @@ endobj
 ```
 
 上面列表中的对象3是页面的/Resources条目。它的/XObject条目是列出该页面中使用的XObject的字典。
-我们已经命名了XObject/X1。对象5是XObject本身。它是一个流，其字典中包含以下条目：
+我们已经命名了一个XObject——/X1。对象5是XObject本身。它是一个流，其字典中包含以下条目：
 
-* The /Type of this object is /XObject.
-* The /Subtype of this XObject is /Form, distinguishing it as a form XObject.
-* The /Length is the length in bytes of the stream, as usual.
-* The /BBox entry gives a bounding box for the XObject, in this case the same as the page itself.
+* 对象类型 /Type 指定为 /XObject。
+* XObject 的子类型 /Subtype 为 /Form，表示这是个 Form XObject。
+* 长度 /Length 一如既往地表示为该内容流的字节数长度。
+* 边界框 /BBox 指定了 XObject 对象的边界框，在当前情况下与页面本身相同。
 
 流包含用于设置线条和宽度的代码以及形状本身。现在，我们可以使用Do运算符从主内容流中使用XObject，
 并将XObject的名称作为操作数：
 
 ```
-/X1 Do Invoke XObject /X1
-0.5 0 0 0.5 0 0 cm Scale by 0.5 about the origin 
-/X1 Do Invoke the XObject again, at the new scale
+/X1 Do % 调用名为 /X1 的 XObject 对象
+0.5 0 0 0.5 0 0 cm % 设置关于原点缩放至原先的 0.5 
+/X1 Do % 以新的缩放比再次调用 XObject
 ```
 
 结果如图5-14所示。
 
-![](./images/figure%205-14.png)
+![图 5-14](./images/figure%205-14.png)
 
 遇到Do运算符时，保存当前图形状态，XObject中的/Matrix条目（如果有）与CTM连接，
 绘制内容（由XObject的/BBox剪切），当前图形状态为恢复。
@@ -543,16 +541,16 @@ endobj
 ```
 5 0 obj
 <<
-  /Type /XObject It's an XObject
-  /Subtype /Image It's an image
-  /ColorSpace /DeviceGray Thecolorspaceoftheimage.Alsodetermineshowmanycomponentsithas. 
-  /Length 8 The length of the stream in bytes, as usual
-  /Width 8 Image width in pixels
-  /Height 8 Image height in pixels
-  /BitsPerComponent 1 Number of bits used for each component
+  /Type /XObject % 这是一个 XObject 对象
+  /Subtype /Image % 是一个图像对象
+  /ColorSpace /DeviceGray % 图片的颜色空间，同时确定了需要显示的子组件。
+  /Length 8 % 一如既往地表示为该内容流的字节数长度
+  /Width 8 % 图片宽度（像素）
+  /Height 8 % 图片高度（像素）
+  /BitsPerComponent 1 % 每个组件使用的位深度
 >>
 stream
-@`pxxp`@ The image data 
+@`pxxp`@ % 具体的图像数据，此处省略
 endstream
 ```
 
@@ -563,12 +561,12 @@ endstream
 
 ```
 q
-1 0 0 1 100 100 cm Translate
-200 0 0 200 0 0 cm Scale
-/X2 Do Invoke image XObject
+1 0 0 1 100 100 cm % 平移 (100, 100)
+200 0 0 200 0 0 cm % 缩放 (200, 200)
+/X2 Do % 调用图像 XObject 对象 /X2
 Q
 q
-1 0 0 1 400 100 cm And again with a different position and scale 
+1 0 0 1 400 100 cm % 再次使用不同的位置和比例
 100 0 0 100 0 0 cm
 /X2 Do
 Q
@@ -576,7 +574,7 @@ Q
 
 结果如图5-15所示。
 
-![](./images/figure%205-15.png)
+![图 5-15](./images/figure%205-15.png)
 
 
 [目录](./README.md)&nbsp;|[上一章：文档结构](./chapter4.md)|&nbsp;[下一章：文本和字体](./chapter6.md)
