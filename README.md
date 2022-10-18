@@ -21,7 +21,7 @@ PDF无处不在，无论是在线形式还是印刷形式，但很少有人利�
 - 了解PDF中的加密和文档权限如何工作
 - 使用pdftk程序从命令行处理PDF文件
 
-![](./images/logo.png)
+![logo](./images/logo.png)
 
 
 ## 目录
@@ -48,6 +48,11 @@ PDF无处不在，无论是在线形式还是印刷形式，但很少有人利�
 ## 参考资源
 * [Amazon英文版购买](https://www.amazon.com/PDF-Explained-Standard-Document-Exchange/dp/1449310028)
 * [pdf1.7标准参考](./resources/pdf_reference_1.7.pdf)
+
+## 贡献者
+- [Xiang Zheng](https://github.com/zxyle)
+- [LearningPawn5](https://github.com/LearningPawn)
+- [woclass](https://github.com/inkydragon)
 
 ## 当前翻译状态
 持续翻译中... 欢迎[PR](https://github.com/zxyle/PDF_Explained/pulls)或者[ISSUE](https://github.com/zxyle/PDF_Explained/issues)。
