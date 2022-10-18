@@ -1,14 +1,13 @@
-Chapter 2: Building a Simple PDF
-================================
+第 2 章：构建简单的 PDF
+=================================
 
-helloworld-source.pdf: The manually-created file. This is not a valid PDF.
-Open this in a text editor.
+helloworld-source.pdf：手动创建的文件。这还不是有效的 PDF 文件。
+您可以使用文本编辑器（例如 Notepad++）打开它。
 
-helloworld.pdf: The valid file, processed with pdftk. This may be opened
-in a PDF viewer such as Acrobat. You can load it into a text editor to see
-what pdftk has added.
+helloworld.pdf：使用 pdftk 处理过的有效 PDF 文件。此文件可以使用
+任意 PDF 阅读器（例如 Adobe Acrobat）打开。您也可以将其加载到文本
+编辑器中与之前的文件进行对比，看看 pdftk 添加了什么。
 
-The pdftk command was:
+将 helloworld-source.pdf 转为有效 PDF 格式的 pdftk 命令是：
 
 pdftk helloworld-source.pdf output helloworld.pdf
-

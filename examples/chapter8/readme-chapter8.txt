@@ -1,18 +1,13 @@
-Chapter 8: Encrypted Documents
-==============================
-
-The file encrypted.pdf is 40-bit encrypted with a blank user password and the
-owner password 'fred'. It was produced from the helloworld.pdf file in the
-chapter2 directory using the following command:
+第 8 章：加密文档
+===============================
+encrypted.pdf 是使用空用户密码和所有者密码“fred”经过 40 位加密的。
+它是使用第 2 章示例中出现的 helloworld.pdf 文件生成的，可以使用以下
+pdftk 命令进行创建：
 
 pdftk helloworld.pdf output encrypted.pdf encrypt_40bit owner_pw fred
 
-The file encrypted-user.pdf is 40-bit encrypted with user password 'charles'
-and owner password 'fred'. The document may be printed with just the user
-password. It was created with the following command:
+文件 encrypted-user.pdf 已经被用户密码“charles”和所有者密码“fred”
+进行过 40 位加密。当只输入用户密码时，文档将可以被用于打印。此文件是
+使用以下 pdftk 命令创建的：
 
-pdftk helloworld.pdf output encrypted-user.pdf encrypt_40bit allow Printing
-owner_pw fred user_pw charles
-
-(all on one line)
-
+pdftk helloworld.pdf output encrypted-user.pdf encrypt_40bit allow Printing owner_pw fred user_pw charles

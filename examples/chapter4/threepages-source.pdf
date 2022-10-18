@@ -1,19 +1,19 @@
 %PDF-1.1
-1 0 obj %The page tree root node
-<< /Kids [2 0 R 3 0 R] %Two children
+1 0 obj % 页数根节点
+<< /Kids [2 0 R 3 0 R] % 2 个子对象
    /Type /Pages
-   /Count 3 %Three pages total
+   /Count 3 % 总计 3 页
 >>
 endobj 
-4 0 obj %Page 1 content stream
+4 0 obj % 第 1 页的内容流
 << >>
 stream
 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page One) Tj ET 
 endstream 
 endobj 
-2 0 obj %Page 1
+2 0 obj % 第 1 页
 << /Rotate 0
-   /Parent 1 0 R %Reference to parent node in page tree
+   /Parent 1 0 R % 引用页树中的父节点
    /Resources 
      << /Font << /F0 << /BaseFont /Times-Italic /Subtype /Type1 /Type /Font >> >> >>
    /MediaBox [0.000000 0.000000 595.275590551 841.88976378]
@@ -21,9 +21,9 @@ endobj
    /Contents [4 0 R]
 >>
 endobj 
-5 0 obj %Document catalog
-<< /PageLayout /TwoColumnLeft %Page layout option
-   /Pages 1 0 R %Reference to page tree
+5 0 obj % 文档目录
+<< /PageLayout /TwoColumnLeft % 页面布局选项
+   /Pages 1 0 R % 引用页树
    /Type /Catalog
 >>
 endobj 
@@ -37,15 +37,15 @@ endobj
    /Contents [7 0 R]
 >>
 endobj 
-3 0 obj %Intermediate page tree node
-<< /Parent 1 0 R %Reference to page tree root
-   /Kids [8 0 R 6 0 R] %Reference to pages 2 and 3
-   /Count 2 %Two pages below this node
+3 0 obj % 中间页数节点
+<< /Parent 1 0 R % 引用页树根节点
+   /Kids [8 0 R 6 0 R] % 引用第 2 页和第 3 页
+   /Count 2 % 此节点下有 2 页
    /Type /Pages
 >>
 endobj 
-8 0 obj %Page 2
-<< /Rotate 270 %Rotate the page
+8 0 obj % 第 2 页
+<< /Rotate 270 % 页面顺时针旋转 270°
    /Parent 3 0 R
    /Resources 
      << /Font << /F0 << /BaseFont /Times-Italic /Subtype /Type1 /Type /Font >> >> >>
@@ -54,33 +54,33 @@ endobj
    /Contents [9 0 R]
 >>
 endobj 
-9 0 obj %Page 2 content stream
+9 0 obj % 第 2 页的内容流
 << >>
 stream
 q 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page Two) Tj ET Q
 1. 0.000000 0.000000 1. 50. 750 cm BT /F0 16 Tf ((Rotated by 270 degrees)) Tj ET
 endstream 
 endobj 
-7 0 obj %Page 3 content stream
+7 0 obj % 第 3 页的内容流
 << >>
 stream
 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page Three) Tj ET 
 endstream 
 endobj 
-10 0 obj %Document Information Dictionary
-<< /Title (PDF Explained Example)
-   /Author (John Whitington)
-   /Producer (Manually Created)
-   /ModDate (D:20110313002346Z)
-   /CreationDate (D:2011)
+10 0 obj % 文档信息字典
+<< /Title (PDF Explained Example) % 标题
+   /Author (John Whitington) % 作者
+   /Producer (Manually Created) % 制造商
+   /ModDate (D:20110313002346Z) % 修改日期
+   /CreationDate (D:2011) % 创建日期
 >>
 endobj xref
 0 11
 trailer
-<< /Info 10 0 R %Trailer Dictionary
-   /Root 5 0 R %Reference to Document Catalog
+<< /Info 10 0 R % 预览字典
+   /Root 5 0 R % 引用文档目录
    /Size 11
-   /ID [<75ff22189ceac848dfa2afec93deee03> <057928614d9711db835e000d937095a2>] %Document IDs
+   /ID [<75ff22189ceac848dfa2afec93deee03> <057928614d9711db835e000d937095a2>] % 文档 ID 信息
 >>
 startxref
 0

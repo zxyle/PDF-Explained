@@ -16,7 +16,7 @@
 
 ## 合并文档
 要合并文档，我们使用cat操作。这是默认操作，因此我们实际上不需要指定cat关键字。例如，要将三个文件的页面合并为一个，我们需要：
-`pdftk file1.pdf file1.pdf file3.pdf output output.pdf`
+`pdftk file1.pdf file2.pdf file3.pdf output output.pdf`
 
 这将按顺序将新文件写入包含file1.pdf，file2.pdf和file3.pdf的所有页面的output.pdf。输出文件可能与任何输入文件不同。
 

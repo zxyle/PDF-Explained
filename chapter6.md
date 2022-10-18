@@ -30,9 +30,9 @@ PDF采用中间立场 - 保留了字体和小尺寸文本布局的思想，
 |---|---|---|---|---|
 |Tc|Character spacing|charSpace|Tc将字符间距设置为charSpace，以未缩放的文本空间单位表示|0|
 |Tw|Word spacing|wordSpace|Tw将单词间距设置为wordSpace，以未缩放的文本单位表示|0|
-|Th |Horizontal spacing|scale|Tz将水平缩放设置为（scale / 100）|100 (normal spacing)|
+|Th |Horizontal spacing|scale|Tz将水平缩放设置为（scale / 100）|100 (即正常间距)|
 |Tl|Leading|leading|TL设置前导的文本，以未缩放的文本空间单位表示|0|
-|Tf, Tfs |Font, Font Size|font, size|Tf选择尺寸大小点的字体字体|None. Must be specified.|
+|Tf, Tfs |Font, Font Size|font, size|Tf选择尺寸大小点的字体字体|没有默认值，但必须进行指定|
 |Tmode| Rendering Mode|render|Tr将文本渲染模式设置为渲染，即整数|0|
 |Trise|Rise|rise|Ts将文本上升设置为上升，以未缩放的文本空间单位表示|0|
 
@@ -86,14 +86,14 @@ ET End text block
 
 ### Showing Text
 Tj运算符在当前位置显示文本。这与我们已经看到的文本定位算子相结合就足够了。
-但是，为方便起见，还提供了三个附加操作符（'，''和TJ）。这些是文本显示和文本定位的常见组合的快捷方式。
+但是，为方便起见，还提供了三个附加操作符（'，"和TJ）。这些是文本显示和文本定位的常见组合的快捷方式。
 表6-3总结了显示操作员的文本。
 
 |操作数| 操作符|功能|
 |---|---|---|
 |string |Tj |在当前位置显示字符串|
-|string|' |转到下一行，考虑前导和文本矩阵，并在新位置显示字符串 与使用T*后跟Tj相同|
-|wordspace, charspace, string|'' |将字间距设置为字空间，将字符间距设置为字符间距。转到下一行，考虑前导和文本矩阵，并在新位置显示字符串。相同的序列字空间Tw charspace Tc string'|
+|string|' |转到下一行，考虑前导和文本矩阵，并在新位置显示字符串 与使用T\*后跟Tj相同|
+|wordspace, charspace, string|" |将字间距设置为字空间，将字符间距设置为字符间距。转到下一行，考虑前导和文本矩阵，并在新位置显示字符串。相同的序列字空间Tw charspace Tc string'|
 |array|TJ |此运算符允许显示文本字符串，并调整各个字形位置（例如，字距调整）。该数组包含任意组合的字符串和数字。字符串条目显示为正常; 数字条目通过减去该数量（以文本空间单位的千分之一表示）水平调整文本矩阵|
 
 为简单起见，我们现在将使用标准字体和基于Latin-1的PDFDocEncoding来显示一些显示文本的示例。
