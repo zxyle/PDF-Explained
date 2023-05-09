@@ -92,7 +92,7 @@ PDF文档中的页面字典汇集了使用这些指令使用的资源（字体�
 
 |键|值类型|值|
 |---|---|---|
-|/Type* |name|必须是/Pages|
+|/Type* |name|必须是/Page|
 |/Parent* |间接引用字典|页面树中此节点的父节点|
 |/Resources|dictionary|页面的资源（字体，图像等）。如果完全省略此条目，则资源将从页面树中的父节点继承。如果确实没有资源，请包含此条目但使用空字典|
 |/Contents|indirect reference to stream or array of such references|一个或多个部分中页面的图形内容。如果缺少此条目，则页面为空|
@@ -193,16 +193,16 @@ endobj
 
 ```
 %PDF-1.0 文件头
-1 0 obj Top-level of page tree: has two children—page one and an intermediate page tree node 
+1 0 obj % Top-level of page tree: has two children—page one and an intermediate page tree node 
 << /Kids [2 0 R 3 0 R] /Type /Pages /Count 3 >>
 endobj
-4 0 obj Contents stream for page one
+4 0 obj % Contents stream for page one
 << >>
 stream
 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page One) Tj ET
 endstream
 endobj
-2 0 obj Page one
+2 0 obj % Page one
 <<
    /Rotate 0 
    /Parent 1 0 R 
@@ -213,9 +213,9 @@ endobj
    /Contents [4 0 R]
 >>
 endobj
-5 0 obj Document catalog
+5 0 obj % Document catalog
 << /PageLayout /TwoColumnLeft /Pages 1 0 R /Type /Catalog >> endobj
-6 0 obj Page three
+6 0 obj % Page three
 <<
   /Rotate 0 
   /Parent 3 0 R 
@@ -226,10 +226,10 @@ endobj
   /Contents [7 0 R] 
 >>
 endobj
-3 0 obj Intermediate page tree node, linking to pages two and three
+3 0 obj % Intermediate page tree node, linking to pages two and three
 << /Parent 1 0 R /Kids [8 0 R 6 0 R] /Count 2 /Type /Pages >> 
 endobj
-8 0 obj Page two
+8 0 obj % Page two
 <<
   /Rotate 270 
   /Parent 3 0 R 
@@ -240,20 +240,20 @@ endobj
   /Contents [9 0 R]
 >>
 endobj
-9 0 obj Content stream for page two
+9 0 obj % Content stream for page two
 << >>
 stream
 q 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page Two) Tj ET Q
 1. 0.000000 0.000000 1. 50. 750 cm BT /F0 16 Tf ((Rotated by 270 degrees)) Tj ET 
 endstream
 endobj
-7 0 obj Content stream for page three
+7 0 obj % Content stream for page three
 << >>
 stream
 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page Three) Tj ET
 endstream
 endobj
-10 0 obj Document information dictionary
+10 0 obj % Document information dictionary
 <<
    /Title (PDF Explained Example) 
    /Author (John Whitington) 
@@ -263,7 +263,7 @@ endobj
 >>
 endobj xref
 0 11
-trailer Trailer dictionary 
+trailer % Trailer dictionary 
 <<
   /Info 10 0 R
   /Root 5 0 R

@@ -53,11 +53,11 @@ PDF采用中间立场 - 保留了字体和小尺寸文本布局的思想，
 
 举个例子，我们回到第2章中的“Hello，World！”文件：
 ```
-1. 0. 0. 1. 50. 700. cm Position at (50, 700) 
-BT Begin text block
-  /F0 36. Tf Select /F0 font at 36pt
-  (Hello, World!) Tj Place the text string 
-ET End text block
+1. 0. 0. 1. 50. 700. cm% Position at (50, 700) 
+BT% Begin text block
+  /F0 36. Tf% Select /F0 font at 36pt
+  (Hello, World!) Tj% Place the text string 
+ET% End text block
 ```
 
 在这里，我们使用带有字体名称和大小运算符的Tf运算符来选择字体，使用Tj运算符来显示文本字符串。
