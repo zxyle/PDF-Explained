@@ -48,8 +48,8 @@
 |/Author |文本字符串 |文件作者的姓名|
 |/CreationDate|日期字符串 |文档创建的日期|
 |/ModDate|日期字符串|上次修改文档的日期|
-|/Creator|文本字符串|最初创建此文档的程序的名称，如果它以另一种格式（例如，“Microsoft Word”）启动|
-|/Producer|文本字符串|将此文件转换为PDF的程序的名称，如果它以另一种格式（例如，字处理器的格式）启动|
+|/Creator|文本字符串|最初创建此文档的程序的名称（如果它源自另一种格式，例如“Microsoft Word”）|
+|/Producer|文本字符串|将此文件转换为PDF的程序的名称（如果它源自另一种格式，例如字处理器的格式）|
 
 ```
 Example 4-1. Typical document information dictionary
